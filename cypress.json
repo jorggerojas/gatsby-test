@@ -1,0 +1,8 @@
+{
+  "fixturesFolder": "./features/cypress/fixtures",
+  "integrationFolder": "./features/cypress/integration",
+  "pluginsFile": "./features/cypress/plugins/index.js",
+  "screenshotsFolder": "./features/cypress/screenshots",
+  "videosFolder": "./features/cypress/videos",
+  "supportFile": "./features/cypress/support/index.js"
+}
