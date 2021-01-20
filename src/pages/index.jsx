@@ -1,12 +1,9 @@
 import React from 'react';
-import { Helmet } from 'react-helmet'
+import Meta from '../organisms/Meta'
 export default () => {
     return (
-        <>
-            {/* <Helmet>
-
-            </Helmet> */}
+        <Meta>
             <h1>Hello world!</h1>
-        </>
+        </Meta>
     );
 };
