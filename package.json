@@ -27,7 +27,7 @@
   "devDependencies": {
     "@testing-library/react": "^11.2.3",
     "cross-env": "^6.0.3",
-    "cucumber": "^7.0.0-rc.0",
+    "@cucumber/cucumber": "^7.0.0",
     "cypress": "^6.3.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.18",
     "prettier": "^1.19.1"

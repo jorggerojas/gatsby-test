@@ -19,18 +19,17 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `jl.gatsby`,
-        short_name: `jl.gatsby`,
-        start_url: `/`,
-        background_color: `salmon`,
-        theme_color: `salmon`,
-        display: `standalone`,
-        icon: `static/favicon.ico`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: `jl.gatsby`,
+    //     short_name: `jl.gatsby`,
+    //     start_url: `/`,
+    //     background_color: `salmon`,
+    //     theme_color: `salmon`,
+    //     display: `standalone`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-offline`,
       options: {
