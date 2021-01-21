@@ -1,15 +1,22 @@
 import styled from 'styled-components';
+import config from '../../utils/config';
 
+const { text } = config;
 const StyledTitle = styled.h1`
   @import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
   font-family: 'Manrope', sans-serif;
   font-style: normal;
   font-size: ${({ level }) => getFontSize(level || '1')};
   text-align: ${({ align }) => align || 'left'};
-  line-height: ${({ lineHeight }) => lineHeight || '1.77rem'};
-  color: ${({ color }) => color || '#000'};
-  @media (min-width: 1441px) {
-    h1 {
+  line-height: ${({ lineHeight }) => lineHeight || '1.77'}rem;
+  color: ${({ color }) => (color ? text[color] : text['dark'])};
+  @media (min-width: 1001px) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-size: ${({ level }) => getFontSize(level || '1', true)};
     }
   }

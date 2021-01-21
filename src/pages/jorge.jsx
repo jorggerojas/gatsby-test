@@ -6,9 +6,20 @@ export default () => {
   return (
     <>
       <Title>Title</Title>
-      <Paragraph>JAJAJA</Paragraph>
+      <div style={{ display: 'flex', alignItems: "flex-start", alignContent: 'space-around', justifyContent: 'space-around', flexWrap: 'wrap' }}>
+        <Paragraph color="white">White</Paragraph>
+        <Paragraph color="lightGray">Light-Gray</Paragraph>
+        <Paragraph color="mutedGray">Muted-Gray</Paragraph>
+        <Paragraph color="darkGray">Dark Gray</Paragraph>
+        <Paragraph>Dark</Paragraph>
+        <Paragraph color="primary">Primary</Paragraph>
+        <Paragraph color="secondary">Secondary</Paragraph>
+        <Paragraph color="info">Info</Paragraph>
+        <Paragraph color="success">Success</Paragraph>
+        <Paragraph color="warning">Warning</Paragraph>
+        <Paragraph color="danger">Danger</Paragraph>
+      </div>
       <div style={{ margin: 0, padding: 0, display: 'flex', alignItems: "start", justifyContent: 'space-between' }}>
-
         <div style={{
           width: "33%"
         }}>
