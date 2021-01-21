@@ -13,4 +13,4 @@ COPY gatsby-config.js .
 
 EXPOSE 8000
 
-CMD ["gatsby", "develop"]
+CMD ["gatsby", "develop", "-H", "0.0.0.0"]
