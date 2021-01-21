@@ -1,29 +1,48 @@
 import styled from 'styled-components';
+import config from '../../utils/config';
 
+const { text } = config;
 const StyledTitle = styled.h1`
   @import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
   font-family: 'Manrope', sans-serif;
   font-style: normal;
   font-size: ${({ level }) => getFontSize(level || '1')};
   text-align: ${({ align }) => align || 'left'};
-  line-height: ${({ lineHeight }) => lineHeight || '1.77rem'};
-  color: ${({ color }) => color || '#000'};
+  line-height: ${({ lineHeight }) => lineHeight || '1.77'}rem;
+  color: ${({ color }) => (color ? text[color] : text['dark'])};
+  @media (min-width: 1001px) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: ${({ level }) => getFontSize(level || '1', true)};
+    }
+  }
 `;
 
-const getFontSize = level => {
+const getFontSize = (level, max = false) => {
   switch (level) {
     case '1':
     default:
-      return 'clamp(1.467rem, calc(1.467rem + ((1vw - 0.2rem) * 1.7674)), 3.2344rem);';
+      return `clamp(30.608px, calc(1.913rem + ((${
+        max ? 'calc(1.125vw * 16)' : '1vw'
+      } - 0.01px) * 3.6103)), 82.56px);`;
     case '2':
-      return 'clamp(1.383rem, calc(1.383rem + ((1vw - 0.2rem) * 1.3132)), 2.6962rem);';
+      return `clamp(1.793rem, calc(1.793rem + ((${
+        max ? 'calc(1.125vw * 16)' : '1vw'
+      } - 0.000625rem) * 2.7875)), 4.3rem);`;
     case '3':
-      return 'clamp(1.296rem, calc(1.296rem + ((1vw - 0.2rem) * 0.9504)), 2.2464rem);';
+      return `clamp(1.68rem, calc(1.68rem + ((${
+        max ? 'calc(1.125vw * 16)' : '1vw'
+      } - 0.000625rem) * 2.1159)), 3.583rem);`;
     case '4':
-      return 'clamp(1.138rem, calc(1.138rem + ((1vw - 0.2rem) * 0.734)), 1.872rem);';
     case '5':
     case '6':
-      return 'clamp(1.138rem, calc(1.138rem + ((1vw - 0.2rem) * 0.422)), 1.56rem);';
+      return `clamp(1.575rem, calc(1.575rem + ((${
+        max ? 'calc(1.125vw * 16)' : '1vw'
+      } - 0.000625rem) * 1.5689)), 2.986rem);`;
   }
 };
 
