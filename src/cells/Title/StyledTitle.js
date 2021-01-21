@@ -14,16 +14,16 @@ const getFontSize = level => {
   switch (level) {
     case '1':
     default:
-      return 'clamp(1.467rem, calc(1.467rem + ((1vw - 0.2rem) * 2.116)),2.8rem);';
+      return 'clamp(1.467rem, calc(1.467rem + ((1vw - 0.2rem) * 1.7674)), 3.2344rem);';
     case '2':
-      return 'clamp(1.383rem, calc(1.383rem + ((1vw - 0.2rem) * 1.105)), 2.333rem);';
+      return 'clamp(1.383rem, calc(1.383rem + ((1vw - 0.2rem) * 1.3132)), 2.6962rem);';
     case '3':
-      return 'clamp(1.296rem, calc(1.296rem + ((1vw - 0.2rem) * 0.432)), 1.944rem);';
+      return 'clamp(1.296rem, calc(1.296rem + ((1vw - 0.2rem) * 0.9504)), 2.2464rem);';
     case '4':
-      return 'clamp(1.215rem, calc(1.215rem + ((1vw - 0.2rem) * 0.155)), 1.37rem);';
+      return 'clamp(1.138rem, calc(1.138rem + ((1vw - 0.2rem) * 0.734)), 1.872rem);';
     case '5':
     case '6':
-      return 'clamp(1.138rem, calc(1.138rem + ((1vw - 0.2rem) * 0.212)), 1.35rem);';
+      return 'clamp(1.138rem, calc(1.138rem + ((1vw - 0.2rem) * 0.422)), 1.56rem);';
   }
 };
 
