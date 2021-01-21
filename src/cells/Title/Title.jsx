@@ -1,11 +1,11 @@
 import React from 'react';
-import TitleStyle from './TitleStyle'
+import StyledTitle from './StyledTitle'
 
 const Title = ({
-  content,
+  children,
   ...props
 }) => {
-  return (<TitleStyle {...props}>{content}</TitleStyle>)
+  return (<StyledTitle {...props}>{children}</StyledTitle>)
 }
 
 export default Title;
