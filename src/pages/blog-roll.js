@@ -39,33 +39,35 @@ const MainContent = styled.div`
     padding-right: 165px;
   }
 `;
-export default () => (
-  <>
-    <GlobalStyle />
-    <BackgroundImage
-      src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-      alt=""
-    />
+export default function() {
+  return (
+    <>
+      <GlobalStyle />
+      <BackgroundImage
+        src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+        alt=""
+      />
 
-    <MainContent>
-      <IntroBlog data={data} />
-      <IntroBlog data={data} />
-      <IntroBlog data={data} />
-    </MainContent>
-    <IntroBlog
-      data={data}
-      src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-      alt="SITES"
-    />
-    <IntroBlog
-      data={data}
-      src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-      alt="SITES"
-    />
-    <IntroBlog
-      data={data}
-      src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-      alt="SITES"
-    />
-  </>
-);
+      <MainContent>
+        <IntroBlog data={data} />
+        <IntroBlog data={data} />
+        <IntroBlog data={data} />
+      </MainContent>
+      <IntroBlog
+        data={data}
+        src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+        alt="SITES"
+      />
+      <IntroBlog
+        data={data}
+        src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+        alt="SITES"
+      />
+      <IntroBlog
+        data={data}
+        src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+        alt="SITES"
+      />
+    </>
+  );
+}

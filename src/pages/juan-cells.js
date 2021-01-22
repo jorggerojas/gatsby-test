@@ -12,7 +12,7 @@ const AuthorDesc = styled.div`
   display: flex;
   align-items: center;
 `;
-export default () => {
+export default function() {
   return (
     <>
       <BackgroundImage
@@ -113,4 +113,4 @@ export default () => {
       <Button colors={colors.info} label="Medium/normal" block />
     </>
   );
-};
+}
