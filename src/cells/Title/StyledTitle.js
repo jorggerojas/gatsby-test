@@ -6,6 +6,7 @@ const StyledTitle = styled.h1`
   @import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
   font-family: 'Manrope', sans-serif;
   font-style: normal;
+  margin: ${({ margin }) => margin || '0'};
   font-size: ${({ level }) => getFontSize(level || '1')};
   text-align: ${({ align }) => align || 'left'};
   line-height: ${({ lineHeight }) => lineHeight || '1.77'}rem;
@@ -26,9 +27,9 @@ const getFontSize = (level, max = false) => {
   switch (level) {
     case '1':
     default:
-      return `clamp(30.608px, calc(1.913rem + ((${
+      return `clamp(1.913rem, calc(1.913rem + ((${
         max ? 'calc(1.125vw * 16)' : '1vw'
-      } - 0.01px) * 3.6103)), 82.56px);`;
+      } -16) * 3.6103)),5.16rem);`;
     case '2':
       return `clamp(1.793rem, calc(1.793rem + ((${
         max ? 'calc(1.125vw * 16)' : '1vw'
