@@ -4,32 +4,33 @@ import config from '../../utils/config';
 const spacing = config.spacing;
 
 const StyledButton = styled.button`
-  border: 1px solid black;
-  border-radius: 3px;
+  border: 1px solid ${props => props.colors.default};
+  border-radius: 2px;
   box-sizing: border-box;
   font-size: 1rem;
-  background-color: transparent;
+  background-color: ${props => props.colors.default};
   padding: 9px ${spacing.md};
   transition: all 0.3s ease-out;
 
   &:disabled {
-    cursor: not-allowed;
+    background-color: lightgrey;
+    color: grey;
+    border: none;
   }
 
-  &:hover {
+  // just hover
+  &:not([disabled]):hover {
+    background-color: ${props => props.colors.hover};
     cursor: pointer;
-    background-color: black;
-    color: white;
   }
 
   &:focus {
-    box-shadow: 0 0 0 0.15rem black;
+    box-shadow: 0 0 0 0.15rem ${props => props.colors.default};
     outline: 0;
   }
 
   &:active {
-    background-color: black;
-    color: white;
+    background-color: ${props => props.colors.click};
   }
 
   ${props =>
@@ -45,5 +46,11 @@ const StyledButton = styled.button`
       padding: 12px ${spacing.lg};
       font-size: 1.25rem;
     `}
+
+    ${props =>
+      props.block &&
+      css`
+        width: 100%;
+      `}
 `;
 export default StyledButton;
