@@ -3,7 +3,7 @@ FROM node:13
 
 WORKDIR /usr/src/app
 
-COPY package.json .
+COPY . .
 
 RUN yarn global add gatsby-cli
 
@@ -13,4 +13,4 @@ COPY gatsby-config.js .
 
 EXPOSE 8000
 
-CMD ["gatsby", "develop", "-H", "0.0.0.0"]
+CMD ["npm", "run", "start:docker"]

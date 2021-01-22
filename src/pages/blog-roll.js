@@ -39,7 +39,7 @@ const MainContent = styled.div`
     padding-right: 165px;
   }
 `;
-export default function() {
+const blog =() =>{
   return (
     <>
       <GlobalStyle />
@@ -71,3 +71,5 @@ export default function() {
     </>
   );
 }
+
+export default blog;

@@ -4,6 +4,7 @@ import config from '../../utils/config';
 const display = config.display;
 
 const StyledIntroBlog = styled.section`
+  ${src ? ('display:flex; justify-content:center; align-items:center'):""};
   padding-bottom: 48px;
   padding-top: 48px;
   @media (min-width: 992px) {

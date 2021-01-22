@@ -2,7 +2,7 @@ import React from 'react';
 import { Title } from '../cells/Title';
 import { Paragraph } from '../cells/Paragraph';
 
-export default function() {
+const Jorge =() =>{
   return (
     <>
       <Title>Title</Title>
@@ -96,3 +96,4 @@ export default function() {
     </>
   );
 }
+ export default Jorge;

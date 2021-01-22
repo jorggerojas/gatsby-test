@@ -12,7 +12,7 @@ const AuthorDesc = styled.div`
   display: flex;
   align-items: center;
 `;
-export default function() {
+const Juan = () =>{
   return (
     <>
       <BackgroundImage
@@ -114,3 +114,5 @@ export default function() {
     </>
   );
 }
+
+export default Juan;

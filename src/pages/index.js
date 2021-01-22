@@ -1,7 +1,7 @@
 import React from 'react';
 import Meta from '../organisms/Meta';
 import { Link } from 'gatsby';
-export default function() {
+const index = () =>{
   return (
     <Meta>
       <h1>Hello world!</h1>
@@ -19,3 +19,5 @@ export default function() {
     </Meta>
   );
 }
+
+export default index;
