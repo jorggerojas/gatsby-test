@@ -1,10 +1,17 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
 import { Avatar } from '../cells/Avatar';
 import { BackgroundImage } from '../cells/BackgroundImage';
 import { Button } from '../cells/Button';
 import { Paragraph } from '../cells/Paragraph';
-import padding from '../utils/padding';
-
+import { Title } from '../cells/Title';
+import config from '../utils/config';
+// import Anchor from '../cells/Anchor';
+const colors = config.colors;
+const AuthorDesc = styled.div`
+  display: flex;
+  align-items: center;
+`;
 export default () => {
   return (
     <>
@@ -12,77 +19,98 @@ export default () => {
         src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
         alt=""
       />
-      <Avatar
-        src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-        alt="avata"
-      />
-      <Paragraph>
-        This chapter will be about getting started with Git. We will begin by
-        explaining some background on version control tools, then move on to how
-        to get Git running on your system and finally how to get it set up to
-        start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj
-      </Paragraph>
+      <section
+        css={css`
+          padding-left: 100px;
+          padding-right: 100px;
+        `}
+      >
+        <p>BLOG - 7 MINUTE READ SALES AND MARKETING, ENGINEERING</p>
+        <Title level="1">
+          Identifica cuál es el verdadero costo de una pobre identificación
+        </Title>
+        <Paragraph>
+          This chapter will be about getting started with Git. We will begin by
+          explaining some background on version control tools, then move on to
+          how to get Git running on your system and finally how to get it set up
+          to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj
+        </Paragraph>
 
-      <Button label="sm - none" size="sm" css={padding({ size: 'none' })} />
-      <Button label="sm - nano" size="sm" css={padding({ size: 'nano' })} />
-      <Button label="sm - micro" size="sm" css={padding({ size: 'micro' })} />
-      <Button label="sm - tiny" size="sm" css={padding({ size: 'tiny' })} />
-      <Button label="sm - xs" size="sm" css={padding({ size: 'xs' })} />
-      <Button label="sm - sm" size="sm" css={padding({ size: 'sm' })} />
-      <Button label="sm - md" size="sm" css={padding({ size: 'md' })} />
-      <Button label="sm - lg" size="sm" css={padding({ size: 'lg' })} />
-      <Button label="sm - xl" size="sm" css={padding({ size: 'xl' })} />
-      <Button label="sm - xxl" size="sm" css={padding({ size: 'xxl' })} />
+        <AuthorDesc>
+          <Avatar
+            src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+            alt="avata"
+          />
+          <div
+            css={css`
+              display: flex;
+              flex-direction: column;
+            `}
+          >
+            <Title level="5" style={{ margin: 0 }}>
+              Clara Gonzalez
+            </Title>
+            <Title level="6" style={{ margin: 0 }}>
+              CEO at Company Name
+            </Title>
+          </div>
+        </AuthorDesc>
+      </section>
+
+      <Button colors={colors.primary} label="Small" size="sm" />
+      <Button colors={colors.primary} label="Medium/normal" />
+      <Button colors={colors.primary} label="Large" size="lg" />
+      <Button
+        colors={colors.primary}
+        label="Large disabled"
+        size="lg"
+        disabled
+      />
       <br />
-      <Button label="md - none" css={padding({ size: 'none' })} />
-      <Button label="md - nano" css={padding({ size: 'nano' })} />
-      <Button label="md - micro" css={padding({ size: 'micro' })} />
-      <Button label="md - tiny" css={padding({ size: 'tiny' })} />
-      <Button label="md - xs" css={padding({ size: 'xs' })} />
-      <Button label="md - sm" css={padding({ size: 'sm' })} />
-      <Button label="md - md" css={padding({ size: 'md' })} />
-      <Button label="md - lg" css={padding({ size: 'lg' })} />
-      <Button label="md - xl" css={padding({ size: 'xl' })} />
-      <Button label="md - xxl" css={padding({ size: 'xxl' })} />
+      <Button colors={colors.secondary} label="Small" size="sm" />
+      <Button colors={colors.secondary} label="Medium/normal" />
+      <Button colors={colors.secondary} label="Large" size="lg" />
+      <Button
+        colors={colors.secondary}
+        label="Large disabled"
+        size="lg"
+        disabled
+      />
       <br />
-      <Button label="lg - none" size="lg" css={padding({ size: 'none' })} />
-      <Button label="lg - nano" size="lg" css={padding({ size: 'nano' })} />
-      <Button label="lg - micro" size="lg" css={padding({ size: 'micro' })} />
-      <Button label="lg - tiny" size="lg" css={padding({ size: 'tiny' })} />
-      <Button label="lg - xs" size="lg" css={padding({ size: 'xs' })} />
-      <Button label="lg - sm" size="lg" css={padding({ size: 'sm' })} />
-      <Button label="lg - md" size="lg" css={padding({ size: 'md' })} />
-      <Button label="lg - lg" size="lg" css={padding({ size: 'lg' })} />
-      <Button label="lg - xl" size="lg" css={padding({ size: 'xl' })} />
-      <Button label="lg - xxl" size="lg" css={padding({ size: 'xxl' })} />
+      <Button colors={colors.info} label="Small" size="sm" />
+      <Button colors={colors.info} label="Medium/normal" />
+      <Button colors={colors.info} label="Large" size="lg" />
+      <Button colors={colors.info} label="Large disabled" size="lg" disabled />
+      <br />
+      <Button colors={colors.success} label="Small" size="sm" />
+      <Button colors={colors.success} label="Medium/normal" />
+      <Button colors={colors.success} label="Large" size="lg" />
       <Button
-        label="lg - xxl"
+        colors={colors.success}
+        label="Large disabled"
         size="lg"
-        css={padding({
-          top: 'nano',
-          left: 'micro',
-          right: 'xxl',
-          bottom: 'md',
-        })}
+        disabled
       />
+      <br />
+      <Button colors={colors.warning} label="Small" size="sm" />
+      <Button colors={colors.warning} label="Medium/normal" />
+      <Button colors={colors.warning} label="Large" size="lg" />
       <Button
-        label="lg - xxl"
+        colors={colors.warning}
+        label="Large disabled"
         size="lg"
-        css={padding({
-          vertical: 'xxl',
-          left: 'micro',
-          right: 'none',
-        })}
+        disabled
       />
+      <br />
       <Button
-        label="lg - xxl"
+        colors={colors.warning}
+        label="Large disabled"
         size="lg"
-        css={padding({
-          horizontal: 'xxl',
-          top: 'micro',
-          bottom: 'none',
-        })}
+        block
+        disabled
       />
+      <Button colors={colors.warning} label="Small" size="sm" block />
+      <Button colors={colors.info} label="Medium/normal" block />
     </>
   );
 };
