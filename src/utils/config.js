@@ -11,6 +11,14 @@ const config = {
     xl: '2.488rem',
     xxl: '2.986rem',
   },
+  display: {
+    xm: '3.583rem',
+    sm: '5.16rem',
+    md: '6.192rem',
+    lg: '8.916rem',
+    xl: '12.839rem',
+    xxl: '15.407rem',
+  },
   colors: {
     primary: {
       default: '#937B3D',
