@@ -7,19 +7,17 @@ const StyledParagraph = styled.p`
   text-align: ${({ align }) => align || 'left'};
   font-family: 'DM Sans', sans-serif;
   font-style: normal;
-  margin-inline-start: ${({ margin }) => margin || '0'};
+  margin-inline-start: ${({ marginInline }) => marginInline || '0'};
+  margin: ${({ margin }) => margin || '0'};
   font-weight: ${({ bold }) => bold || '400'};
+  letter-spacing: ${({ spacing }) => spacing || '0'}rem;
   font-size: ${({ size }) =>
     size ? (size === 'sm' ? '0.83rem' : '1.2rem') : '1rem'};
-  /* font-size: ${({ size }) => `clamp
-    (0.833rem, calc(0.833rem + ((1vw - 0.000625rem) * 0.4081)), 1.2rem);`}; */
   text-align: ${({ align }) => align || 'left'};
-  line-height: ${({ lineHeight }) => lineHeight || '1.77'}rem;
+  line-height: ${({ lineHeight }) => lineHeight || '1.77'};
   color: ${({ color }) => (color ? text[color] : text['dark'])};
   @media (min-width: 1000px) {
     p {
-      /* font-size: ${({ size }) =>
-        `clamp(0.833rem, calc(0.833rem + ((calc(1.125vw * 16) - 0.000625rem) * 0.4081)), 1.2rem);`}; */
       font-size: ${({ size }) =>
         size
           ? size === 'sm'
