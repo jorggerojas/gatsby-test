@@ -24,6 +24,7 @@ const MainContent = styled.div`
 
   @media (min-width: 576px) {
     padding-left: 125px;
+    padding-right: 61px;
   }
   @media (min-width: 768px) {
     padding-left: 99px;
