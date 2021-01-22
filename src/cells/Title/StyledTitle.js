@@ -3,12 +3,13 @@ import config from '../../utils/config';
 
 const { text } = config;
 const StyledTitle = styled.h1`
-  @import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
-  font-family: 'Manrope', sans-serif;
-  font-style: normal;
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+  font-family: 'DM Sans', sans-serif;
+  font-weight: ${({ weight }) => weight || 'normal'};
   margin: ${({ margin }) => margin || '0'};
   font-size: ${({ level }) => getFontSize(level || '1')};
   text-align: ${({ align }) => align || 'left'};
+  letter-spacing: ${({ spacing }) => spacing || '0'}rem;
   line-height: ${({ lineHeight }) => lineHeight || '1.77'}rem;
   color: ${({ color }) => (color ? text[color] : text['dark'])};
   @media (min-width: 1001px) {
