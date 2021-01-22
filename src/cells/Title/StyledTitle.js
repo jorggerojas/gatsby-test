@@ -12,15 +12,17 @@ const StyledTitle = styled.h1`
   letter-spacing: ${({ spacing }) => spacing || '0'}rem;
   line-height: ${({ lineHeight }) => lineHeight || '1.77'}rem;
   color: ${({ color }) => (color ? text[color] : text['dark'])};
-  @media (min-width: 1001px) {
+  @media (min-width: 1000px) {
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-      font-size: ${({ level }) => getFontSize(level || '1', true)};
+      font-size: ${({ level }) => getFontSize(level || '1', true)} !important;
     }
+    line-height: ${({ lineHeight }) =>
+      `calc(${lineHeight}rem * 1.3)` || '1.99rem'} !important;
   }
 `;
 

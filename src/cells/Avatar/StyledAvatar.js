@@ -5,10 +5,7 @@ const StyledAvatar = styled.img`
   height: 50px;
   width: 50px;
   @media screen and (max-width: 320px) {
-    display: ${({ hide }) => {
-      console.log(hide);
-      return hide === 'xsm' ? 'none' : '';
-    }};
+    display: ${({ hide }) => (hide === 'xsm' ? 'none' : '')};
   }
   @media screen and (max-width: 576px) {
     display: ${({ hide }) => (hide === 'sm' ? 'none' : '')};

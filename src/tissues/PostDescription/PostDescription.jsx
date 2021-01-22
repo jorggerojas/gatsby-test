@@ -6,6 +6,7 @@ const PostDescription = ({ data, ...props }) => (
         {data ? data.map(p => {
             return (
                 <Paragraph
+                    key={p.text}
                     style={p.style} size={p.size || ""} hide={p.hide || ""} color={p.color || ""}
                     weight="400" lineHeight="100%" spacing="0.076"
                 >
