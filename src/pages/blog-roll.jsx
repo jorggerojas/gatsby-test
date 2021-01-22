@@ -52,5 +52,20 @@ export default () => (
       <IntroBlog data={data} />
       <IntroBlog data={data} />
     </MainContent>
+    <IntroBlog
+      data={data}
+      src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+      alt="SITES"
+    />
+    <IntroBlog
+      data={data}
+      src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+      alt="SITES"
+    />
+    <IntroBlog
+      data={data}
+      src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+      alt="SITES"
+    />
   </>
 );

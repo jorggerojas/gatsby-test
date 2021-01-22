@@ -15,37 +15,66 @@ const TextContent = styled.div`
     max-width: 700px;
   }
 `;
-const IntroBLog = ({ data }) => (
-  <StyledIntroBlog size="sm">
-    <TextContent>
-      <PostDescription
-        data={data}
-        align="start"
-        justify="start"
-        margin="1vw 0 1vw 0 "
-      />
-      <Title
-        level="6"
-        lineHeight="2.243"
-        margin="3vw 0 3vw 0"
-        marginInline="1vw"
-      >
-        Identifica cuál es el verdadero costo de una pobre identificación
-      </Title>
-      <Paragraph
-        lineHeight="1.5"
-        marginInline="1vw"
-        weight="300"
-        css={padding({ right: 'xxl' })}
-      >
-        This chapter will be about getting started with Git. We will begin by
-        explaining some background on version control tools, then move on to how
-        to get Git running on your system and finally how to get it set up to
-        start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj
-      </Paragraph>
-      <AuthorDescription style={{ margin: '5vw' }} />
-    </TextContent>
-  </StyledIntroBlog>
-);
+
+const WithImage = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 33px;
+  @media (min-width: 992px) {
+    flex-direction: row;
+  }
+`;
+
+const SideImage = styled.img`
+  width: 100%;
+  max-height: 216px;
+  @media (min-width: 992px) {
+    width: 353px;
+  }
+`;
+const IntroBLog = ({ data, src = null, alt = '' }) => {
+  const blogContent = (
+    <StyledIntroBlog size="sm">
+      <TextContent>
+        <PostDescription
+          data={data}
+          align="start"
+          justify="start"
+          margin="1vw 0 1vw 0 "
+        />
+        <Title
+          level="6"
+          lineHeight="2.243"
+          margin="3vw 0 3vw 0"
+          marginInline="1vw"
+        >
+          Identifica cuál es el verdadero costo de una pobre identificación
+        </Title>
+        <Paragraph
+          lineHeight="1.5"
+          marginInline="1vw"
+          weight="300"
+          css={padding({ right: 'xxl' })}
+        >
+          This chapter will be about getting started with Git. We will begin by
+          explaining some background on version control tools, then move on to
+          how to get Git running on your system and finally how to get it set up
+          to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj
+        </Paragraph>
+        <AuthorDescription style={{ margin: '5vw' }} />
+      </TextContent>
+    </StyledIntroBlog>
+  );
+  if (src !== null) {
+    return (
+      <WithImage>
+        <SideImage src={src} alt={alt} />
+        {blogContent}
+      </WithImage>
+    );
+  }
+
+  return blogContent;
+};
 
 export default IntroBLog;
