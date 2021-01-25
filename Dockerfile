@@ -1,15 +1,13 @@
 
 FROM node:13
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY . .
 
-RUN yarn global add gatsby-cli
-
 RUN yarn install
 
-COPY gatsby-config.js .
+COPY . .
 
 EXPOSE 8000
 

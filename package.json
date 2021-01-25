@@ -4,7 +4,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "cross-env GATSBY_GRAPHQL_IDE=playground gatsby develop",
-    "dev:docker": "gatsby develop -H 0.0.0.0",
+    "dev:docker": "gatsby develop -H 0.0.0.0 -p 8000",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "start:docker": "npm run dev:docker",
