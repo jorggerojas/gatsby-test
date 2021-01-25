@@ -12,7 +12,7 @@ const Jorge =() =>{
           alignItems: 'flex-start',
           alignContent: 'space-around',
           justifyContent: 'space-around',
-          flexWrap: 'wrap',
+          flexWrap: 'no-wrap',
         }}
       >
         <Paragraph color="white">White</Paragraph>

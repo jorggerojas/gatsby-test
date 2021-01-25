@@ -43,7 +43,7 @@ const IntroBLog = ({ data, src = null, alt = '' }) => {
           margin="1vw 0 1vw 0 "
         />
         <Title
-          level="6"
+          level="1"
           lineHeight="2.243"
           margin="3vw 0 3vw 0"
           marginInline="1vw"
