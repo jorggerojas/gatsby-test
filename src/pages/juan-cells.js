@@ -6,13 +6,35 @@ import { Button } from '../cells/Button';
 import { Paragraph } from '../cells/Paragraph';
 import { Title } from '../cells/Title';
 import config from '../utils/config';
-// import Anchor from '../cells/Anchor';
+import { Anchor } from '../cells/Anchor';
 const colors = config.colors;
 const AuthorDesc = styled.div`
   display: flex;
   align-items: center;
 `;
-const Juan = () =>{
+
+const icon = (
+  <svg
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24px"
+    height="24px"
+    viewBox="0 0 24 24"
+    aria-labelledby="arrowRightIconTitle"
+    stroke="#2329D6"
+    stroke-width="1"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+    fill="none"
+    color="#2329D6"
+  >
+    {' '}
+    <title id="arrowRightIconTitle">Arrow Right</title>{' '}
+    <path d="M15 18l6-6-6-6" /> <path d="M3 12h17" />{' '}
+    <path stroke-linecap="round" d="M21 12h-1" />{' '}
+  </svg>
+);
+const Juan = () => {
   return (
     <>
       <BackgroundImage
@@ -56,7 +78,9 @@ const Juan = () =>{
           </div>
         </AuthorDesc>
       </section>
-
+      <Anchor label="Next" href="#" icon={icon} />
+      <Anchor label="Link" href="#" />
+      <br />
       <Button colors={colors.primary} label="Small" size="sm" />
       <Button colors={colors.primary} label="Medium/normal" />
       <Button colors={colors.primary} label="Large" size="lg" />
@@ -113,6 +137,6 @@ const Juan = () =>{
       <Button colors={colors.info} label="Medium/normal" block />
     </>
   );
-}
+};
 
 export default Juan;
