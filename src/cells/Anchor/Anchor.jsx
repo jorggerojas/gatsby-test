@@ -5,7 +5,7 @@ const Anchor = ({ label, href, icon = null, ...rest }) => {
   return (
     <StyledAnchor href={href} {...rest}>
       {label}
-      <span> {icon !== null && icon}</span>
+      {icon !== null && icon}
     </StyledAnchor>
   );
 };

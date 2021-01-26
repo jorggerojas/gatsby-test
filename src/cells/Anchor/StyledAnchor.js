@@ -20,6 +20,7 @@ const StyledAnchor = styled.a`
     vertical-align: middle;
     margin-left: ${spacing.lg};
     transition: transform 0.2s;
+    height: 1em;
   }
 
   &:hover {
