@@ -92,7 +92,7 @@ const MiniPost = ({
                 <Col css={padding({ vertical: 'sm', horizontal: 0 })}>
                     <Container fluid>
                         <Row>
-                            <Col md={10}>
+                            <Col md={10} css={padding({ size: 0 })}>
                                 <PostDescription
                                     info={info}
                                     align="start"

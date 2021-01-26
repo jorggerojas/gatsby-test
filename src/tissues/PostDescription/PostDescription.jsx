@@ -7,7 +7,7 @@ import { getSize } from '../../cells/Paragraph/StyledParagraph';
 
 const PostDescription = ({ info, ...props }) => (
     <StyledPostDescription {...props} css={padding({ bottom: 'md' })}>
-        <Radio fontSize={getSize('lg')} borderWidth={2} color="#2329D6" css={padding({ right: 'nano' })} />
+        <Radio fontSize={getSize('lg')} color="#2329D6" css={padding({ right: 'nano' })} />
         {info ? info.map(p => {
             return (
                 <Paragraph
