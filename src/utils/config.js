@@ -27,7 +27,14 @@ const config = {
       lg: '8.916rem',
       xl: '12.839rem',
       xxl: '15.407rem',
-    }
+    },
+  },
+  breakpoints: {
+    xs: '320px',
+    sm: '576px',
+    md: '768px',
+    lg: '992px',
+    xl: '1440px',
   },
   colors: {
     primary: {
