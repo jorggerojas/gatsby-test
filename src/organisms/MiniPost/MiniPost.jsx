@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 import StyledMiniPost from './StyledMiniPost';
@@ -16,16 +16,10 @@ const SideImage = styled.img`
     height: 25.063rem;
     margin: 0;
     @media (min-width: 576px) {
-        width: 25.063rem !important;
+        width: calc(calc(100% - 25.063rem) + 25.063rem) !important;
     }
     @media (min-width: 768px) {
-        width: 21.688rem !important;
-    }
-    @media (min-width: 992px) {
-        width: 22.063rem !important;
-    }
-    @media (min-width: 1440px) {
-        width: 32.688rem !important;
+        width: 100% !important;
     }
 `;
 const PostRow = styled(Row)`
@@ -37,10 +31,10 @@ const PostRow = styled(Row)`
         padding-left: 7.625rem;
         padding-right: 3.313rem;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 792px) {
         flex-direction: row;
-        padding-left: ${display.sm};
-        padding-right: ${display.sm};
+        padding-left: ${display.mobile.sm};
+        padding-right: ${display.mobile.sm};
     }
     @media (min-width: 992px) {
         flex-direction: row;
@@ -53,7 +47,6 @@ const PostRow = styled(Row)`
         padding-right: 10.389rem;
     }
 `;
-
 const PostCol = styled(Col)`
     display: flex;
     align-items: flex-start;
@@ -79,7 +72,6 @@ const PostCol = styled(Col)`
         justify-content: center;
     }
 `;
-
 const MiniPost = ({
     type,
     info,
@@ -88,21 +80,27 @@ const MiniPost = ({
     alt
 }) => {
     return (
-        <StyledMiniPost fluid css={padding({ dis: true, vertical: 'sm' })}>
+        <StyledMiniPost fluid>
             <PostRow>
                 {
                     src !== null ?
-                        (<PostCol css={padding({ right: 'xxl', bottom: 'xxl' })} xs>
+                        (<PostCol css={padding({ right: 'xl', bottom: 'xl' })} xs>
                             <SideImage src={src} alt={alt} />
                         </PostCol>) :
                         null
                 }
-                <Col css={padding({ vertical: 0, horizontal: 0 })}>
-                    <PostDescription
-                        info={info}
-                        align="start"
-                        justify="start"
-                    />
+                <Col css={padding({ vertical: 'sm', horizontal: 0 })}>
+                    <Container fluid>
+                        <Row>
+                            <Col md={10}>
+                                <PostDescription
+                                    info={info}
+                                    align="start"
+                                    justify="start"
+                                />
+                            </Col>
+                        </Row>
+                    </Container>
                     <Title level="4" weight="400" lineHeight="2.243" css={padding({ bottom: 'md' })}>
                         ¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá
                     </Title>

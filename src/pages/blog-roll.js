@@ -16,7 +16,7 @@ const data = [
     size: 'xxs',
     color: 'info',
     family: 'DM Sans',
-    hide: 'md'
+    hide: 'sm'
   },
 ];
 
