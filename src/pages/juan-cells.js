@@ -81,9 +81,16 @@ const Juan = () => {
       <Anchor label="Next" href="#" icon={icon} />
       <Anchor label="Link" href="#" />
       <br />
+      <Button colors={colors.primary} label="Small" icon={icon} size="sm" />
       <Button colors={colors.primary} label="Small" size="sm" />
+      <Button colors={colors.primary} icon={icon} size="sm" />
+      <Button colors={colors.primary} label="Medium/normal" icon={icon} />
       <Button colors={colors.primary} label="Medium/normal" />
+      <Button colors={colors.primary} icon={icon} />
+      <Button colors={colors.primary} label="Large" icon={icon} size="lg" />
       <Button colors={colors.primary} label="Large" size="lg" />
+      <Button colors={colors.primary} icon={icon} size="lg" />
+
       <Button
         colors={colors.primary}
         label="Large disabled"

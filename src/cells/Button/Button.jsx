@@ -7,9 +7,22 @@ const defaultColors = {
   click: '#C3A24A',
 };
 
-const Button = ({ label, size, colors = defaultColors, ...rest }) => {
+const Button = ({
+  label,
+  size,
+  colors = defaultColors,
+  icon = null,
+  ...rest
+}) => {
   return (
-    <StyledButton size={size || 'md'} colors={colors} {...rest}>
+    <StyledButton
+      size={size || 'md'}
+      colors={colors}
+      isOnlyIcon={!label && icon !== null}
+      hasIcon={icon !== null}
+      {...rest}
+    >
+      {icon !== null ? <span>{icon}</span> : null}
       {label}
     </StyledButton>
   );
