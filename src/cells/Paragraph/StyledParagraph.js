@@ -26,7 +26,7 @@ const StyledParagraph = styled.p`
   @media screen and (max-width: 576px) {
     display: ${({ hide }) => (hide === 'sm' ? 'none' : '')};
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 791px) {
     display: ${({ hide }) => (hide === 'md' ? 'none' : '')};
   }
   @media screen and (max-width: 992px) {
@@ -43,7 +43,7 @@ const StyledParagraph = styled.p`
 const getSize = (size = 'md', max = false) => {
   switch (size) {
     case 'xxs':
-      return max ? 'calc(0.48rem * 1.125)' : '0.48rem';
+      return max ? 'calc(0.5rem * 1.125)' : '0.5rem';
     case 'xs':
       return max ? 'calc(0.694rem * 1.125)' : '0.694rem';
     case 'sm':
@@ -56,3 +56,4 @@ const getSize = (size = 'md', max = false) => {
   }
 }
 export default StyledParagraph;
+export { getSize };

@@ -12,12 +12,22 @@ const config = {
     xxl: '2.986rem',
   },
   display: {
-    xm: '3.583rem',
-    sm: '5.16rem',
-    md: '6.192rem',
-    lg: '8.916rem',
-    xl: '12.839rem',
-    xxl: '15.407rem',
+    mobile: {
+      xs: '2.986rem',
+      sm: '3.012rem',
+      md: '3.213rem',
+      lg: '3.658rem',
+      xl: '4.165rem',
+      xxl: '5.06rem',
+    },
+    desktop: {
+      xs: '3.583rem',
+      sm: '5.16rem',
+      md: '6.192rem',
+      lg: '8.916rem',
+      xl: '12.839rem',
+      xxl: '15.407rem',
+    }
   },
   colors: {
     primary: {

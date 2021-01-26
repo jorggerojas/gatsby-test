@@ -6,10 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const StyledPostDescription = styled(Container)`
   position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   margin: 0;
-  width:100%;
+  width: 124%;
   flex-direction: ${({ direction }) => direction || 'row'};
+  @media (max-width: 788px) {
+      width: 100%;
+  }
 `;
 
 export default StyledPostDescription;
