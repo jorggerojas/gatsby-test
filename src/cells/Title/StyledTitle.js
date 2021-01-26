@@ -12,7 +12,7 @@ const StyledTitle = styled.h1`
   letter-spacing: ${({ spacing }) => spacing || '0'}rem;
   line-height: ${({ lineHeight }) => lineHeight || '1.77'}rem;
   color: ${({ color }) => (color ? text[color] : text['dark'])};
-  @media (min-width: 1000px) {
+  @media (min-width: 1440px) {
     h1,
     h2,
     h3,
