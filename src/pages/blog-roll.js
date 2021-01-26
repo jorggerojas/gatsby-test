@@ -1,45 +1,47 @@
 import React from 'react';
 import { BackgroundImage } from '../cells/BackgroundImage';
 import GlobalStyle from '../utils/global';
-import { IntroBlog } from '../organisms/IntroBlog';
-import styled from 'styled-components';
+import { MiniPost } from '../organisms/MiniPost';
+// import styled from 'styled-components';
 
 const data = [
   {
-    text: 'BLOG - 7 MINUTE READ',
-    size: 'sm',
-    style: { marginRight: '7px' },
+    text: 'PODCAST - 7 MINUTE READ',
+    size: 'xxs',
+    padding: { right: 'md' },
+    family: 'DM Sans'
   },
   {
     text: 'SALES AND MARKETING, ENGINEERING',
-    size: 'sm',
-    hide: 'm',
+    size: 'xxs',
     color: 'info',
+    family: 'DM Sans',
+    hide: 'md'
   },
 ];
 
-const MainContent = styled.div`
-  padding-left: 38px;
-  padding-right: 15px;
+// const MainContent = styled.div`
+//   padding-left: 38px;
+//   padding-right: 15px;
 
-  @media (min-width: 576px) {
-    padding-left: 125px;
-    padding-right: 61px;
-  }
-  @media (min-width: 768px) {
-    padding-left: 99px;
-    padding-right: 99px;
-  }
-  @media (min-width: 992px) {
-    padding-left: 33px;
-    padding-right: 31px;
-  }
-  @media (min-width: 1440px) {
-    padding-left: 355px;
-    padding-right: 165px;
-  }
-`;
-const blog =() =>{
+//   @media (min-width: 576px) {
+//     padding-left: 125px;
+//     padding-right: 61px;
+//   }
+//   @media (min-width: 768px) {
+//     padding-left: 99px;
+//     padding-right: 99px;
+//   }
+//   @media (min-width: 992px) {
+//     padding-left: 33px;
+//     padding-right: 31px;
+//   }
+//   @media (min-width: 1440px) {
+//     padding-left: 355px;
+//     padding-right: 165px;
+//   }
+// `;
+const blog = () => {
   return (
     <>
       <GlobalStyle />
@@ -47,8 +49,15 @@ const blog =() =>{
         src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
         alt=""
       />
-
-      <MainContent>
+      <MiniPost src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+        alt="SITES" info={data} />
+      <MiniPost src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+        alt="SITES" info={data} />
+      <MiniPost src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+        alt="SITES" info={data} />
+      <MiniPost src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+        alt="SITES" info={data} />
+      {/* <MainContent>
         <IntroBlog data={data} />
         <IntroBlog data={data} />
         <IntroBlog data={data} />
@@ -67,7 +76,8 @@ const blog =() =>{
         data={data}
         src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
         alt="SITES"
-      />
+      /> */}
+
     </>
   );
 }

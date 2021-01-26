@@ -19,22 +19,23 @@ const TextContent = styled.div`
 const WithImage = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 33px;
   @media (min-width: 992px) {
     flex-direction: row;
   }
 `;
-
 const SideImage = styled.img`
   width: 100%;
-  max-height: 216px;
+  max-height: 25.063rem;
   @media (min-width: 992px) {
     width: 353px;
   }
 `;
-const IntroBLog = ({ data, src = null, alt = '' }) => {
+const IntroBLog = ({ data, src = null, alt = '', type }) => {
   const blogContent = (
-    <StyledIntroBlog size="sm">
+    <StyledIntroBlog size="sm" >
+      {src !== null ? <WithImage>
+        <SideImage src={src} alt={alt} />
+      </WithImage> : null}
       <TextContent>
         <PostDescription
           data={data}
@@ -65,14 +66,6 @@ const IntroBLog = ({ data, src = null, alt = '' }) => {
       </TextContent>
     </StyledIntroBlog>
   );
-  if (src !== null) {
-    return (
-      <WithImage>
-        <SideImage src={src} alt={alt} />
-        {blogContent}
-      </WithImage>
-    );
-  }
 
   return blogContent;
 };

@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import config from './config';
 
-const spacings = config.spacing;
+const {spacing, display} = config;
 const padding = ({
   size = null,
   vertical = null,
@@ -10,42 +10,68 @@ const padding = ({
   right = null,
   bottom = null,
   top = null,
+  dis = false
 }) => {
   let l = '0px';
   let b = '0px';
   let t = '0px';
   let r = '0px';
 
-  if (size !== null && spacings[size]) {
-    l = spacings[size];
-    r = spacings[size];
-    b = spacings[size];
-    t = spacings[size];
+  if(dis){
+    if (size !== null && display[size]) {
+      l = display[size];
+      r = display[size];
+      b = display[size];
+      t = display[size];
+    }
+    if (vertical !== null && display[vertical]) {
+      b = display[vertical];
+      t = display[vertical];
+    }
+    if (horizontal !== null && display[horizontal]) {
+      l = display[horizontal];
+      r = display[horizontal];
+    }
+    if (top !== null && display[top]) {
+      t = display[top];
+    }
+    if (bottom !== null && display[bottom]) {
+      b = display[bottom];
+    }
+    if (left !== null && display[left]) {
+      l = display[left];
+    }
+    if (right !== null && display[right]) {
+      r = display[right];
+    }
+  }else{
+      if (size !== null && spacing[size]) {
+        l = spacing[size];
+        r = spacing[size];
+        b = spacing[size];
+        t = spacing[size];
+      }
+      if (vertical !== null && spacing[vertical]) {
+        b = spacing[vertical];
+        t = spacing[vertical];
+      }
+      if (horizontal !== null && spacing[horizontal]) {
+        l = spacing[horizontal];
+        r = spacing[horizontal];
+      }
+      if (top !== null && spacing[top]) {
+        t = spacing[top];
+      }
+      if (bottom !== null && spacing[bottom]) {
+        b = spacing[bottom];
+      }
+      if (left !== null && spacing[left]) {
+        l = spacing[left];
+      }
+      if (right !== null && spacing[right]) {
+        r = spacing[right];
+      }
   }
-
-  if (vertical !== null && spacings[vertical]) {
-    b = spacings[vertical];
-    t = spacings[vertical];
-  }
-
-  if (horizontal !== null && spacings[horizontal]) {
-    l = spacings[horizontal];
-    r = spacings[horizontal];
-  }
-
-  if (top !== null && spacings[top]) {
-    t = spacings[top];
-  }
-  if (bottom !== null && spacings[bottom]) {
-    b = spacings[bottom];
-  }
-  if (left !== null && spacings[left]) {
-    l = spacings[left];
-  }
-  if (right !== null && spacings[right]) {
-    r = spacings[right];
-  }
-
   return css`
     padding: ${t} ${r} ${b} ${l} !important;
   `;
