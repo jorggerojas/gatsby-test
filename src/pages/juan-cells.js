@@ -1,18 +1,44 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Container } from 'react-bootstrap';
+
 import { Avatar } from '../cells/Avatar';
 import { BackgroundImage } from '../cells/BackgroundImage';
 import { Button } from '../cells/Button';
 import { Paragraph } from '../cells/Paragraph';
 import { Title } from '../cells/Title';
 import config from '../utils/config';
-// import Anchor from '../cells/Anchor';
+import { Anchor } from '../cells/Anchor';
+import { Download } from 'react-ikonate';
 const colors = config.colors;
 const AuthorDesc = styled.div`
   display: flex;
   align-items: center;
 `;
-const Juan = () =>{
+
+// const icon = (
+//   <svg
+//     role="img"
+//     xmlns="http://www.w3.org/2000/svg"
+//     width="24px"
+//     height="24px"
+//     viewBox="0 0 24 24"
+//     aria-labelledby="arrowRightIconTitle"
+//     stroke="#2329D6"
+//     stroke-width="1"
+//     stroke-linecap="square"
+//     stroke-linejoin="miter"
+//     fill="none"
+//     color="#2329D6"
+//   >
+//     {' '}
+//     <title id="arrowRightIconTitle">Arrow Right</title>{' '}
+//     <path d="M15 18l6-6-6-6" /> <path d="M3 12h17" />{' '}
+//     <path stroke-linecap="round" d="M21 12h-1" />{' '}
+//   </svg>
+// );
+
+const Juan = () => {
   return (
     <>
       <BackgroundImage
@@ -56,63 +82,49 @@ const Juan = () =>{
           </div>
         </AuthorDesc>
       </section>
+      <Container>
+        <Anchor label="Next" href="#" icon={<Download />} />
+        <Anchor label="Link" href="#" />
+      </Container>
 
-      <Button colors={colors.primary} label="Small" size="sm" />
+      <Button
+        colors={colors.primary}
+        label="Small"
+        icon={<Download />}
+        size="small"
+      />
+      <Button colors={colors.primary} label="Small" size="small" />
+      <Button colors={colors.primary} icon={<Download />} size="small" />
+
+      <Button
+        colors={colors.primary}
+        label="Medium/normal"
+        icon={<Download />}
+      />
+      <Button colors={colors.primary} icon={<Download />} />
       <Button colors={colors.primary} label="Medium/normal" />
-      <Button colors={colors.primary} label="Large" size="lg" />
+
+      <Button
+        colors={colors.primary}
+        label="Large"
+        icon={<Download />}
+        size="large"
+      />
+      <Button colors={colors.primary} label="Large" size="large" />
+
+      <Button colors={colors.primary} icon={<Download />} size="large" />
+
       <Button
         colors={colors.primary}
         label="Large disabled"
-        size="lg"
+        size="large"
         disabled
       />
-      <br />
-      <Button colors={colors.secondary} label="Small" size="sm" />
-      <Button colors={colors.secondary} label="Medium/normal" />
-      <Button colors={colors.secondary} label="Large" size="lg" />
-      <Button
-        colors={colors.secondary}
-        label="Large disabled"
-        size="lg"
-        disabled
-      />
-      <br />
-      <Button colors={colors.info} label="Small" size="sm" />
-      <Button colors={colors.info} label="Medium/normal" />
-      <Button colors={colors.info} label="Large" size="lg" />
-      <Button colors={colors.info} label="Large disabled" size="lg" disabled />
-      <br />
-      <Button colors={colors.success} label="Small" size="sm" />
-      <Button colors={colors.success} label="Medium/normal" />
-      <Button colors={colors.success} label="Large" size="lg" />
-      <Button
-        colors={colors.success}
-        label="Large disabled"
-        size="lg"
-        disabled
-      />
-      <br />
-      <Button colors={colors.warning} label="Small" size="sm" />
-      <Button colors={colors.warning} label="Medium/normal" />
-      <Button colors={colors.warning} label="Large" size="lg" />
-      <Button
-        colors={colors.warning}
-        label="Large disabled"
-        size="lg"
-        disabled
-      />
-      <br />
-      <Button
-        colors={colors.warning}
-        label="Large disabled"
-        size="lg"
-        block
-        disabled
-      />
-      <Button colors={colors.warning} label="Small" size="sm" block />
+
+      <Button colors={colors.warning} label="Small" size="small" block />
       <Button colors={colors.info} label="Medium/normal" block />
     </>
   );
-}
+};
 
 export default Juan;
