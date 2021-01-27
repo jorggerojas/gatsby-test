@@ -28,7 +28,8 @@
     "react-bootstrap": "^1.4.3",
     "bootstrap": "^4.6.0",
     "react-ikonate": "^2.0.1",
-    "locomotive-scroll": "^4.0.6",
+    "gatsby-plugin-smoothscroll": "^1.2.0",
+    "gatsby-plugin-scroll-reveal": "^0.0.7",
     "react-infinite-scroll-component": "^5.1.0"
   },
   "devDependencies": {
