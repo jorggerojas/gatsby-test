@@ -6,14 +6,16 @@ import config from '../../utils/config';
 const { display } = config;
 
 const StyledMiniPost = styled(Container)`
-    margin: 0;
-    padding: ${display.mobile.sm} 0;
-    @media (min-width: 992px) {
-        padding: ${display.desktop.sm} 0;
-    }
-    @media (min-width: 1440px) {
-        padding: ${display.desktop.sm} 0;
-    }
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: ${display.mobile.sm} 0;
+  @media (min-width: 992px) {
+    padding: ${display.desktop.sm} 0;
+  }
+  @media (min-width: 1440px) {
+    padding: ${display.desktop.sm} 0;
+  }
 `;
 
 export default StyledMiniPost;

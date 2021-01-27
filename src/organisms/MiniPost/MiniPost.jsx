@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import StyledMiniPost from './StyledMiniPost';
 import { Title } from '../../cells/Title';
 import { Paragraph } from '../../cells/Paragraph';
@@ -15,15 +15,42 @@ const SideImage = styled.img`
   width: 100%;
   height: 25.063rem;
   margin: 0;
+  @media (min-width: ${breakpoints.xs}) {
+    ${(p) =>
+      p.type === 'podcast' &&
+      css`
+        max-height: 145px;
+      `}
+    ${(p) =>
+      p.type === 'free-download' &&
+      css`
+        max-height: 330px;
+      `}
+  }
   @media (min-width: ${breakpoints.sm}) {
     width: calc(calc(100% - 25.063rem) + 25.063rem);
+    ${(p) =>
+      p.type === 'podcast' &&
+      css`
+        max-height: 216px;
+      `}
+    ${(p) =>
+      p.type === 'free-download' &&
+      css`
+        max-height: 440px;
+      `}
   }
   @media (min-width: ${breakpoints.md}) {
     width: 100%;
     max-width: ${(p) => (p.type === 'free-download' ? '347px' : '100%')};
+    ${(p) =>
+      p.type === 'podcast' &&
+      css`
+        max-height: 305px;
+      `}
   }
   @media (min-width: ${breakpoints.lg}) {
-    width: ${(p) => (p.type === 'free-download' ? '347px' : '100%')};
+    max-height: 100%;
   }
 `;
 const PostRow = styled(Row)`
@@ -32,12 +59,8 @@ const PostRow = styled(Row)`
   padding-left: 2.375rem;
   padding-right: 0.938rem;
   justify-content: center;
-  @media (min-width: 576px) {
-    padding-left: 7.625rem;
-    padding-right: 3.313rem;
-  }
+
   @media (min-width: ${breakpoints.sm}) {
-    flex-direction: row;
     padding-left: ${display.mobile.sm};
     padding-right: ${display.mobile.sm};
   }
@@ -56,6 +79,7 @@ const PostCol = styled(Col)`
   display: flex;
   align-items: flex-start;
   justify-content: start;
+  max-width: 585px;
   @media (min-width: ${breakpoints.sm}) {
     display: flex;
     align-items: flex-start;
@@ -84,7 +108,7 @@ const MiniPost = ({ type, info, text, src, alt }) => {
         <Col
           css={padding({ vertical: 'sm', horizontal: 0 })}
           style={{
-            maxWidth: type === 'blog' ? '538px' : '100%',
+            maxWidth: type === 'blog' ? '538px' : '585px',
           }}
         >
           <Container fluid>
