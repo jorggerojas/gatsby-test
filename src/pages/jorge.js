@@ -1,11 +1,12 @@
 import React from 'react';
 import { Title } from '../cells/Title';
 import { Paragraph } from '../cells/Paragraph';
+import { InputText, InputMail } from '../cells/Input';
 
-const Jorge =() =>{
+const Jorge = () => {
   return (
     <>
-      <Title>Title</Title>
+      <Title>Headings & colors</Title>
       <div
         style={{
           display: 'flex',
@@ -93,7 +94,32 @@ const Jorge =() =>{
           </Title>
         </div>
       </div>
+      <div style={{
+        margin: '3rem 0',
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        padding: '10px'
+      }}>
+        <Title>Inputs</Title>
+        <Title level="2">Text</Title>
+        <InputText size="sm" background label="sm background" />
+        <InputText size="sm" placeholder="sm disabled" disabled />
+        <InputText size="md" label="md no-background" />
+        <InputText size="lg" background placeholder="lg background no-label" />
+        <InputText size="default" placeholder="default-size (clamp) no-background no-label" />
+        <InputText size="full" background label="full-sized background" />
+      </div>
+      <div style={{
+        margin: '3rem 0',
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column'
+      }}>
+        <Title level="2">Mail</Title>
+        <InputMail />
+      </div>
     </>
   );
 }
- export default Jorge;
+export default Jorge;
