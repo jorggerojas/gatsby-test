@@ -1,7 +1,7 @@
 import React from 'react';
 import { Title } from '../cells/Title';
 import { Paragraph } from '../cells/Paragraph';
-import { InputText, InputMail } from '../cells/Input';
+import { Input } from '../cells/Input';
 
 const Jorge = () => {
   return (
@@ -101,23 +101,15 @@ const Jorge = () => {
         flexDirection: 'column',
         padding: '10px'
       }}>
+
         <Title>Inputs</Title>
-        <Title level="2">Text</Title>
-        <InputText size="sm" background label="sm background" />
-        <InputText size="sm" placeholder="sm disabled" disabled />
-        <InputText size="md" label="md no-background" />
-        <InputText size="lg" background placeholder="lg background no-label" />
-        <InputText size="default" placeholder="default-size (clamp) no-background no-label" />
-        <InputText size="full" background label="full-sized background" />
-      </div>
-      <div style={{
-        margin: '3rem 0',
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column'
-      }}>
-        <Title level="2">Mail</Title>
-        <InputMail />
+        <Title level="4" margin="1vw 0">Text</Title>
+        <Input size="sm" color="info" label="sm no-background info" />
+        <Input size="sm" label="sm disabled" disabled />
+        <Input size="md" color="danger" placeholder="md no-label" />
+        <Input size="lg" color="success" label="lg no-background" />
+        <Input size="default" color="secondary" background placeholder="default (clamp) background no-label" />
+        <Input size="full" background label="full-sized background no-color" />
       </div>
     </>
   );

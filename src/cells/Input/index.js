@@ -1,4 +1,3 @@
-import InputText from './InputText';
-import InputMail from './InputMail';
+import Input from './Input';
 
-export { InputText, InputMail };
+export { Input };
