@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledButton from './StyledButton';
-
+import { SIZE } from './constants';
 const defaultColors = {
   default: '#937B3D',
   hover: '#AD9043',
@@ -9,21 +9,21 @@ const defaultColors = {
 
 const Button = ({
   label,
-  size,
+  size = SIZE.default,
   colors = defaultColors,
   icon = null,
   ...rest
 }) => {
   return (
     <StyledButton
-      size={size || 'md'}
+      size={size}
       colors={colors}
-      isOnlyIcon={!label && icon !== null}
+      isIconOnly={!label && icon !== null}
       hasIcon={icon !== null}
       {...rest}
     >
-      {icon !== null ? <span>{icon}</span> : null}
-      {label}
+      {icon !== null ? <span className="button-icon-span">{icon}</span> : null}
+      <span>{label}</span>
     </StyledButton>
   );
 };
