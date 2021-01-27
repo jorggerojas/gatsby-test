@@ -17,26 +17,26 @@ const SideImage = styled.img`
   margin: 0;
   @media (min-width: ${breakpoints.xs}) {
     ${(p) =>
-      p.type === 'podcast' &&
-      css`
+    p.type === 'podcast' &&
+    css`
         max-height: 145px;
       `}
     ${(p) =>
-      p.type === 'free-download' &&
-      css`
+    p.type === 'free-download' &&
+    css`
         max-height: 330px;
       `}
   }
   @media (min-width: ${breakpoints.sm}) {
     width: calc(calc(100% - 25.063rem) + 25.063rem);
     ${(p) =>
-      p.type === 'podcast' &&
-      css`
+    p.type === 'podcast' &&
+    css`
         max-height: 216px;
       `}
     ${(p) =>
-      p.type === 'free-download' &&
-      css`
+    p.type === 'free-download' &&
+    css`
         max-height: 440px;
       `}
   }
@@ -44,8 +44,8 @@ const SideImage = styled.img`
     width: 100%;
     max-width: ${(p) => (p.type === 'free-download' ? '347px' : '100%')};
     ${(p) =>
-      p.type === 'podcast' &&
-      css`
+    p.type === 'podcast' &&
+    css`
         max-height: 305px;
       `}
   }

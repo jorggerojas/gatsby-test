@@ -63,10 +63,9 @@ const getSpanIconHeight = (size) => {
       break;
     case SIZE.large:
       h = LINE_HEIGHT.large;
-
+      break;
     default:
       h = LINE_HEIGHT.default;
-
       break;
   }
   return css`
