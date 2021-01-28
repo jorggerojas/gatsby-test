@@ -139,7 +139,7 @@ const MiniPost = ({ cover, type, info, title, text, src, alt }) => {
           <Container fluid>
             <Row>
               <Col md={10} css={padding({ size: 0 })}>
-                <PostDescription info={info} align="start" justify="start" />
+                <PostDescription info={info} type={type} align="start" justify="start" />
               </Col>
             </Row>
           </Container>

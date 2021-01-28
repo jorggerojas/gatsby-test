@@ -1,13 +1,27 @@
 import React from 'react';
-import { Radio } from 'react-ikonate';
+import { Notebook, Radio, Download, Play } from 'react-ikonate';
 import { Paragraph } from '../../cells/Paragraph'
 import StyledPostDescription from './StyledPostDescription';
 import padding from '../../utils/padding';
 import { getSize } from '../../cells/Paragraph/StyledParagraph';
 
-const PostDescription = ({ info, ...props }) => (
+const icon = type => {
+    switch (type) {
+        case 'blog':
+        default:
+            return <Notebook fontSize={getSize('lg')} color="#2329D6" css={padding({ right: 'nano' })} />;
+        case 'podcast':
+            return <Radio fontSize={getSize('lg')} color="#2329D6" css={padding({ right: 'nano' })} />;
+        case 'free-download':
+            return <Download fontSize={getSize('lg')} color="#2329D6" css={padding({ right: 'nano' })} />;
+        case 'video':
+            return <Play fontSize={getSize('lg')} color="#2329D6" css={padding({ right: 'nano' })} />;
+    }
+}
+
+const PostDescription = ({ info, type, ...props }) => (
     <StyledPostDescription {...props} css={padding({ bottom: 'md' })}>
-        <Radio fontSize={getSize('lg')} color="#2329D6" css={padding({ right: 'nano' })} />
+        {icon(type)}
         {info ? info.map(p => {
             return (
                 <Paragraph
