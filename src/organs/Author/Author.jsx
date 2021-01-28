@@ -20,7 +20,7 @@ const AuthorNameContainer = styled.div`
 /**
  * Component that renders an atuhor name, job and profile picture
  */
-const AuthorDescription = ({ name, job, src }) => {
+const Author = ({ name, job, src }) => {
   return (
     <StyledAuthor css={padding({ left: 'md' })}>
       <Avatar hide="xs" src={src} alt="avatar" />
@@ -31,4 +31,4 @@ const AuthorDescription = ({ name, job, src }) => {
   );
 };
 
-export default AuthorDescription;
+export default Author;
