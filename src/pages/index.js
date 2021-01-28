@@ -1,23 +1,27 @@
 import React from 'react';
 import Meta from '../organisms/Meta';
-import { Link } from 'gatsby';
-const index = () =>{
+import { Anchor } from '../cells/Anchor';
+import { ArrowRight } from 'react-ikonate';
+const index = () => {
   return (
     <Meta>
       <h1>Hello world!</h1>
       <ul>
         <li>
-          <Link to="/blog-roll">Blog</Link>
+          <Anchor href="/blog-roll" label="Blog" icon={<ArrowRight />} />
         </li>
         <li>
-          <Link to="/juan-cells">Juan</Link>
+          <Anchor href="/author" label="Author page" icon={<ArrowRight />} />
         </li>
         <li>
-          <Link to="jorge">Jorge</Link>
+          <Anchor href="/juan-cells" label="Juan" icon={<ArrowRight />} />
+        </li>
+        <li>
+          <Anchor href="/jorge" label="Jorge" icon={<ArrowRight />} />
         </li>
       </ul>
     </Meta>
   );
-}
+};
 
 export default index;
