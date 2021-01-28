@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { css } from 'styled-components';
 import { BackgroundImage } from '../cells/BackgroundImage';
 import GlobalStyle from '../utils/global';
 import { MiniPost } from '../organisms/MiniPost';
@@ -375,7 +376,7 @@ const Blog = () => {
     }, 400);
   }
   useEffect(() => {
-    setPostData(postData.concat(posts.slice(0, page), <Newsletter key={`n${random}`}/>));
+    setPostData(postData.concat(posts.slice(0, page), <Newsletter key={`n${random}`} />));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -386,6 +387,7 @@ const Blog = () => {
         alt=""
       />
       <InfiniteScroll
+        css={css`overflow: hidden !important;`}
         data-sal="slide-up"
         data-sal-delay="1"
         data-sal-easing="ease"
@@ -399,7 +401,7 @@ const Blog = () => {
           </p>
         }
       >
-        
+
         {postData}
       </InfiniteScroll>
     </>

@@ -33,11 +33,12 @@ export const InputWrapper = styled.div`
 `;
 
 export const Label = styled.label`
-    font-size:${getSize('md')};
+    font-size:${getSize('sm')};
     pointer-events: none;
     position: absolute;
     bottom: 1.1rem;
     left: 0.5rem;
+    color: ${text.mutedGray};
     transition: all 0.2s ease;
 `;
 
