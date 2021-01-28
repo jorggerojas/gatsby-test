@@ -5,9 +5,9 @@ import styled, { css } from 'styled-components';
 import StyledMiniPost from './StyledMiniPost';
 import { Title } from '../../cells/Title';
 import { Paragraph } from '../../cells/Paragraph';
-import { AuthorDescription } from '../../organs/AuthorDescription';
-import { PostDescription } from '../../tissues/PostDescription';
 import { BackgroundImage } from '../../cells/BackgroundImage';
+import { PostDescription } from '../../tissues/PostDescription';
+import Author from '../../organs/Author';
 import padding from '../../utils/padding';
 import config from '../../utils/config';
 
@@ -20,26 +20,26 @@ const SideImage = styled.img`
   transition: max-height 0.25s cubic-bezier(0.12, 0, 0.39, 0);
   @media (min-width: ${breakpoints.xs}) {
     ${(p) =>
-    p.type === 'podcast' &&
-    css`
+      p.type === 'podcast' &&
+      css`
         max-height: 145px;
       `}
     ${(p) =>
-    p.type === 'free-download' &&
-    css`
+      p.type === 'free-download' &&
+      css`
         max-height: 330px;
       `}
   }
   @media (min-width: ${breakpoints.sm}) {
     width: calc(calc(100% - 25.063rem) + 25.063rem);
     ${(p) =>
-    p.type === 'podcast' &&
-    css`
+      p.type === 'podcast' &&
+      css`
         max-height: 216px;
       `}
     ${(p) =>
-    p.type === 'free-download' &&
-    css`
+      p.type === 'free-download' &&
+      css`
         max-height: 440px;
       `}
   }
@@ -47,8 +47,8 @@ const SideImage = styled.img`
     width: 100%;
     max-width: ${(p) => (p.type === 'free-download' ? '347px' : '100%')};
     ${(p) =>
-    p.type === 'podcast' &&
-    css`
+      p.type === 'podcast' &&
+      css`
         max-height: 305px;
       `}
   }
@@ -61,41 +61,48 @@ const PostRow = styled(Row)`
   flex-direction: column;
   padding-left: 2.375rem;
   padding-right: 0.938rem;
-  padding-top: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
-  padding-bottom: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
+  padding-top: ${({ cover }) => (cover === 'true' ? display.mobile.sm : '0')};
+  padding-bottom: ${({ cover }) =>
+    cover === 'true' ? display.mobile.sm : '0'};
   justify-content: center;
   @media (min-width: ${breakpoints.sm}) {
     padding-left: ${display.mobile.sm};
     padding-right: ${display.mobile.sm};
-    padding-top: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
-    padding-bottom: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
+    padding-top: ${({ cover }) => (cover === 'true' ? display.mobile.sm : '0')};
+    padding-bottom: ${({ cover }) =>
+      cover === 'true' ? display.mobile.sm : '0'};
   }
   @media (min-width: ${breakpoints.md}) {
     flex-direction: column;
     align-items: center;
     padding-left: ${display.mobile.sm};
     padding-right: ${display.mobile.sm};
-    padding-top: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
-    padding-bottom: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
+    padding-top: ${({ cover }) => (cover === 'true' ? display.mobile.sm : '0')};
+    padding-bottom: ${({ cover }) =>
+      cover === 'true' ? display.mobile.sm : '0'};
   }
   @media (min-width: ${breakpoints.lg}) {
     flex-direction: row;
     padding-left: 2.063rem;
     padding-right: 6.951rem;
-    padding-top: ${({ cover }) => cover === 'true' ? display.desktop.sm : '0'};
-    padding-bottom: ${({ cover }) => cover === 'true' ? display.desktop.sm : '0'};
+    padding-top: ${({ cover }) =>
+      cover === 'true' ? display.desktop.sm : '0'};
+    padding-bottom: ${({ cover }) =>
+      cover === 'true' ? display.desktop.sm : '0'};
   }
   @media (min-width: ${breakpoints.xl}) {
     flex-direction: row;
     padding-left: 10.313rem;
     padding-right: 10.389rem;
-    padding-top: ${({ cover }) => cover === 'true' ? display.desktop.sm : '0'};
-    padding-bottom: ${({ cover }) => cover === 'true' ? display.desktop.sm : '0'};
+    padding-top: ${({ cover }) =>
+      cover === 'true' ? display.desktop.sm : '0'};
+    padding-bottom: ${({ cover }) =>
+      cover === 'true' ? display.desktop.sm : '0'};
   }
 `;
 const PostCol = styled(Col)`
   display: flex;
-  width:100%;
+  width: 100%;
   align-items: flex-start;
   justify-content: start;
   max-width: 585px;
@@ -117,12 +124,7 @@ const PostCol = styled(Col)`
 const MiniPost = ({ cover, type, info, title, text, src, alt }) => {
   return (
     <StyledMiniPost fluid cover={cover.toString()}>
-      { cover ?
-        <BackgroundImage
-          src={src}
-          alt={alt}
-        /> : null
-      }
+      {cover ? <BackgroundImage src={src} alt={alt} /> : null}
       <PostRow cover={cover.toString()}>
         {type !== 'blog' && !cover ? (
           <PostCol css={padding({ right: 'xl', bottom: 'xl' })} xs>
@@ -139,7 +141,12 @@ const MiniPost = ({ cover, type, info, title, text, src, alt }) => {
           <Container fluid>
             <Row>
               <Col md={10} css={padding({ size: 0 })}>
-                <PostDescription info={info} type={type} align="start" justify="start" />
+                <PostDescription
+                  info={info}
+                  type={type}
+                  align="start"
+                  justify="start"
+                />
               </Col>
             </Row>
           </Container>
@@ -158,10 +165,13 @@ const MiniPost = ({ cover, type, info, title, text, src, alt }) => {
           >
             {text}
           </Paragraph>
-          {
-            type === 'free-download' ? null :
-              <AuthorDescription />
-          }
+          {type === 'free-download' ? null : (
+            <Author
+              name="Clara González"
+              job="CEO at Viaducto Company"
+              src="https://i.pinimg.com/originals/64/3e/fe/643efe51394d635cbf544a25088ee269.png"
+            />
+          )}
         </Col>
       </PostRow>
     </StyledMiniPost>
