@@ -13,7 +13,7 @@ const StyledParagraph = styled.p`
   letter-spacing: ${({ spacing }) => spacing || '0'}rem;
   font-size: ${({ size }) => getSize(size)};
   text-align: ${({ align }) => align || 'left'};
-  line-height: ${({ lineHeight }) => `${lineHeight}` || '1.77rem'};
+  line-height: ${({ lineHeight }) => lineHeight ? `${lineHeight}rem` : '1.77rem'};
   color: ${({ color }) => (color ? text[color] : text['dark'])};
   @media (min-width: 1440px) {
     p {

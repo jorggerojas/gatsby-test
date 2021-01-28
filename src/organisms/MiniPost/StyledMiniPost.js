@@ -9,6 +9,7 @@ const StyledMiniPost = styled(Container)`
   display: flex;
   justify-content: center;
   margin: 0;
+  width: 100%;
   padding: ${display.mobile.sm} 0;
   @media (min-width: 992px) {
     padding: ${display.desktop.sm} 0;

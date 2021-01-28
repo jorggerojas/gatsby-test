@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { BackgroundImage } from '../cells/BackgroundImage';
 import GlobalStyle from '../utils/global';
 import { MiniPost } from '../organisms/MiniPost';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import Newsletter from '../organisms/Newsletter';
+const random = Math.floor((Math.random() * (37)) + 1);
+
 
 const data = [
   {
@@ -21,7 +24,7 @@ const data = [
 ];
 
 const posts = [
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -30,7 +33,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -39,7 +42,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -48,7 +51,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -57,7 +60,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -66,7 +69,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -75,7 +78,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -84,7 +87,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -93,7 +96,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -102,7 +105,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -111,7 +114,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -120,7 +123,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -129,7 +132,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -138,7 +141,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -147,7 +150,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -156,7 +159,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -165,7 +168,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -174,7 +177,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -183,7 +186,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -192,7 +195,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -201,7 +204,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -210,7 +213,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -219,7 +222,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -228,7 +231,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -237,7 +240,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -246,7 +249,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -255,7 +258,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -264,7 +267,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -273,7 +276,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -282,7 +285,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -291,7 +294,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -300,7 +303,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -309,7 +312,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -318,7 +321,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -327,7 +330,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -336,7 +339,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -345,7 +348,7 @@ const posts = [
     alt="SITES"
     info={data}
   />,
-  <MiniPost key=""
+  <MiniPost key={`p${random}`}
     data-sal="slide-up"
     data-sal-delay="1"
     data-sal-easing="ease"
@@ -355,6 +358,7 @@ const posts = [
     info={data}
   />
 ];
+
 
 const Blog = () => {
   const [page, setPage] = useState(10);
@@ -366,12 +370,12 @@ const Blog = () => {
       return;
     }
     setTimeout(() => {
-      setPostData(postData.concat(posts.slice(page, (page + 10))));
+      setPostData(postData.concat(posts.slice(page, (page + 10)), <Newsletter />));
       setPage((page + 10));
     }, 400);
   }
   useEffect(() => {
-    setPostData(postData.concat(posts.slice(0, page)));
+    setPostData(postData.concat(posts.slice(0, page), <Newsletter key={`n${random}`}/>));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -395,6 +399,7 @@ const Blog = () => {
           </p>
         }
       >
+        
         {postData}
       </InfiniteScroll>
     </>

@@ -4,23 +4,31 @@ const StyledAvatar = styled.img`
   display: inline-block;
   height: 50px;
   width: 50px;
+  transition: transform 0.25s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: width 0.25s cubic-bezier(0.12, 0, 0.39, 0);
   @media screen and (max-width: 320px) {
-    display: ${({ hide }) => (hide === 'xsm' ? 'none' : '')};
+    transform: ${({ hide }) => (hide === 'xs' ? 'scale(0)' : '')};
+    width: ${({ hide }) => (hide === 'xs' ? '0' : '')};
   }
   @media screen and (max-width: 576px) {
-    display: ${({ hide }) => (hide === 'sm' ? 'none' : '')};
+    transform: ${({ hide }) => (hide === 'sm' ? 'scale(0)' : '')};
+    width: ${({ hide }) => (hide === 'sm' ? '0' : '')};
   }
   @media screen and (max-width: 768px) {
-    display: ${({ hide }) => (hide === 'm' ? 'none' : '')};
+    transform: ${({ hide }) => (hide === 'md' ? 'scale(0)' : '')};
+    width: ${({ hide }) => (hide === 'md' ? '0' : '')};
   }
   @media screen and (max-width: 992px) {
-    display: ${({ hide }) => (hide === 'l' ? 'none' : '')};
+    transform: ${({ hide }) => (hide === 'lg' ? 'scale(0)' : '')};
+    width: ${({ hide }) => (hide === 'lg' ? '0' : '')};
   }
   @media screen and (max-width: 1200px) {
-    display: ${({ hide }) => (hide === 'xl' ? 'none' : '')};
+    transform: ${({ hide }) => (hide === 'xl' ? 'scale(0)' : '')};
+    width: ${({ hide }) => (hide === 'xl' ? '0' : '')};
   }
   @media screen and (max-width: 1444px) {
-    display: ${({ hide }) => (hide === 'xxl' ? 'none' : '')};
+    transform: ${({ hide }) => (hide === 'xxl' ? 'scale(0)' : '')};
+    width: ${({ hide }) => (hide === 'xxl' ? '0' : '')};
   }
 `;
 

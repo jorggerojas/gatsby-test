@@ -15,6 +15,8 @@ const SideImage = styled.img`
   width: 100%;
   height: 25.063rem;
   margin: 0;
+  transition: max-width 0.25s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: max-height 0.25s cubic-bezier(0.12, 0, 0.39, 0);
   @media (min-width: ${breakpoints.xs}) {
     ${(p) =>
     p.type === 'podcast' &&
@@ -59,7 +61,6 @@ const PostRow = styled(Row)`
   padding-left: 2.375rem;
   padding-right: 0.938rem;
   justify-content: center;
-
   @media (min-width: ${breakpoints.sm}) {
     padding-left: ${display.mobile.sm};
     padding-right: ${display.mobile.sm};
@@ -77,6 +78,7 @@ const PostRow = styled(Row)`
 `;
 const PostCol = styled(Col)`
   display: flex;
+  width:100%;
   align-items: flex-start;
   justify-content: start;
   max-width: 585px;
@@ -121,7 +123,7 @@ const MiniPost = ({ type, info, text, src, alt }) => {
           <Title
             level="4"
             weight="400"
-            lineHeight="2.243"
+            lineHeight="2.243rem"
             css={padding({ bottom: 'md' })}
           >
             ¿Qué pasó con estos grandes futbolistas de la selección Sub-17
@@ -138,7 +140,10 @@ const MiniPost = ({ type, info, text, src, alt }) => {
             set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd
             jsdjjjjjj
           </Paragraph>
-          <AuthorDescription />
+          {
+            type === 'free-download' ? null :
+              <AuthorDescription />
+          }
         </Col>
       </PostRow>
     </StyledMiniPost>

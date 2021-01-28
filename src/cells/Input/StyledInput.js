@@ -8,6 +8,7 @@ export const InputWrapper = styled.div`
     position: relative;
     margin: 0;
     padding: 0;
+    width: ${({ size }) => getInputSize(size || 'default')};
     & div:before{
         position: absolute;
         content:"";
@@ -22,6 +23,12 @@ export const InputWrapper = styled.div`
         @media screen and (min-width: 1440px) {
             width: ${({ size }) => getInputSize(size || 'default', true)};
         }
+    }
+    @media screen and (max-width: 576px) {
+            width: ${() => getInputSize('full')};
+    }
+    @media screen and (min-width: 1440px) {
+        width: ${({ size }) => getInputSize(size || 'default', true)};
     }
 `;
 
@@ -66,7 +73,7 @@ export const StyledInput = styled.input`
         (props.color ? colors[props.color]['default'] :
             text.darkGray)};
     @media screen and (max-width: 576px) {
-        width: ${({ size }) => getInputSize(size || 'default')};
+        width: ${({ size }) => getInputSize('full')};
     }
     @media screen and (min-width: 1440px) {
         width: ${({ size }) => getInputSize(size || 'default', true)};
