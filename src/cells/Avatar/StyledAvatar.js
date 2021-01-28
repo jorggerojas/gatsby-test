@@ -1,9 +1,22 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { SIZE } from './constants';
+
 const StyledAvatar = styled.img`
   border-radius: 100%;
   display: inline-block;
-  height: 50px;
-  width: 50px;
+  ${(props) =>
+    props.size === SIZE.default &&
+    css`
+      height: 50px;
+      width: 50px;
+    `}
+  ${(props) =>
+    props.size === SIZE.large &&
+    css`
+      height: 142px;
+      width: 142px;
+    `}
+
   transition: transform 0.25s cubic-bezier(0.12, 0, 0.39, 0);
   transition: width 0.25s cubic-bezier(0.12, 0, 0.39, 0);
   @media screen and (max-width: 320px) {
