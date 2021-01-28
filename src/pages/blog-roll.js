@@ -22,222 +22,333 @@ const data = [
 
 const posts = [
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="blog"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="free-download"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="podcast"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
     info={data}
   />,
   <MiniPost key=""
+    data-sal="slide-up"
+    data-sal-delay="1"
+    data-sal-easing="ease"
     type="free-download"
     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
     alt="SITES"
@@ -271,6 +382,9 @@ const Blog = () => {
         alt=""
       />
       <InfiniteScroll
+        data-sal="slide-up"
+        data-sal-delay="1"
+        data-sal-easing="ease"
         dataLength={postData.length}
         next={loadData}
         loader={<h4>Loading...</h4>}
