@@ -3,19 +3,22 @@ import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import config from '../../utils/config';
 
-const { display } = config;
-
-const StyledMiniPost = styled(Container)`
-  display: flex;
+const { display, breakpoints } = config;
+const ContainerMiniPost = styled(Container)`
+  padding: 0 !important;
+`;
+const StyledMiniPost = styled(ContainerMiniPost)`
+  display: ${({ cover }) => cover === 'true' ? '' : 'flex'};
   justify-content: center;
   margin: 0;
   width: 100%;
-  padding: ${display.mobile.sm} 0;
-  @media (min-width: 992px) {
-    padding: ${display.desktop.sm} 0;
+  padding: ${({ cover }) => cover === 'true' ? '0' : `${display.mobile.sm} 0 !important`};
+  transition: padding 0.25s cubic-bezier(0.12, 0, 0.39, 0);
+  @media (min-width: ${breakpoints.lg}) {
+    padding: ${({ cover }) => cover === 'true' ? '0' : `${display.desktop.sm} 0 !important`};
   }
-  @media (min-width: 1440px) {
-    padding: ${display.desktop.sm} 0;
+  @media (min-width: ${breakpoints.xl}) {
+    padding: ${({ cover }) => cover === 'true' ? '0' : `${display.desktop.sm} 0 !important`};
   }
 `;
 

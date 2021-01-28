@@ -7,6 +7,7 @@ import { Title } from '../../cells/Title';
 import { Paragraph } from '../../cells/Paragraph';
 import { AuthorDescription } from '../../organs/AuthorDescription';
 import { PostDescription } from '../../tissues/PostDescription';
+import { BackgroundImage } from '../../cells/BackgroundImage';
 import padding from '../../utils/padding';
 import config from '../../utils/config';
 
@@ -60,20 +61,36 @@ const PostRow = styled(Row)`
   flex-direction: column;
   padding-left: 2.375rem;
   padding-right: 0.938rem;
+  padding-top: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
+  padding-bottom: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
   justify-content: center;
   @media (min-width: ${breakpoints.sm}) {
     padding-left: ${display.mobile.sm};
     padding-right: ${display.mobile.sm};
+    padding-top: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
+    padding-bottom: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
+  }
+  @media (min-width: ${breakpoints.md}) {
+    flex-direction: column;
+    align-items: center;
+    padding-left: ${display.mobile.sm};
+    padding-right: ${display.mobile.sm};
+    padding-top: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
+    padding-bottom: ${({ cover }) => cover === 'true' ? display.mobile.sm : '0'};
   }
   @media (min-width: ${breakpoints.lg}) {
     flex-direction: row;
     padding-left: 2.063rem;
     padding-right: 6.951rem;
+    padding-top: ${({ cover }) => cover === 'true' ? display.desktop.sm : '0'};
+    padding-bottom: ${({ cover }) => cover === 'true' ? display.desktop.sm : '0'};
   }
   @media (min-width: ${breakpoints.xl}) {
     flex-direction: row;
     padding-left: 10.313rem;
     padding-right: 10.389rem;
+    padding-top: ${({ cover }) => cover === 'true' ? display.desktop.sm : '0'};
+    padding-bottom: ${({ cover }) => cover === 'true' ? display.desktop.sm : '0'};
   }
 `;
 const PostCol = styled(Col)`
@@ -97,11 +114,17 @@ const PostCol = styled(Col)`
     justify-content: flex-end;
   }
 `;
-const MiniPost = ({ type, info, text, src, alt }) => {
+const MiniPost = ({ cover, type, info, title, text, src, alt }) => {
   return (
-    <StyledMiniPost fluid>
-      <PostRow>
-        {type !== 'blog' ? (
+    <StyledMiniPost fluid cover={cover.toString()}>
+      { cover ?
+        <BackgroundImage
+          src={src}
+          alt={alt}
+        /> : null
+      }
+      <PostRow cover={cover.toString()}>
+        {type !== 'blog' && !cover ? (
           <PostCol css={padding({ right: 'xl', bottom: 'xl' })} xs>
             <SideImage src={src} alt={alt} type={type} />
           </PostCol>
@@ -126,19 +149,14 @@ const MiniPost = ({ type, info, text, src, alt }) => {
             lineHeight="2.243rem"
             css={padding({ bottom: 'md' })}
           >
-            ¿Qué pasó con estos grandes futbolistas de la selección Sub-17
-            México? La 18 te sorprenderá
+            {title}
           </Title>
           <Paragraph
             lineHeight="1.5"
             weight="300"
             css={padding({ bottom: 'xl' })}
           >
-            This chapter will be about getting started with Git. We will begin
-            by explaining some background on version control tools, then move on
-            to how to get Git running on your system and finally how to get it
-            set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd
-            jsdjjjjjj
+            {text}
           </Paragraph>
           {
             type === 'free-download' ? null :

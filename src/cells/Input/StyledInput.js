@@ -33,6 +33,8 @@ export const InputWrapper = styled.div`
 `;
 
 export const Label = styled.label`
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+    font-family: 'DM Sans', sans-serif;
     font-size:${getSize('sm')};
     pointer-events: none;
     position: absolute;

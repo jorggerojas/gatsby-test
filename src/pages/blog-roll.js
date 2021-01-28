@@ -1,391 +1,1043 @@
 import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { css } from 'styled-components';
-import { BackgroundImage } from '../cells/BackgroundImage';
 import GlobalStyle from '../utils/global';
 import { MiniPost } from '../organisms/MiniPost';
 import Newsletter from '../organisms/Newsletter';
-const random = Math.floor((Math.random() * (37)) + 1);
 
 
 const data = [
   {
-    text: 'PODCAST - 7 MINUTE READ',
-    size: 'xxs',
-    padding: { right: 'md' },
-    family: 'DM Sans',
+    type: 'blog',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'BLOG - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
   },
   {
-    text: 'SALES AND MARKETING, ENGINEERING',
-    size: 'xxs',
-    color: 'info',
-    family: 'DM Sans',
-    hide: 'sm',
+    type: 'podcast',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'PODCAST - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'free-download',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'FREE DOWNLOAD - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'video',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'VIDEO - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'blog',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'BLOG - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'podcast',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'PODCAST - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'free-download',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'FREE DOWNLOAD - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'video',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'VIDEO - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'blog',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'BLOG - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'podcast',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'PODCAST - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'free-download',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'FREE DOWNLOAD - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'video',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'VIDEO - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'blog',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'BLOG - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'podcast',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'PODCAST - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'free-download',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'FREE DOWNLOAD - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'video',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'VIDEO - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'blog',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'BLOG - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'podcast',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'PODCAST - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'free-download',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'FREE DOWNLOAD - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'video',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'VIDEO - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'blog',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'BLOG - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'podcast',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'PODCAST - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'free-download',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'FREE DOWNLOAD - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'video',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'VIDEO - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'blog',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'BLOG - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'podcast',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'PODCAST - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'free-download',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'FREE DOWNLOAD - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'video',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'VIDEO - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'blog',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'BLOG - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'podcast',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'PODCAST - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'free-download',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'FREE DOWNLOAD - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'video',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'VIDEO - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'blog',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'BLOG - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'podcast',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'PODCAST - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'free-download',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'FREE DOWNLOAD - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
+  },
+  {
+    type: 'video',
+    img: {
+      src: 'https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg',
+      alt: 'SITES',
+    },
+    summary: "This chapter will be about getting started with Git. We will begin by explaining some background on version control tools, then move on to how to get Git running on your system and finally how to get it set up to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj",
+    description: [
+      {
+        text: 'VIDEO - 7 MINUTE READ',
+        size: 'xxs',
+        padding: { right: 'md' },
+        family: 'DM Sans',
+      },
+      {
+        text: 'SALES AND MARKETING, ENGINEERING',
+        size: 'xxs',
+        color: 'info',
+        family: 'DM Sans',
+        hide: 'sm',
+      },
+    ],
+    title: '¿Qué pasó con estos grandes futbolistas de la selección Sub-17 México? La 18 te sorprenderá',
+    author: {
+      name: 'Clara González',
+      description: 'CEO at Company Name'
+    }
   },
 ];
-
-const posts = [
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="blog"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="free-download"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="podcast"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />,
-  <MiniPost key={`p${random}`}
-    data-sal="slide-up"
-    data-sal-delay="1"
-    data-sal-easing="ease"
-    type="free-download"
-    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-    alt="SITES"
-    info={data}
-  />
-];
-
 
 const Blog = () => {
   const [page, setPage] = useState(10);
   const [postData, setPostData] = useState([]);
   const [hasMoreContent, setHasMoreContent] = useState(true);
   const loadData = () => {
-    if ((postData.length >= posts.length)) {
+    if ((postData.length >= data.length)) {
       setHasMoreContent(false);
       return;
     }
     setTimeout(() => {
-      setPostData(postData.concat(posts.slice(page, (page + 10)), <Newsletter />));
+      setPostData(postData.concat(data.slice(page, (page + 10))));
       setPage((page + 10));
     }, 400);
   }
   useEffect(() => {
-    setPostData(postData.concat(posts.slice(0, page), <Newsletter key={`n${random}`} />));
+    setPostData(postData.concat(data.slice(0, page)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
       <GlobalStyle />
-      <BackgroundImage
-        src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-        alt=""
-      />
       <InfiniteScroll
         css={css`overflow: hidden !important;`}
         data-sal="slide-up"
@@ -401,8 +1053,26 @@ const Blog = () => {
           </p>
         }
       >
-
-        {postData}
+        {postData.map((post, index) => {
+          return (
+            <div key={`n${index}`}>
+              {index % 10 === 0 && index !== 0 ? <Newsletter /> : null}
+              <MiniPost
+                cover={index.toString().charAt(index.toString().length - 1) === "0"}
+                key={index}
+                data-sal="fade"
+                data-sal-delay="100"
+                data-sal-easing="easeIn"
+                type={post.type}
+                info={post.description}
+                title={post.title}
+                text={post.summary}
+                src={post.img.src}
+                alt={post.img.alt}
+              />
+            </div >
+          )
+        })}
       </InfiniteScroll>
     </>
   );
