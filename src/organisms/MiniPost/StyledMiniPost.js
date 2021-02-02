@@ -12,7 +12,6 @@ const StyledMiniPost = styled(ContainerMiniPost)`
   margin: 0;
   width: 100%;
   transition: padding 0.25s cubic-bezier(0.12, 0, 0.39, 0);
-  ${padding({ top: 'sm' })};
 `;
 
 export default StyledMiniPost;

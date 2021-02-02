@@ -11,6 +11,7 @@ import Author from '../../organs/Author';
 import config from '../../utils/config';
 import Spacer from '../../cells/Spacer';
 import Hideable from '../../cells/Hideable';
+import padding from '../../utils/padding';
 
 const { display, breakpoints } = config;
 const SideImage = styled.img`
@@ -60,42 +61,25 @@ const SideImage = styled.img`
 const PostRow = styled(Row)`
   margin: 0;
   flex-direction: column;
-  padding-left: 2.375rem;
-  padding-right: 0.938rem;
-  padding-top: ${({ cover }) => (cover === true ? display.mobile.sm : '0')};
-  padding-bottom: ${({ cover }) => (cover === true ? display.mobile.sm : '0')};
   justify-content: center;
-  @media (min-width: ${breakpoints.sm}) {
-    padding-left: ${display.mobile.sm};
-    padding-right: ${display.mobile.sm};
-    padding-top: ${({ cover }) => (cover === true ? display.mobile.sm : '0')};
-    padding-bottom: ${({ cover }) =>
-      cover === true ? display.mobile.sm : '0'};
-  }
+
+  ${padding({ horizontal: 'sm' })}
+  ${(p) =>
+    p.type === 'blog' ? padding({ bottom: 'sm' }) : padding({ vertical: 'sm' })}
+
   @media (min-width: ${breakpoints.md}) {
     flex-direction: column;
     align-items: center;
-    padding-left: ${display.mobile.sm};
-    padding-right: ${display.mobile.sm};
-    padding-top: ${({ cover }) => (cover === true ? display.mobile.sm : '0')};
-    padding-bottom: ${({ cover }) =>
-      cover === true ? display.mobile.sm : '0'};
   }
   @media (min-width: ${breakpoints.lg}) {
     flex-direction: row;
     padding-left: 2.063rem;
     padding-right: 6.951rem;
-    padding-top: ${({ cover }) => (cover === true ? display.desktop.sm : '0')};
-    padding-bottom: ${({ cover }) =>
-      cover === true ? display.desktop.sm : '0'};
   }
   @media (min-width: ${breakpoints.xl}) {
     flex-direction: row;
     padding-left: 10.313rem;
     padding-right: 10.389rem;
-    padding-top: ${({ cover }) => (cover === true ? display.desktop.sm : '0')};
-    padding-bottom: ${({ cover }) =>
-      cover === true ? display.desktop.sm : '0'};
   }
 `;
 const PostCol = styled(Col)`
@@ -140,7 +124,7 @@ const MiniPost = ({ cover, type, info, title, text, src, alt }) => {
           }}
         >
           <Row>
-            <Col md={10} style={{ padding: 0 }}>
+            <Col style={{ padding: 0 }}>
               <PostLabels
                 reading_time={7}
                 type={type}
