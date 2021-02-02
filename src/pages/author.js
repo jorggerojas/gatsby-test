@@ -1,12 +1,12 @@
 import React from 'react';
-import { Avatar } from '../cells/Avatar';
-import GlobalStyle from '../utils/global';
-import { MiniPost } from '../organisms/MiniPost';
-import { Title } from '../cells/Title';
-import { Paragraph } from '../cells/Paragraph';
 import styled from 'styled-components';
-import padding from '../utils/padding';
+import { MiniPost } from '../organisms/MiniPost';
 import Spacer from '../cells/Spacer';
+import { Title } from '../cells/Title';
+import { Avatar } from '../cells/Avatar';
+import { Paragraph } from '../cells/Paragraph';
+import GlobalStyle from '../utils/global';
+import padding from '../utils/padding';
 
 const postData = [
   {
@@ -1091,29 +1091,35 @@ const postData = [
   },
 ];
 const TopPage = styled.div`
-  ${padding({ vertical: 'sm', dis: true })}
+  ${padding({ top: 'sm' })}
+  max-width: 585px;
 `;
 const AuthorPage = () => {
   return (
     <>
       <GlobalStyle />
-      <TopPage>
-        <Avatar
-          src="https://i.pinimg.com/originals/64/3e/fe/643efe51394d635cbf544a25088ee269.png"
-          alt="Carla Gonzalez foto"
-          size="large"
-        />
-        <Spacer size="lg" />
-        <Title level="D3">Clara González</Title>
-        <Spacer size="micro" />
-        <Paragraph size="sm" color="mutedGray">
-          CEO at Company name
-        </Paragraph>
-      </TopPage>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <TopPage>
+          <Avatar
+            src="https://i.pinimg.com/originals/64/3e/fe/643efe51394d635cbf544a25088ee269.png"
+            alt="Carla Gonzalez foto"
+            size="large"
+          />
+          <Spacer size="lg" />
+          <Title level="D3">Clara González</Title>
+          <Spacer size="micro" />
+          <Paragraph size="sm" color="mutedGray">
+            CEO at Company name
+          </Paragraph>
+        </TopPage>
+      </div>
       {postData.map((post, index) => {
         return (
           <MiniPost
-            cover={index.toString().charAt(index.toString().length - 1) === '0'}
+            cover={
+              index.toString().charAt(index.toString().length - 1) === '0' &&
+              index > 0
+            }
             key={``}
             data-sal="fade"
             data-sal-delay="100"

@@ -8,7 +8,13 @@ const Box = styled.div`
   height: ${(p) => (p.direction === 'vertical' ? spacing[p.size] : '100%')};
   display: ${(p) => (p.direction === 'vertical' ? 'block' : 'inline-block')};
 `;
-const Spacer = ({ size, direction = 'vertical' }) => {
+
+/**
+ * A component that renders a spacer element
+ * @param {string} size size of the spacing
+ * @param {string} direction direction of the spacing
+ */
+const Spacer = ({ size = 'none', direction = 'vertical' }) => {
   return <Box size={size} direction={direction}></Box>;
 };
 

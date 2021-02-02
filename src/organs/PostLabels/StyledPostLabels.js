@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-const StyledPostDescription = styled(Container)`
+const StyledPostLabels = styled(Container)`
   position: relative;
   display: flex;
   align-items: center;
@@ -11,8 +10,8 @@ const StyledPostDescription = styled(Container)`
   width: 124%;
   flex-direction: ${({ direction }) => direction || 'row'};
   @media (max-width: 788px) {
-      width: 100%;
+    width: 100%;
   }
 `;
 
-export default StyledPostDescription;
+export default StyledPostLabels;
