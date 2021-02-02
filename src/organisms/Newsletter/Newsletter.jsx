@@ -24,7 +24,7 @@ const Newsletter = () => {
             <StyledNewsletterInputButtonContainer>
                 <StyledNewsletterInputContainer>
                     <Input label="Your email" type="mail" />
-                    <Paragraph size="sm" lineHeight="1.25" color="mutedGray" css={padding({ bottom: 'xl' })}>
+                    <Paragraph size="sm" lineHeight="1.25" color="mutedGray">
                         By signing up, you accept the terms of Muir Privacy Policy
                     </Paragraph>
                 </StyledNewsletterInputContainer>
