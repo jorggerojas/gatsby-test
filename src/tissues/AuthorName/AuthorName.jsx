@@ -1,6 +1,7 @@
 import React from 'react';
 import padding from '../../utils/padding';
 import { Paragraph } from '../../cells/Paragraph';
+import Spacer from '../../cells/Spacer';
 /**
  * Component that renders an author name with its job/position
  */
@@ -16,6 +17,8 @@ const AuthorName = ({ name, job }) => {
       >
         {name}
       </Paragraph>
+      <Spacer size="micro" />
+
       <Paragraph lineHeight="0.694" family="DM Sans" size="xs" color="darkGray">
         {job}
       </Paragraph>
