@@ -25,7 +25,7 @@ export const StyledNewsletterInputButtonContainer = styled.div`
 `;
 export const StyledNewsletterInputContainer = styled.div`
     margin-right: 2rem;
-    padding-bottom: 3.75rem;
+    padding-bottom: 2.5rem;
     transition: padding 0.25s cubic-bezier(0.12, 0, 0.39, 0);
     transition: margin 0.25s cubic-bezier(0.12, 0, 0.39, 0);
 `;
@@ -40,5 +40,12 @@ export const StyledNewsletter = styled.div`
   }
   @media (min-width: ${breakpoints.xl}) {
    padding: 9.357rem 13.438rem 7rem 45.938rem;
+  }
+`;
+
+export const StyledNewsletterButtonDiv = styled.div`
+  padding-top: 0;
+  @media (min-width: ${breakpoints.xl}) {
+   padding-top: 0.9rem;
   }
 `;

@@ -3,7 +3,8 @@ import {
     StyledNewsletter,
     StyledNewsletterTitleContainer,
     StyledNewsletterInputButtonContainer,
-    StyledNewsletterInputContainer
+    StyledNewsletterInputContainer,
+    StyledNewsletterButtonDiv
 }
     from './StyledNewsletter';
 import { Title } from '../../cells/Title';
@@ -16,7 +17,7 @@ const Newsletter = () => {
     return (
         <StyledNewsletter>
             <StyledNewsletterTitleContainer>
-                <Title level="D3" lineHeight="4.3rem" css={padding({ bottom: 'md' })}>Get our Insights.</Title>
+                <Title level="D3" lineHeight="4.3rem" css={padding({ bottom: 'sm' })}>Get our Insights.</Title>
                 <Paragraph hide="md" size="lg">
                     Subscribe to our biweekly newsletter with the best in product management, startups and digital transformation
                 </Paragraph>
@@ -28,9 +29,9 @@ const Newsletter = () => {
                         By signing up, you accept the terms of Muir Privacy Policy
                     </Paragraph>
                 </StyledNewsletterInputContainer>
-                <div>
+                <StyledNewsletterButtonDiv>
                     <Button colors={"primary"} label="Subscribe" size="large" />
-                </div>
+                </StyledNewsletterButtonDiv>
             </StyledNewsletterInputButtonContainer>
         </StyledNewsletter>
     );
