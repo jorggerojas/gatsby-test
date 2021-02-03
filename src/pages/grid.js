@@ -1,23 +1,23 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Title } from '../cells/Title';
 import Spacer from '../cells/Spacer';
 import Image from '../cells/Image';
 import config from '../utils/config';
 import padding from '../utils/padding';
+import { Paragraph } from '../cells/Paragraph';
 
 const { display, breakpoints } = config;
 
 const Main = styled.div`
     transition: all .2s ease;
     width: 100%;
-    height: clamp(22.313rem, calc(22.313rem + ((1vw - 0.2rem) * 14.4643)), 32.438rem);
+    height: ${({ fit }) => fit ===
+        "true" ? "fit-content" :
+        "clamp(22.313rem, calc(22.313rem + ((1vw - 0.2rem) * 14.4643)), 32.438rem);"};
     margin: ${display.mobile.xxl} 0;
     padding: 0;
-    @media screen and (min-width: ${breakpoints.xs}){
-        margin: ${display.mobile.xxl} 0;
-    }
     @media screen and (min-width: ${breakpoints.md}){
         margin: ${display.desktop.xl} 0;
     }
@@ -36,10 +36,21 @@ const Column = styled(Col)`
     ${({ remove }) => remove ? 'padding: 0;' : null};
     & > div {
         width: 100%;
+        height:100%;
         background-color: ${({ color }) => color || 'transparent'};
-        height: 100%;
     }
 `;
+const verticalAlign = align => {
+    switch (align) {
+        case 'top':
+            return css`align-items: flex-start;`;
+        case 'bottom':
+            return css`align-items: flex-end;`;
+        case 'center':
+        default:
+            return css`align-items: center;`;
+    }
+}
 const StyledRow = styled(Row)`
     width: 100%;
     height: 100%;
@@ -55,6 +66,9 @@ const StyledRow = styled(Row)`
         ${({ flex }) => flex === "true" ? 'height: -webkit-fill-available;' : null};
         ${({ nested }) => nested === "true" ? 'flex-flow: row;' : null};
         ${({ nested }) => nested === "true" ? 'max-width: 100%' : null};
+    }
+    @media screen and (max-width: ${({ noflex }) => breakpoints[noflex]}) {
+        display: inline-block;
     }
       
 `;
@@ -293,11 +307,11 @@ const Web = () => {
                     </StyledRow>
                 </Content>
             </Main>
-            <hr></hr>
-            <Main>
+            <hr />
+            <Main fit="true">
                 <Content fluid>
                     <StyledRow>
-                        <Column sm="6">
+                        <Column md="6">
                             <StyledRow nested="true">
                                 <Column remove="true">
                                     <StyledRow nested="true" flex="true">
@@ -328,13 +342,167 @@ const Web = () => {
                                 </Column>
                             </StyledRow>
                         </Column>
-                        <Column sm="6" color="DarkSlateBlue">
+                        <Column md="6">
                             <StyledRow nested={"true"} >
-                                <Column xs="6">
-                                    <div></div>
+                                <Column paddingSmall={"true"} >
+                                    <StyledRow noflex="sm" css={verticalAlign('top')}>
+                                        <Column paddingSmall={"true"}>
+                                            <div>
+                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
+                                                <Spacer size="md" />
+                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
+                                                <Spacer size="xxl" />
+                                                <Paragraph>
+                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
+                                                </Paragraph>
+                                            </div>
+                                        </Column>
+                                        <Column paddingSmall={"true"} align="top">
+                                            <div>
+                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
+                                                <Spacer size="md" />
+                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
+                                                <Spacer size="xxl" />
+                                                <Paragraph>
+                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
+                                                </Paragraph>
+                                            </div>
+                                        </Column>
+                                    </StyledRow>
                                 </Column>
-                                <Column xs="6" paddingSmall={"true"}>
-                                    <div></div>
+                            </StyledRow>
+                        </Column>
+                    </StyledRow>
+                </Content>
+            </Main>
+            <Main fit="true">
+                <Content fluid>
+                    <StyledRow>
+                        <Column md="6">
+                            <StyledRow nested="true">
+                                <Column remove="true">
+                                    <StyledRow nested="true" flex="true">
+                                        <Column>
+                                            <div>
+                                                <Title level="4" lineHeight="145%" family="Manrope">
+                                                    Baby Monitor Technology and more stufff!!!!!!!!!!
+                                                </Title>
+                                                <Spacer size="md" />
+                                                <Title level="2" lineHeight="145%" css={padding({ bottom: 'md' })}>
+                                                    Blabla ilja dkljakd jkadj jad kjadkja
+                                                </Title>
+                                            </div>
+                                        </Column>
+                                    </StyledRow>
+                                </Column>
+                                <Column remove="true">
+                                    <StyledRow>
+                                        <Column remove="true">
+                                            <div>
+                                                <Image
+                                                    alt="TEST"
+                                                    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+                                                />
+                                            </div>
+                                        </Column>
+                                    </StyledRow>
+                                </Column>
+                            </StyledRow>
+                        </Column>
+                        <Column md="6">
+                            <StyledRow nested={"true"} >
+                                <Column paddingSmall={"true"} >
+                                    <StyledRow noflex="sm" css={verticalAlign('center')}>
+                                        <Column paddingSmall={"true"}>
+                                            <div>
+                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
+                                                <Spacer size="md" />
+                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
+                                                <Spacer size="xxl" />
+                                                <Paragraph>
+                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
+                                                </Paragraph>
+                                            </div>
+                                        </Column>
+                                        <Column paddingSmall={"true"} align="top">
+                                            <div>
+                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
+                                                <Spacer size="md" />
+                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
+                                                <Spacer size="xxl" />
+                                                <Paragraph>
+                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
+                                                </Paragraph>
+                                            </div>
+                                        </Column>
+                                    </StyledRow>
+                                </Column>
+                            </StyledRow>
+                        </Column>
+                    </StyledRow>
+                </Content>
+            </Main>
+            <Main fit="true">
+                <Content fluid>
+                    <StyledRow>
+                        <Column md="6">
+                            <StyledRow nested="true">
+                                <Column remove="true">
+                                    <StyledRow nested="true" flex="true">
+                                        <Column>
+                                            <div>
+                                                <Title level="4" lineHeight="145%" family="Manrope">
+                                                    Baby Monitor Technology and more stufff!!!!!!!!!!
+                                                </Title>
+                                                <Spacer size="md" />
+                                                <Title level="2" lineHeight="145%" css={padding({ bottom: 'md' })}>
+                                                    Blabla ilja dkljakd jkadj jad kjadkja
+                                                </Title>
+                                            </div>
+                                        </Column>
+                                    </StyledRow>
+                                </Column>
+                                <Column remove="true">
+                                    <StyledRow>
+                                        <Column remove="true">
+                                            <div>
+                                                <Image
+                                                    alt="TEST"
+                                                    src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
+                                                />
+                                            </div>
+                                        </Column>
+                                    </StyledRow>
+                                </Column>
+                            </StyledRow>
+                        </Column>
+                        <Column md="6">
+                            <StyledRow nested={"true"} >
+                                <Column paddingSmall={"true"} >
+                                    <StyledRow noflex="sm" css={verticalAlign('bottom')}>
+                                        <Column paddingSmall={"true"}>
+                                            <div>
+                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
+                                                <Spacer size="md" />
+                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
+                                                <Spacer size="xxl" />
+                                                <Paragraph>
+                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
+                                                </Paragraph>
+                                            </div>
+                                        </Column>
+                                        <Column paddingSmall={"true"} align="top">
+                                            <div>
+                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
+                                                <Spacer size="md" />
+                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
+                                                <Spacer size="xxl" />
+                                                <Paragraph>
+                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
+                                                </Paragraph>
+                                            </div>
+                                        </Column>
+                                    </StyledRow>
                                 </Column>
                             </StyledRow>
                         </Column>
