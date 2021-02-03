@@ -14,6 +14,9 @@ const index = () => {
           <Anchor href="/author" label="Author page" icon={<ArrowRight />} />
         </li>
         <li>
+          <Anchor href="/category" label="Category page" icon={<ArrowRight />} />
+        </li>
+        <li>
           <Anchor href="/juan-cells" label="Juan" icon={<ArrowRight />} />
         </li>
         <li>

@@ -1,13 +1,20 @@
 import React from 'react';
-import { StyledInput, InputWrapper, Label, Underline } from './StyledInput';
+import { Wrapper, StyledInput, Caption } from './StyledInput';
 
-const Input = ({ label, type, ...props }) => {
+const Input = ({ label, border = "default", disabled = false, size, type, ...props }) => {
     return (
-        <InputWrapper size={props.size} color={props.color}>
-            <StyledInput id={props.id} required type={type || "text"} {...props} color={props.color} />
-            <Underline />
-            {label && !(props.placeholder) ? <Label htmlFor={props.id}>{label}</Label> : null}
-        </InputWrapper>
+        <Wrapper htmlFor={props.id} size={size} disabled={disabled} border={border} label={label || null}>
+            <StyledInput
+                {...props}
+                border={border}
+                disabled={disabled}
+                type={type || 'text'} id={props.id}
+                value={props.value || undefined}
+                required label={label || null}
+                placeholder={(label || props.placeholder) || 'Placeholder'}
+            />
+            <Caption disabled={disabled} border={border} label={label || null}>{label || null}</Caption>
+        </Wrapper>
     );
 };
 

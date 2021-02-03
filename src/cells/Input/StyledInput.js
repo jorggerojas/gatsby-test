@@ -2,120 +2,135 @@ import styled from 'styled-components';
 import config from '../../utils/config';
 import { getSize } from '../../cells/Paragraph/StyledParagraph'
 
-const { text, colors } = config;
+const { text, spacing, breakpoints } = config;
+const borderColor = '#001D48';
 
-export const InputWrapper = styled.div`
-    position: relative;
-    margin: 0;
-    padding: 0;
-    width: ${({ size }) => getInputSize(size || 'default')};
-    & div:before{
-        position: absolute;
-        content:"";
-        height: 100%;
-        background: ${({ color }) => color ? colors[color]['default'] : text.mutedGray};
-        width: ${({ size }) => getInputSize(size || 'default')};
-        transform: scaleX(0);
-        transition: transform 2 ease;
-        @media screen and (max-width: 576px) {
-            width: ${() => getInputSize('full')};
-        }
-        @media screen and (min-width: 1440px) {
-            width: ${({ size }) => getInputSize(size || 'default', true)};
-        }
-    }
-    @media screen and (max-width: 576px) {
-            width: ${() => getInputSize('full')};
-    }
-    @media screen and (min-width: 1440px) {
-        width: ${({ size }) => getInputSize(size || 'default', true)};
-    }
-`;
-
-export const Label = styled.label`
+export const Wrapper = styled.label`
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
     font-family: 'DM Sans', sans-serif;
-    font-size:${getSize('sm')};
-    pointer-events: none;
-    position: absolute;
-    bottom: 1.1rem;
-    left: 0.5rem;
-    color: ${text.mutedGray};
-    transition: all 0.2s ease;
+    position: relative;
+    /* margin: 0; ESTE SÍ */
+    margin: 1rem 0; /*ESTE NO*/
+    width: ${() => getInputSize('full')};
+    overflow:  ${(props) => (props.label && props.border === 'overlap' && !props.disabled) ? 'visible' : 'hidden'};
+    @media screen and (min-width: ${breakpoints.sm}) {
+        width: ${({ size }) => getInputSize(size || 'default')};
+    }
 `;
 
-export const Underline = styled.div`
-    position: relative;
-    bottom: 1.11rem;
-    height: 0.126rem;
-    &:before{
-        position:absolute;
-        content:"";
-        height: 100%;
-        transform: scaleX(0);
+export const Caption = styled.span`
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+    font-family: 'DM Sans', sans-serif;
+    position: absolute;
+    bottom: 0.875rem;
+    top: 0.8rem;
+    left: ${spacing.xs};
+    font-size: ${() => getSize('md')};
+    color: ${text.mutedGray};
+    font-weight: 400;
+    transform-origin: 0 0;
+    transition: all .2s ease;
+    pointer-events: none;
+    background: ${(props) => (props.label && props.border === 'overlap' && !props.disabled) ? 'white' : 'transparent'};
+    @media screen and (min-width: ${breakpoints.xl}) {
+        bottom: calc(0.875rem * 1.125);
+        left: calc(${spacing.xs} * 1.125);
+        font-size: ${() => getSize('md', true)};
     }
 `;
 
 export const StyledInput = styled.input`
-    margin: 1rem 0;
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
     font-family: 'DM Sans', sans-serif;
-    height: 2.15rem;
+    font-size: ${getSize('md')};
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3rem;
+    font-family: inherit;
+    padding: ${spacing.xs};
     font-weight: 400;
-    font-size: 0.875rem;
-    width: ${({ size }) => getInputSize(size || 'default')};
-    background: ${({ background }) => background ? text.lightGray : 'none'};
-    border: none;
-    border-bottom: ${(props) => props.background ?
-        'none' : `0.063rem solid ${props.color ? colors[props.color]['default'] : text.mutedGray}`};
-    outline: none;
-    padding-bottom: 0;
-    padding-left: 0.625rem;
-    color: ${(props) => props.background ?
-        text.darkGray :
-        (props.color ? colors[props.color]['default'] :
-            text.darkGray)};
-    @media screen and (max-width: 576px) {
-        width: ${({ size }) => getInputSize('full')};
+    background: white;
+    ${({ border }) => border === 'bottom' ? `border:0; border-bottom: 1px solid ${borderColor}` : `border: 1px solid ${borderColor}`};
+    color: ${text.dark};
+    transition: all .1s ease;
+    transition: border .1s ease;
+    &::placeholder{
+        color: ${({ label }) => label ? 'transparent' : text.mutedGray};
     }
-    @media screen and (min-width: 1440px) {
-        width: ${({ size }) => getInputSize(size || 'default', true)};
-    }
-    & ::placeholder {
-        color: ${text.mutedGray};
-    }
-    & ::-webkit-input-placeholder {
-        color: ${text.mutedGray};
-    }
-    & ::-ms-input-placeholder {
-        color: ${text.mutedGray};
-    }
-    & :focus, 
-    & :valid {
-        & ~label{
-            transform: translateY(-1.5rem);
-            font-size: ${getSize('xs')};
-            left: 0.25rem;
-            color: ${({ color }) => color ? colors[color]['default'] : text.darkGray};
-        }
-        & ~${Underline}:before{
-            transform: scaleX(1);
-            transition: transform 0.2s ease;
+    &:not(:placeholder-shown){
+      & ${Caption}{
+            padding-top: ${spacing.nano};
+            transform: translate3d(0,-${spacing.xs},0) scale(.6875);
+            @media screen and (min-width: ${breakpoints.xl}) {
+                padding-top: calc(${spacing.nano} * 1.125);
+                transform: translate3d(0,calc(-${spacing.xs} * 1.125),0) scale(calc(.6875 * 1.125));
+            }
         }
     }
-    & :disabled{
-        background: ${text.lightGray} !important;
-        color: ${text.mutedGray};
-        border: none !important;
-        user-select: none !important;
-        cursor: not-allowed !important;
-        & ~label {
-            color: ${text.mutedGray} !important;
-            font-size: 0.875rem!important;
-            bottom: 1.01rem;
-            left: 0;
-            padding-left: 0.655rem;
+    &:focus, &:valid {
+        background: white;
+        outline: none;
+        ${({ border }) => border === 'bottom' ?
+        `border: 0; border-bottom: 2px solid ${borderColor}` : `border: 2px solid ${borderColor}`};
+        padding-bottom: ${(props) => props.label !== null ? (props.border === 'overlap' ? spacing.xs : 0) : spacing.xs} !important;
+        padding-left:${spacing.xs};
+        padding-top:${spacing.sm};
+         & ~${Caption}{
+            color: ${text.dark};
+            padding-top: ${spacing.nano};
+            padding-right:${spacing.xs};
+            padding-left:${({ border }) => border === 'overlap' ? spacing.xs : '0'};
+            transform: translate3d(0,${({ border }) => border === 'overlap' ? '-1.4rem' : '-0.8rem'},0) scale(.6875);
+            @media screen and (min-width: ${breakpoints.xl}) {
+                padding-top: calc(${spacing.nano} * 1.125);
+                padding-right: calc(${spacing.xs} * 1.125);
+                transform: translate3d(0,calc(${({ border }) => border === 'overlap' ? '-1.4rem' : '-0.8rem'} * 1.125),0) scale(calc(.6875 * 1.125));
+            }
         }
+        @media screen and (min-width: ${breakpoints.xl}) {
+            ${({ border }) =>
+        (border === 'bottom') ?
+            `border: 0; border-bottom: calc(2px * 1.125) solid ${borderColor};` :
+            `border: calc(0.12rem * 1.125) solid ${borderColor};`};
+            padding-bottom: ${(props) => props.label !== null ? (props.border === 'overlap' ? `calc(${spacing.xs} * 1.125)` : 0) : `calc(${spacing.xs} * 1.125)`} !important;
+            padding-left: calc(${spacing.xs} * 1.125);
+            padding-top: calc(${spacing.sm} * 1.125);
+        }
+    }
+    @media screen and (min-width: ${breakpoints.xl}) {
+        font-size: ${getSize('md', true)};
+        height: calc(3rem * 1.125);
+        padding: calc(${spacing.xs} * 1.125);
+         ${({ border }) =>
+        (border === 'bottom') ?
+            `border: 0; border-bottom: calc(1px * 1.25) solid ${borderColor};` :
+            `border: calc(1px * 1.25) solid ${borderColor};`};
+    }
+    &:disabled{
+        background: ${text.lightGray};
+        color: ${text.mutedGray};
+        padding-bottom:0;
+        ${({ value }) => value !== undefined ? (`
+            & ~${Caption}{
+                color: ${text.mutedGray};
+                padding-top: ${spacing.nano};
+                padding-right:${spacing.xs};
+                ${({ border }) =>
+            (border === 'bottom') ?
+                `border: 0; border-bottom: calc(1px * 1.25) solid ${borderColor};` :
+                `border: calc(1px * 1.25) solid ${borderColor};`};
+                transform: translate3d(0,-0.8rem,0) scale(.6875);
+                @media screen and (min-width: ${breakpoints.xl}) {
+                    padding-top: calc(${spacing.nano} * 1.125);
+                    padding-right: calc(${spacing.xs} * 1.125);
+                    transform: translate3d(0,calc(-0.8rem * 1.125),0) scale(calc(.6875 * 1.125));
+                }
+            }`)
+        : `${({ border }) =>
+            (border === 'bottom') ?
+                `border: 0; border-bottom: calc(1px * 1.25) solid ${borderColor};` :
+                `border: calc(1px * 1.25) solid ${borderColor};`};`}
     }
 `;
 

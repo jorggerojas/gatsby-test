@@ -30,7 +30,8 @@
     "react-ikonate": "^2.0.1",
     "gatsby-plugin-smoothscroll": "^1.2.0",
     "gatsby-plugin-scroll-reveal": "^0.0.7",
-    "react-infinite-scroll-component": "^5.1.0"
+    "react-infinite-scroll-component": "^5.1.0",
+    "locomotive-scroll": "^4.0.6"
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.3",
