@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Title } from '../cells/Title';
 import Spacer from '../cells/Spacer';
+import Image from '../cells/Image';
 import config from '../utils/config';
 import padding from '../utils/padding';
 
@@ -296,9 +297,9 @@ const Web = () => {
             <Main>
                 <Content fluid>
                     <StyledRow>
-                        <Column sm="6" color="violet">
+                        <Column sm="6">
                             <StyledRow nested="true">
-                                <Column color="red" remove="true">
+                                <Column remove="true">
                                     <StyledRow nested="true" flex="true">
                                         <Column>
                                             <div>
@@ -313,27 +314,16 @@ const Web = () => {
                                         </Column>
                                     </StyledRow>
                                 </Column>
-                                <Column color="red" remove="true">
+                                <Column remove="true">
                                     <StyledRow>
                                         <Column remove="true">
                                             <div>
-                                                <img
-                                                    style={{
-                                                        backgroundSize: "cover",
-                                                        width: "100%",
-                                                        height: '100%'
-                                                    }}
+                                                <Image
                                                     alt="TEST"
                                                     src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
                                                 />
                                             </div>
                                         </Column>
-                                        {/* <Column lg="6" color="hotpink" paddingSmall={"true"}>
-                                            <div></div>
-                                        </Column>
-                                        <Column lg="6" color="purple" paddingSmall={"true"}>
-                                            <div></div>
-                                        </Column> */}
                                     </StyledRow>
                                 </Column>
                             </StyledRow>
