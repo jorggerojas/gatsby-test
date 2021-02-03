@@ -5,7 +5,6 @@ import GlobalStyle from '../utils/global';
 import { MiniPost } from '../organisms/MiniPost';
 import Newsletter from '../organisms/Newsletter';
 import { Title } from '../cells/Title';
-import padding from '../utils/padding';
 import config from '../utils/config';
 
 const { display, breakpoints } = config;

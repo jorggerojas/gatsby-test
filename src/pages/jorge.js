@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Title } from '../cells/Title';
 import { Paragraph } from '../cells/Paragraph';
 import { Input } from '../cells/Input';
@@ -101,15 +102,51 @@ const Jorge = () => {
         flexDirection: 'column',
         padding: '10px'
       }}>
-
         <Title>Inputs</Title>
-        <Title level="4" margin="1vw 0">Text</Title>
-        <Input size="sm" color="info" label="sm no-background info" />
+        <Input size="sm" disabled value="Value (Disabled)" label="sm disabled with value" />
         <Input size="sm" label="sm disabled" disabled />
-        <Input size="md" color="danger" placeholder="md no-label" />
-        <Input size="lg" color="success" label="lg no-background" />
-        <Input size="default" color="secondary" background placeholder="default (clamp) background no-label" />
-        <Input size="full" background label="full-sized background no-color" />
+        <Input size="md" border={'bottom'} placeholder="md no-label border bottom" />
+        <Input size="default" background placeholder="clamp no-label border full" />
+        <Input size="default" background label="clamp label border full" placeholder="clamp no-label border full" />
+        <Input size="default" border={'bottom'} background label="clamp label border bottom" />
+        <Input size="lg" label="lg border overlap 😀" border={'overlap'} />
+        <Input size="full" background border={'overlap'} label="full-sized border overlap disabled" disabled value="Caption (disabled)" />
+      </div>
+      <div style={{
+        margin: '3rem 0',
+        padding: '10px'
+      }}>
+        <Title>Grids</Title>
+        <Container fluid style={{ padding: 0, margin: '10px 0 10px 0' }}>
+          <Row className="center" style={{ margin: 0, padding: 0, height: '15vh' }}>
+            <Col style={{ background: 'lightBlue', margin: 0, padding: 0 }}>1-2 auto</Col>
+            <Col style={{ background: 'green', margin: 0, padding: 0 }}>1-2 auto</Col>
+          </Row>
+        </Container>
+        <Container fluid style={{ padding: 0, margin: '0 0 10px 0' }}>
+          <Row className="center" style={{ margin: 0, padding: 0, height: '15vh' }}>
+            <Col style={{ background: 'lightBlue', margin: 0, padding: 0 }}>1-3 auto</Col>
+            <Col style={{ background: 'green', margin: 0, padding: 0 }}>1-3 auto</Col>
+            <Col style={{ background: 'yellow', margin: 0, padding: 0 }}>1-3 auto</Col>
+          </Row>
+        </Container>
+        <Container fluid style={{ padding: 0, margin: '0 0 10px 0' }}>
+          <Row className="center" style={{ margin: 0, padding: 0, height: '15vh' }}>
+            <Col md="5" style={{ background: 'lightBlue', margin: 0, padding: 0 }}>5-12 md</Col>
+            <Col md="7" style={{ background: 'green', margin: 0, padding: 0 }}>7-12 md</Col>
+          </Row>
+        </Container>
+        <Container fluid style={{ padding: 0, margin: '0 0 10px 0' }}>
+          <Row className="center" style={{ margin: 0, padding: 0, height: '15vh' }}>
+            <Col sm="6" style={{ background: 'lightBlue', margin: 0, padding: 0 }}>1-2 sm</Col>
+            <Col sm="6" style={{ background: 'green', margin: 0, padding: 0 }}>
+              <Row className="center" style={{ margin: 0, padding: 0, height: '15vh' }}>
+                <Col sm="6" style={{ background: 'gray', margin: 0, padding: 0 }}>1-2 sm (1-2 sm)</Col>
+                <Col sm="6" style={{ background: 'salmon', margin: 0, padding: 0 }}>1-2 sm (1-2 sm)</Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </>
   );

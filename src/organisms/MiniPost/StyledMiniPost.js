@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import padding from '../../utils/padding';
 
 const ContainerMiniPost = styled(Container)`
   padding: 0;

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import config from '../../utils/config';
+import { Link } from 'gatsby';
 const spacing = config.spacing;
-const StyledAnchor = styled.a`
+
+const StyledAnchor = styled(Link)`
   box-sizing: border-box;
   text-decoration: none;
   color: #005fb2;

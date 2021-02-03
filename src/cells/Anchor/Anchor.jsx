@@ -3,7 +3,7 @@ import StyledAnchor from './StyledAnchor';
 
 const Anchor = ({ label, href, icon = null, ...rest }) => {
   return (
-    <StyledAnchor href={href} {...rest}>
+    <StyledAnchor to={href} {...rest}>
       {label}
       {icon !== null && icon}
     </StyledAnchor>

@@ -13,7 +13,7 @@ import Spacer from '../../cells/Spacer';
 import Hideable from '../../cells/Hideable';
 import padding from '../../utils/padding';
 
-const { display, breakpoints } = config;
+const { breakpoints } = config;
 const SideImage = styled.img`
   width: 100%;
   height: 25.063rem;
@@ -22,26 +22,26 @@ const SideImage = styled.img`
   transition: max-height 0.25s cubic-bezier(0.12, 0, 0.39, 0);
   @media (min-width: ${breakpoints.xs}) {
     ${(p) =>
-      p.type === 'podcast' &&
-      css`
+    p.type === 'podcast' &&
+    css`
         max-height: 145px;
       `}
     ${(p) =>
-      p.type === 'free-download' &&
-      css`
+    p.type === 'free-download' &&
+    css`
         max-height: 330px;
       `}
   }
   @media (min-width: ${breakpoints.sm}) {
     width: calc(calc(100% - 25.063rem) + 25.063rem);
     ${(p) =>
-      p.type === 'podcast' &&
-      css`
+    p.type === 'podcast' &&
+    css`
         max-height: 216px;
       `}
     ${(p) =>
-      p.type === 'free-download' &&
-      css`
+    p.type === 'free-download' &&
+    css`
         max-height: 440px;
       `}
   }
@@ -49,8 +49,8 @@ const SideImage = styled.img`
     width: 100%;
     max-width: ${(p) => (p.type === 'free-download' ? '347px' : '100%')};
     ${(p) =>
-      p.type === 'podcast' &&
-      css`
+    p.type === 'podcast' &&
+    css`
         max-height: 305px;
       `}
   }
