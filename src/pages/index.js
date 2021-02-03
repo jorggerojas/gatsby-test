@@ -17,6 +17,9 @@ const index = () => {
           <Anchor href="/category" label="Category page" icon={<ArrowRight />} />
         </li>
         <li>
+          <Anchor href="/grid" label="Grid page" icon={<ArrowRight />} />
+        </li>
+        <li>
           <Anchor href="/juan-cells" label="Juan" icon={<ArrowRight />} />
         </li>
         <li>

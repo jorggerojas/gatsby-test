@@ -5,6 +5,36 @@ import { getSize } from '../../cells/Paragraph/StyledParagraph'
 const { text, spacing, breakpoints } = config;
 const borderColor = '#001D48';
 
+export const Info = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+    font-family: 'DM Sans', sans-serif;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    display: inline-flex;
+    padding: ${spacing.xs};
+    font-size: ${() => getSize('md')};
+    color: ${text.mutedGray};
+    font-weight: 400;
+    transform-origin: 0 0;
+    transition: all .3s ease;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    background: transparent;
+    cursor: default;
+    @media screen and (min-width: ${breakpoints.xl}) {
+        bottom: calc(0.875rem * 1.125);
+        left: calc(${spacing.xs} * 1.125);
+        font-size: ${() => getSize('md', true)};
+    }
+    & span{
+        float: right;
+    }
+`;
+
 export const Wrapper = styled.label`
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
     font-family: 'DM Sans', sans-serif;
@@ -13,6 +43,7 @@ export const Wrapper = styled.label`
     margin: 1rem 0; /*ESTE NO*/
     width: ${() => getInputSize('full')};
     overflow:  ${(props) => (props.label && props.border === 'overlap' && !props.disabled) ? 'visible' : 'hidden'};
+    transition: all .1s ease;
     @media screen and (min-width: ${breakpoints.sm}) {
         width: ${({ size }) => getInputSize(size || 'default')};
     }
@@ -31,12 +62,25 @@ export const Caption = styled.span`
     transform-origin: 0 0;
     transition: all .2s ease;
     pointer-events: none;
-    background: ${(props) => (props.label && props.border === 'overlap' && !props.disabled) ? 'white' : 'transparent'};
+    width: calc(100% - ${spacing.xs});
+    background: transparent;
     @media screen and (min-width: ${breakpoints.xl}) {
         bottom: calc(0.875rem * 1.125);
         left: calc(${spacing.xs} * 1.125);
         font-size: ${() => getSize('md', true)};
     }
+`;
+
+export const Icon = styled.label`
+    font-size: ${() => getSize('md')};
+    padding: 0 ${spacing.xs} 0 0;
+    display: inline-flex;
+    float: right;
+    transition: all .1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    @media screen and (min-width: ${breakpoints.xl}){
+        padding: 0 0 0 calc(${spacing.xs} * 1.125);
+        font-size: ${() => getSize('md', true)};
+    } 
 `;
 
 export const StyledInput = styled.input`
@@ -48,13 +92,11 @@ export const StyledInput = styled.input`
     width: 100%;
     height: 3rem;
     font-family: inherit;
-    padding: ${spacing.xs};
+    padding: ${spacing.xs} 2.1rem ${spacing.xs} ${spacing.xs};
     font-weight: 400;
     background: white;
     ${({ border }) => border === 'bottom' ? `border:0; border-bottom: 1px solid ${borderColor}` : `border: 1px solid ${borderColor}`};
     color: ${text.dark};
-    transition: all .1s ease;
-    transition: border .1s ease;
     &::placeholder{
         color: ${({ label }) => label ? 'transparent' : text.mutedGray};
     }
@@ -69,6 +111,8 @@ export const StyledInput = styled.input`
         }
     }
     &:focus, &:valid {
+        transition: all .1s  cubic-bezier(0.12, 0, 0.39, 0);
+        transition: border .1s  cubic-bezier(0.12, 0, 0.39, 0);
         background: white;
         outline: none;
         ${({ border }) => border === 'bottom' ?
@@ -76,7 +120,12 @@ export const StyledInput = styled.input`
         padding-bottom: ${(props) => props.label !== null ? (props.border === 'overlap' ? spacing.xs : 0) : spacing.xs} !important;
         padding-left:${spacing.xs};
         padding-top:${spacing.sm};
-         & ~${Caption}{
+        & ~${Info}{
+            opacity: 1;
+        }
+        & ~${Caption}{
+            width: auto;
+            background: ${(props) => (props.label && props.border === 'overlap' && !props.disabled) ? 'white' : 'transparent'};
             color: ${text.dark};
             padding-top: ${spacing.nano};
             padding-right:${spacing.xs};
@@ -86,6 +135,10 @@ export const StyledInput = styled.input`
                 padding-top: calc(${spacing.nano} * 1.125);
                 padding-right: calc(${spacing.xs} * 1.125);
                 transform: translate3d(0,calc(${({ border }) => border === 'overlap' ? '-1.4rem' : '-0.8rem'} * 1.125),0) scale(calc(.6875 * 1.125));
+            }
+            & ${Icon}{
+                display: inline-flex;
+                padding: 0 0 0 ${spacing.xs};
             }
         }
         @media screen and (min-width: ${breakpoints.xl}) {
@@ -113,9 +166,14 @@ export const StyledInput = styled.input`
         padding-bottom:0;
         ${({ value }) => value !== undefined ? (`
             & ~${Caption}{
+                width: auto;
                 color: ${text.mutedGray};
                 padding-top: ${spacing.nano};
                 padding-right:${spacing.xs};
+                & ${Icon}{
+                    display: inline-flex;
+                    padding: 0 0 0 ${spacing.xs};
+                }
                 ${({ border }) =>
             (border === 'bottom') ?
                 `border: 0; border-bottom: calc(1px * 1.25) solid ${borderColor};` :

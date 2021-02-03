@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import config from '../../utils/config';
 
-const { text } = config;
+const { text, breakpoints } = config;
 
 const StyledTitle = styled.h1`
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-  font-family: 'DM Sans', sans-serif;
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Manrope&display=swap');
+  font-family: ${({ family }) => family ? `'${family}', sans-serif` : "'DM Sans', sans-serif;"};
   font-weight: ${({ weight }) => weight || 'normal'};
   margin: ${({ margin }) => margin || '0'};
   font-size: ${({ level }) => getFontSize(level || '1')};
@@ -13,7 +13,7 @@ const StyledTitle = styled.h1`
   letter-spacing: ${({ spacing }) => spacing || '0'}rem;
   line-height: ${({ lineHeight }) => lineHeight ? `${lineHeight}` : '1.77rem'};
   color: ${({ color }) => (color ? text[color] : text['dark'])};
-  @media (min-width: 1440px) {
+  @media (min-width: ${breakpoints.xl}) {
     h1,
     h2,
     h3,

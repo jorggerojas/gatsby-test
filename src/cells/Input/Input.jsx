@@ -1,7 +1,7 @@
 import React from 'react';
-import { Wrapper, StyledInput, Caption } from './StyledInput';
+import { Wrapper, StyledInput, Caption, Icon, Info } from './StyledInput';
 
-const Input = ({ label, border = "default", disabled = false, size, type, ...props }) => {
+const Input = ({ iconPass, iconRequired, label, border = "default", disabled = false, size, type, ...props }) => {
     return (
         <Wrapper htmlFor={props.id} size={size} disabled={disabled} border={border} label={label || null}>
             <StyledInput
@@ -13,7 +13,13 @@ const Input = ({ label, border = "default", disabled = false, size, type, ...pro
                 required label={label || null}
                 placeholder={(label || props.placeholder) || 'Placeholder'}
             />
-            <Caption disabled={disabled} border={border} label={label || null}>{label || null}</Caption>
+            <Info>
+                <span>{iconPass || null}</span>
+            </Info>
+            <Caption border={border} disabled={disabled} label={label || null}>
+                <span>{label || null}</span>
+                <Icon>{iconRequired || null}</Icon>
+            </Caption>
         </Wrapper>
     );
 };
