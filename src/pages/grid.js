@@ -7,6 +7,7 @@ import Image from '../cells/Image';
 import config from '../utils/config';
 import padding from '../utils/padding';
 import { Paragraph } from '../cells/Paragraph';
+import Card from '../organs/Card';
 
 const { display, breakpoints } = config;
 
@@ -32,7 +33,7 @@ const Content = styled(Container)`
 `;
 const Column = styled(Col)`
     margin: 0;
-    ${({ paddingSmall }) => paddingSmall ? 'padding: 0.15rem 0.5rem;' : "padding: 0.5rem 1rem"};
+    ${({ paddingsmall }) => paddingsmall ? 'padding: 0.15rem 0.5rem;' : "padding: 0.5rem 1rem"};
     ${({ remove }) => remove ? 'padding: 0;' : null};
     & > div {
         width: 100%;
@@ -174,12 +175,12 @@ const Web = () => {
                                 <Column xs="6">
                                     <div></div>
                                 </Column>
-                                <Column xs="6" paddingSmall={"true"}>
+                                <Column xs="6" paddingsmall={"true"}>
                                     <StyledRow>
-                                        <Column xs="6" color="hotpink" paddingSmall={"true"}>
+                                        <Column xs="6" color="hotpink" paddingsmall={"true"}>
                                             <div></div>
                                         </Column>
-                                        <Column xs="6" color="purple" paddingSmall={"true"}>
+                                        <Column xs="6" color="purple" paddingsmall={"true"}>
                                             <div></div>
                                         </Column>
                                     </StyledRow>
@@ -191,12 +192,12 @@ const Web = () => {
                                 <Column xs="6">
                                     <div></div>
                                 </Column>
-                                <Column xs="6" paddingSmall={"true"}>
+                                <Column xs="6" paddingsmall={"true"}>
                                     <StyledRow>
-                                        <Column xs="6" color="yellow" paddingSmall={"true"}>
+                                        <Column xs="6" color="yellow" paddingsmall={"true"}>
                                             <div></div>
                                         </Column>
-                                        <Column xs="6" color="black" paddingSmall={"true"}>
+                                        <Column xs="6" color="black" paddingsmall={"true"}>
                                             <div></div>
                                         </Column>
                                     </StyledRow>
@@ -214,12 +215,12 @@ const Web = () => {
                                 <Column xs="6">
                                     <div></div>
                                 </Column>
-                                <Column xs="6" paddingSmall={"true"}>
+                                <Column xs="6" paddingsmall={"true"}>
                                     <StyledRow>
-                                        <Column xs="6" color="hotpink" paddingSmall={"true"}>
+                                        <Column xs="6" color="hotpink" paddingsmall={"true"}>
                                             <div></div>
                                         </Column>
-                                        <Column xs="6" color="purple" paddingSmall={"true"}>
+                                        <Column xs="6" color="purple" paddingsmall={"true"}>
                                             <div></div>
                                         </Column>
                                     </StyledRow>
@@ -231,17 +232,17 @@ const Web = () => {
                                 <Column xs="6">
                                     <div></div>
                                 </Column>
-                                <Column xs="6" paddingSmall={"true"}>
+                                <Column xs="6" paddingsmall={"true"}>
                                     <StyledRow>
-                                        <Column xs="6" color="yellow" paddingSmall={"true"}>
+                                        <Column xs="6" color="yellow" paddingsmall={"true"}>
                                             <div></div>
                                         </Column>
-                                        <Column xs="6" paddingSmall={"true"}>
+                                        <Column xs="6" paddingsmall={"true"}>
                                             <StyledRow nested={"true"}>
-                                                <Column xs="6" color="thistle" paddingSmall={"true"}>
+                                                <Column xs="6" color="thistle" paddingsmall={"true"}>
                                                     <div></div>
                                                 </Column>
-                                                <Column xs="6" color="thistle" paddingSmall={"true"}>
+                                                <Column xs="6" color="thistle" paddingsmall={"true"}>
                                                     <div></div>
                                                 </Column>
                                             </StyledRow>
@@ -261,12 +262,12 @@ const Web = () => {
                                 <Column xs="6">
                                     <div></div>
                                 </Column>
-                                <Column xs="6" paddingSmall={"true"}>
+                                <Column xs="6" paddingsmall={"true"}>
                                     <StyledRow>
-                                        <Column xs="6" color="hotpink" paddingSmall={"true"}>
+                                        <Column xs="6" color="hotpink" paddingsmall={"true"}>
                                             <div></div>
                                         </Column>
-                                        <Column xs="6" color="purple" paddingSmall={"true"}>
+                                        <Column xs="6" color="purple" paddingsmall={"true"}>
                                             <div></div>
                                         </Column>
                                     </StyledRow>
@@ -278,24 +279,24 @@ const Web = () => {
                                 <Column xs="6">
                                     <div></div>
                                 </Column>
-                                <Column xs="6" paddingSmall={"true"}>
+                                <Column xs="6" paddingsmall={"true"}>
                                     <StyledRow nested={"true"} >
-                                        <Column paddingSmall={"true"} xs="6">
+                                        <Column paddingsmall={"true"} xs="6">
                                             <StyledRow>
-                                                <Column paddingSmall={"true"} xs="8" color="salmon">
+                                                <Column paddingsmall={"true"} xs="8" color="salmon">
                                                     <div></div>
                                                 </Column>
-                                                <Column paddingSmall={"true"} xs="4" color="lightgreen">
+                                                <Column paddingsmall={"true"} xs="4" color="lightgreen">
                                                     <div></div>
                                                 </Column>
                                             </StyledRow>
                                         </Column>
-                                        <Column paddingSmall={"true"} xs="6">
+                                        <Column paddingsmall={"true"} xs="6">
                                             <StyledRow>
-                                                <Column paddingSmall={"true"} xs="6" color="olive">
+                                                <Column paddingsmall={"true"} xs="6" color="olive">
                                                     <div></div>
                                                 </Column>
-                                                <Column paddingSmall={"true"} xs="6" color="indigo">
+                                                <Column paddingsmall={"true"} xs="6" color="indigo">
                                                     <div></div>
                                                 </Column>
                                             </StyledRow>
@@ -344,29 +345,31 @@ const Web = () => {
                         </Column>
                         <Column md="6">
                             <StyledRow nested={"true"} >
-                                <Column paddingSmall={"true"} >
+                                <Column paddingsmall={"true"} >
                                     <StyledRow noflex="sm" css={verticalAlign('top')}>
-                                        <Column paddingSmall={"true"}>
-                                            <div>
-                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
-                                                <Spacer size="md" />
-                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
-                                                <Spacer size="xxl" />
-                                                <Paragraph>
-                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
-                                                </Paragraph>
-                                            </div>
+                                        <Column>
+                                            <Card
+                                                caption="Caption"
+                                                title="Title"
+                                                titleLineHeight="xs"
+                                                titleLevel="1"
+                                                color="primary"
+                                                sizeParagraph="md"
+                                                space="md"
+                                                paragraph="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev"
+                                            />
                                         </Column>
-                                        <Column paddingSmall={"true"} align="top">
-                                            <div>
-                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
-                                                <Spacer size="md" />
-                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
-                                                <Spacer size="xxl" />
-                                                <Paragraph>
-                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
-                                                </Paragraph>
-                                            </div>
+                                        <Column>
+                                            <Card
+                                                caption="Caption"
+                                                title="Title"
+                                                titleLineHeight="xs"
+                                                titleLevel="1"
+                                                color="primary"
+                                                sizeParagraph="md"
+                                                space="md"
+                                                paragraph="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev"
+                                            />
                                         </Column>
                                     </StyledRow>
                                 </Column>
@@ -411,29 +414,31 @@ const Web = () => {
                         </Column>
                         <Column md="6">
                             <StyledRow nested={"true"} >
-                                <Column paddingSmall={"true"} >
+                                <Column paddingsmall={"true"} >
                                     <StyledRow noflex="sm" css={verticalAlign('center')}>
-                                        <Column paddingSmall={"true"}>
-                                            <div>
-                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
-                                                <Spacer size="md" />
-                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
-                                                <Spacer size="xxl" />
-                                                <Paragraph>
-                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
-                                                </Paragraph>
-                                            </div>
+                                        <Column>
+                                            <Card
+                                                caption="Caption"
+                                                title="Title"
+                                                titleLineHeight="xs"
+                                                titleLevel="1"
+                                                color="primary"
+                                                sizeParagraph="md"
+                                                space="md"
+                                                paragraph="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev"
+                                            />
                                         </Column>
-                                        <Column paddingSmall={"true"} align="top">
-                                            <div>
-                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
-                                                <Spacer size="md" />
-                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
-                                                <Spacer size="xxl" />
-                                                <Paragraph>
-                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
-                                                </Paragraph>
-                                            </div>
+                                        <Column>
+                                            <Card
+                                                caption="Caption"
+                                                title="Title"
+                                                titleLineHeight="xs"
+                                                titleLevel="1"
+                                                color="primary"
+                                                sizeParagraph="md"
+                                                space="md"
+                                                paragraph="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev"
+                                            />
                                         </Column>
                                     </StyledRow>
                                 </Column>
@@ -478,29 +483,31 @@ const Web = () => {
                         </Column>
                         <Column md="6">
                             <StyledRow nested={"true"} >
-                                <Column paddingSmall={"true"} >
+                                <Column paddingsmall={"true"} >
                                     <StyledRow noflex="sm" css={verticalAlign('bottom')}>
-                                        <Column paddingSmall={"true"}>
-                                            <div>
-                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
-                                                <Spacer size="md" />
-                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
-                                                <Spacer size="xxl" />
-                                                <Paragraph>
-                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
-                                                </Paragraph>
-                                            </div>
+                                        <Column>
+                                            <Card
+                                                caption="Caption"
+                                                title="Title"
+                                                titleLineHeight="xs"
+                                                titleLevel="1"
+                                                color="primary"
+                                                sizeParagraph="md"
+                                                space="md"
+                                                paragraph="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev"
+                                            />
                                         </Column>
-                                        <Column paddingSmall={"true"} align="top">
-                                            <div>
-                                                <Paragraph size="sm" lineHeight="1.375">Caption</Paragraph>
-                                                <Spacer size="md" />
-                                                <Title color="primary" lineHeight="1.375rem">Title</Title>
-                                                <Spacer size="xxl" />
-                                                <Paragraph>
-                                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev
-                                                </Paragraph>
-                                            </div>
+                                        <Column>
+                                            <Card
+                                                caption="Caption"
+                                                title="Title"
+                                                titleLineHeight="xs"
+                                                titleLevel="1"
+                                                color="primary"
+                                                sizeParagraph="md"
+                                                space="md"
+                                                paragraph="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev"
+                                            />
                                         </Column>
                                     </StyledRow>
                                 </Column>
