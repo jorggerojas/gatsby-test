@@ -12,9 +12,16 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
     {
+      resolve: `gatsby-source-ghost`,
+      options: {
+        apiUrl: `	http://138.197.11.134:8080`,
+        contentApiKey: `914978ad9d06eb035acbd2a914`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
-        threshold: .5, // Percentage of an element's area that needs to be visible to launch animation
+        threshold: 0.5, // Percentage of an element's area that needs to be visible to launch animation
         once: true, // Defines if animation needs to be launched once
         disable: false, // Flag for disabling animations
         // Advanced Options
@@ -24,7 +31,7 @@ module.exports = {
         rootMargin: '0% 50%', // Corresponds to root's bounding box margin
         enterEventName: 'sal:in', // Enter event name
         exitEventName: 'sal:out', // Exit event name
-      }
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -35,7 +42,7 @@ module.exports = {
         background_color: `salmon`,
         theme_color: `salmon`,
         display: `standalone`,
-        icon: '/static/favicon.ico'
+        icon: '/static/favicon.ico',
       },
     },
     {
