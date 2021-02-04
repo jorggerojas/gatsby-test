@@ -1,9 +1,35 @@
 import styled from 'styled-components';
 import config from '../../utils/config';
 import { getSize } from '../../cells/Paragraph/StyledParagraph';
+import { CreditCard, RadioButton } from 'react-ikonate';
 
 const { text, spacing, breakpoints } = config;
 const borderColor = '#001D48';
+const iconColor = '#2329D6';
+export const Helper = styled(CreditCard)`
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+    font-family: 'DM Sans', sans-serif;
+    position: absolute;
+    bottom: 0;
+    color: ${iconColor};
+    top: 1rem;
+    left: ${spacing.xs};
+    display: inline-flex;
+    font-size: ${() => getSize('lg')};
+    font-weight: 400;
+    transform-origin: 0 0;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    background: transparent;
+    cursor: default;
+    @media screen and (min-width: ${breakpoints.xl}) {
+        top: calc(1rem * 1.125);
+        left: calc(${spacing.xs} * 1.125);
+        font-size: ${() => getSize('lg', true)};
+    }
+`;
 
 export const Info = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
@@ -25,13 +51,18 @@ export const Info = styled.div`
     pointer-events: none;
     background: transparent;
     cursor: default;
+    z-index: 9999;
     @media screen and (min-width: ${breakpoints.xl}) {
-        bottom: calc(0.875rem * 1.125);
-        left: calc(${spacing.xs} * 1.125);
+        /* left: calc(${spacing.xs} * 1.125); */
         font-size: ${() => getSize('md', true)};
     }
     & span{
+        z-index: 9999;
         float: right;
+        &:hover{
+            font-size:28rem;
+            color: red;
+        }
     }
 `;
 
@@ -71,19 +102,20 @@ export const Caption = styled.span`
     }
 `;
 
-export const Icon = styled.label`
-    font-size: ${() => getSize('md')};
-    padding: 0 ${spacing.xs} 0 0;
+export const Icon = styled(RadioButton)`
+    font-size: ${() => getSize('lg')};
+    color: ${iconColor};
     display: inline-flex;
     float: right;
+    margin: 0.063rem 0.438rem;
     transition: all .1s cubic-bezier(0.075, 0.82, 0.165, 1);
     @media screen and (min-width: ${breakpoints.xl}){
-        padding: 0 0 0 calc(${spacing.xs} * 1.125);
-        font-size: ${() => getSize('md', true)};
+        font-size: ${() => getSize('lg', true)};
     } 
 `;
 
 export const StyledInput = styled.input`
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
     font-family: 'DM Sans', sans-serif;
     font-size: ${getSize('md')};
@@ -92,10 +124,14 @@ export const StyledInput = styled.input`
     width: 100%;
     height: 3rem;
     font-family: inherit;
-    padding: ${spacing.xs} 2.1rem ${spacing.xs} ${spacing.xs};
+    padding:
+        ${spacing.xs} 2.1rem ${spacing.xs} ${(iconHelper) => iconHelper === null ?
+        spacing.xs : '1.8rem'};
     font-weight: 400;
     background: white;
-    ${({ border }) => border === 'bottom' ? `border:0; border-bottom: 1px solid ${borderColor}` : `border: 1px solid ${borderColor}`};
+    ${({ border }) => border === 'bottom' ?
+        `border:0; border-bottom: 1px solid ${borderColor}` :
+        `border: 1px solid ${borderColor}`};
     color: ${text.dark};
     &::placeholder{
         color: ${({ label }) => label ? 'transparent' : text.mutedGray};
@@ -118,9 +154,17 @@ export const StyledInput = styled.input`
         ${({ border }) => border === 'bottom' ?
         `border: 0; border-bottom: 2px solid ${borderColor}` : `border: 2px solid ${borderColor}`};
         padding-bottom: ${(props) => props.label !== null ? (props.border === 'overlap' ? spacing.xs : 0) : spacing.xs} !important;
-        padding-left:${spacing.xs};
-        padding-top:${spacing.sm};
+        padding-left: ${({ iconHelper }) => iconHelper === null ? spacing.xs : '1.8rem'};
+        padding-top: ${spacing.sm};
         & ~${Info}{
+            opacity: 1;
+            z-index: 9999999;
+            &:hover{
+                font-size:20rem;
+                color: red;
+            }
+        }
+        & ~${Helper}{
             opacity: 1;
         }
         & ~${Caption}{
@@ -138,7 +182,7 @@ export const StyledInput = styled.input`
             }
             & ${Icon}{
                 display: inline-flex;
-                padding: 0 0 0 ${spacing.xs};
+                margin: 0 ${spacing.xs};
             }
         }
         @media screen and (min-width: ${breakpoints.xl}) {
@@ -146,15 +190,20 @@ export const StyledInput = styled.input`
         (border === 'bottom') ?
             `border: 0; border-bottom: calc(2px * 1.125) solid ${borderColor};` :
             `border: calc(0.12rem * 1.125) solid ${borderColor};`};
-            padding-bottom: ${(props) => props.label !== null ? (props.border === 'overlap' ? `calc(${spacing.xs} * 1.125)` : 0) : `calc(${spacing.xs} * 1.125)`} !important;
-            padding-left: calc(${spacing.xs} * 1.125);
+            padding-bottom: ${(props) =>
+        props.label !== null ?
+            (props.border === 'overlap' ?
+                `calc(${spacing.xs} * 1.125)` : 0) : `calc(${spacing.xs} * 1.125)`} !important;
+            padding-left: ${({ iconHelper }) => iconHelper === null ?
+        `calc(${spacing.xs} * 1.125)` : 'calc(1.8rem * 1.125)'};
             padding-top: calc(${spacing.sm} * 1.125);
         }
     }
     @media screen and (min-width: ${breakpoints.xl}) {
         font-size: ${getSize('md', true)};
         height: calc(3rem * 1.125);
-        padding: calc(${spacing.xs} * 1.125);
+        padding:
+            calc(${spacing.xs} * 1.125) calc(2.1rem * 1.125) calc(${spacing.xs} * 1.125) ${(iconHelper) => iconHelper === null ? `calc(${spacing.xs} * 1.125)` : 'calc(1.8rem * 1.125)'};
          ${({ border }) =>
         (border === 'bottom') ?
             `border: 0; border-bottom: calc(1px * 1.25) solid ${borderColor};` :

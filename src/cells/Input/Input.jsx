@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrapper, StyledInput, Caption, Icon, Info } from './StyledInput';
+import { Wrapper, StyledInput, Caption, Icon, Info, Helper } from './StyledInput';
 
 /**
  * Input component wrapped with label and span tags for better UX
@@ -14,30 +14,34 @@ import { Wrapper, StyledInput, Caption, Icon, Info } from './StyledInput';
  */
 const Input = ({
     iconPass,
-    iconRequired,
+    iconRequired = false,
     label,
     border = "default",
     disabled = false,
     size,
-    type,
+    type = "text",
+    iconHelper = null,
     ...props }) => {
     return (
         <Wrapper htmlFor={props.id} size={size} disabled={disabled} border={border} label={label || null}>
             <StyledInput
+                iconHelper={iconHelper}
                 {...props}
                 border={border}
                 disabled={disabled}
-                type={type || 'text'} id={props.id}
+                type={type} id={props.id}
                 value={props.value || undefined}
                 required label={label || null}
                 placeholder={(label || props.placeholder) || 'Placeholder'}
             />
+            {iconHelper !== null ?
+                <Helper /> : null}
             <Info>
                 <span>{iconPass || null}</span>
             </Info>
             <Caption border={border} disabled={disabled} label={label || null}>
                 <span>{label || null}</span>
-                <Icon>{iconRequired || null}</Icon>
+                {iconRequired ? <Icon /> : null}
             </Caption>
         </Wrapper>
     );

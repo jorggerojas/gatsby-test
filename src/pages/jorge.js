@@ -1,5 +1,5 @@
 import React from 'react';
-import Title  from '../cells/Title';
+import Title from '../cells/Title';
 import Paragraph from '../cells/Paragraph';
 import Input from '../cells/Input';
 
@@ -102,13 +102,13 @@ const Jorge = () => {
         padding: '10px'
       }}>
         <Title>Inputs</Title>
-        <Input size="sm" disabled value="Value (Disabled)" label="sm disabled with value" iconRequired={"😀"} />
+        <Input size="sm" disabled value="Value (Disabled)" label="sm disabled with value" iconRequired={true} />
         <Input size="sm" label="sm disabled" disabled />
         <Input size="md" border={'bottom'} placeholder="md no-label border bottom" />
-        <Input size="default" background placeholder="clamp no-label border full" iconPass={"👁"} />
+        <Input size="default" iconHelper={'card'} background placeholder="clamp no-label border full" iconPass={"👁"} />
         <Input size="default" background label="clamp label border full" iconPass={"👁"} placeholder="clamp no-label border full" />
         <Input size="default" border={'bottom'} background label="clamp label border bottom" />
-        <Input size="lg" label="lg border overlap" iconRequired={"😀"} iconPass={"👁"} border={'overlap'} />
+        <Input size="lg" label="lg border overlap" iconRequired={true} iconPass={"👁"} border={'overlap'} />
         <Input size="full" background border={'overlap'} label="full-sized border overlap disabled" disabled value="Caption (disabled)" />
       </div>
     </>
