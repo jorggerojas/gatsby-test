@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MiniPost } from '../organisms/MiniPost';
+import MiniPost from '../organisms/MiniPost';
 import Spacer from '../cells/Spacer';
-import { Title } from '../cells/Title';
-import { Avatar } from '../cells/Avatar';
-import { Paragraph } from '../cells/Paragraph';
+import Title  from '../cells/Title';
+import Avatar from '../cells/Avatar';
+import Paragraph from '../cells/Paragraph';
 import GlobalStyle from '../utils/global';
 import padding from '../utils/padding';
 

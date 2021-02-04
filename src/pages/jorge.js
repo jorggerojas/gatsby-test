@@ -1,7 +1,7 @@
 import React from 'react';
-import { Title } from '../cells/Title';
-import { Paragraph } from '../cells/Paragraph';
-import { Input } from '../cells/Input';
+import Title  from '../cells/Title';
+import Paragraph from '../cells/Paragraph';
+import Input from '../cells/Input';
 
 const Jorge = () => {
   return (

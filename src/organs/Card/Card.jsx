@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Title } from '../../cells/Title';
-import { Paragraph } from '../../cells/Paragraph';
+import Title  from '../../cells/Title';
+import Paragraph from '../../cells/Paragraph';
 import Spacer from '../../cells/Spacer';
 
 const lineHeight = line => {

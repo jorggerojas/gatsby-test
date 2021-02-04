@@ -1,6 +1,6 @@
 import React from 'react';
 import Meta from '../organisms/Meta';
-import { Anchor } from '../cells/Anchor';
+import  Anchor  from '../cells/Anchor';
 import { ArrowRight } from 'react-ikonate';
 const index = () => {
   return (

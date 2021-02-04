@@ -2,6 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import useSiteMetadata from '../hooks/use-sitemetadata'
 
+/**
+ * Meta component set the metadata for the page
+ * @param {React.Component} children The page to wrap
+ */
 const Meta = ({ children }) => {
     const { title, description } = useSiteMetadata();
     return (

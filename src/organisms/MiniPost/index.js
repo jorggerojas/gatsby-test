@@ -1,3 +1,1 @@
-import MiniPost from './MiniPost';
-
-export { MiniPost };
+export { default } from './MiniPost';

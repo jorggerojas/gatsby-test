@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { css } from 'styled-components';
 import GlobalStyle from '../utils/global';
-import { MiniPost } from '../organisms/MiniPost';
+import MiniPost from '../organisms/MiniPost';
 import Newsletter from '../organisms/Newsletter';
 
 

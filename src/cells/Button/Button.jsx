@@ -7,6 +7,13 @@ const defaultColors = {
   click: '#C3A24A',
 };
 
+/**
+ * Button component overrides HTML button tag. This components accepts icons and/or labels
+ * @param {String} label Label for the button
+ * @param {String} size Size of the button
+ * @param {String} colors Color of the button (with its states)
+ * @param {Icon} icon Icon component for the button
+ */
 const Button = ({
   label,
   size = SIZE.default,

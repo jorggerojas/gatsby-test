@@ -2,13 +2,13 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Container } from 'react-bootstrap';
 
-import { Avatar } from '../cells/Avatar';
-import { BackgroundImage } from '../cells/BackgroundImage';
-import { Button } from '../cells/Button';
-import { Paragraph } from '../cells/Paragraph';
-import { Title } from '../cells/Title';
+import Avatar from '../cells/Avatar';
+import BackgroundImage from '../cells/BackgroundImage';
+import Button from '../cells/Button';
+import Paragraph from '../cells/Paragraph';
+import Title  from '../cells/Title';
 import config from '../utils/config';
-import { Anchor } from '../cells/Anchor';
+import Anchor from '../cells/Anchor';
 import { Download } from 'react-ikonate';
 const colors = config.colors;
 const AuthorDesc = styled.div`

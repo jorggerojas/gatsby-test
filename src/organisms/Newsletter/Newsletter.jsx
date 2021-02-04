@@ -7,12 +7,15 @@ import {
     StyledNewsletterButtonDiv
 }
     from './StyledNewsletter';
-import { Title } from '../../cells/Title';
-import { Input } from '../../cells/Input';
-import { Paragraph } from '../../cells/Paragraph';
-import { Button } from '../../cells/Button';
+import Title  from '../../cells/Title';
+import Input from '../../cells/Input';
+import Paragraph from '../../cells/Paragraph';
+import Button from '../../cells/Button';
 import padding from '../../utils/padding';
 
+/**
+ * Newsletter component wrap an input, button and text for subscription
+ */
 const Newsletter = () => {
     return (
         <StyledNewsletter>

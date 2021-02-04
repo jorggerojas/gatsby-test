@@ -6,7 +6,7 @@ const ContainerMiniPost = styled(Container)`
   padding: 0;
 `;
 const StyledMiniPost = styled(ContainerMiniPost)`
-  display: ${({ cover }) => (cover === true ? '' : 'flex')};
+  display: ${({ cover }) => (cover === 'true' ? '' : 'flex')};
   justify-content: center;
   margin: 0;
   width: 100%;

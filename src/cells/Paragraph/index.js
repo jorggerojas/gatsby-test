@@ -1,3 +1,1 @@
-import Paragraph from './Paragraph';
-
-export { Paragraph };
+export { default } from './Paragraph';

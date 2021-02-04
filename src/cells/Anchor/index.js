@@ -1,3 +1,1 @@
-import Anchor from './Anchor';
-
-export { Anchor };
+export { default } from './Anchor';

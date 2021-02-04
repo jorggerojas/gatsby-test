@@ -3,9 +3,9 @@ import { Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled, { css } from 'styled-components';
 import StyledMiniPost from './StyledMiniPost';
-import { Title } from '../../cells/Title';
-import { Paragraph } from '../../cells/Paragraph';
-import { BackgroundImage } from '../../cells/BackgroundImage';
+import Title  from '../../cells/Title';
+import Paragraph from '../../cells/Paragraph';
+import BackgroundImage from '../../cells/BackgroundImage';
 import PostLabels from '../../organs/PostLabels';
 import Author from '../../organs/Author';
 import config from '../../utils/config';
@@ -104,11 +104,20 @@ const PostCol = styled(Col)`
     justify-content: flex-end;
   }
 `;
+/**
+ * MiniPost wrap image, title, Spacer and other components to display a preview of the large post
+ * @param {boolean} cover Set the image of the post as cover or in the left side
+ * @param {String} type Type of the post
+ * @param {Object} info Info about the post
+ * @param {String} title Title of the post
+ * @param {String} src Path of the image
+ * @param {String} alt Alt of the image (for accesibility)
+ */
 const MiniPost = ({ cover, type, info, title, text, src, alt }) => {
   return (
-    <StyledMiniPost fluid cover={cover}>
+    <StyledMiniPost fluid cover={cover.toString()}>
       {cover ? <BackgroundImage src={src} alt={alt} /> : null}
-      <PostRow cover={cover}>
+      <PostRow cover={cover.toString()}>
         {type !== 'blog' && !cover ? (
           <PostCol>
             <SideImage src={src} alt={alt} type={type} />

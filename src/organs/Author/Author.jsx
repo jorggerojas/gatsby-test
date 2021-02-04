@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledAuthor from './StyledAuthor';
-import { Avatar } from '../../cells/Avatar';
+import Avatar from '../../cells/Avatar';
 import styled from 'styled-components';
 import AuthorName from '../../tissues/AuthorName';
 import Hideable from '../../cells/Hideable';
@@ -19,6 +19,9 @@ const AuthorNameContainer = styled.div`
 
 /**
  * Component that renders an atuhor name, job and profile picture
+ * @param {String} name Name of the author
+ * @param {String} job Position of the author
+ * @param {String} src Path of the image
  */
 const Author = ({ name, job, src }) => {
   return (

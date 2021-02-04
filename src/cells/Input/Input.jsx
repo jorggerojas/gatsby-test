@@ -1,7 +1,26 @@
 import React from 'react';
 import { Wrapper, StyledInput, Caption, Icon, Info } from './StyledInput';
 
-const Input = ({ iconPass, iconRequired, label, border = "default", disabled = false, size, type, ...props }) => {
+/**
+ * Input component wrapped with label and span tags for better UX
+ * @param {Icon} iconPass Icon for set the password 'visible'
+ * @param {Icon} iconRequired Icon for mark input is required
+ * @param {String} label The caption for the input
+ * @param {String} border The border type for the input (full, bottom, overlaped)
+ * @param {boolean} disabled Set the input disabled
+ * @param {String} size Set the width of the input
+ * @param {String} type Set the input type (text, password, email, etc.)
+ * @param {Object} props HTML attributes for input tag
+ */
+const Input = ({
+    iconPass,
+    iconRequired,
+    label,
+    border = "default",
+    disabled = false,
+    size,
+    type,
+    ...props }) => {
     return (
         <Wrapper htmlFor={props.id} size={size} disabled={disabled} border={border} label={label || null}>
             <StyledInput

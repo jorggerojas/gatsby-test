@@ -1,12 +1,11 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import styled, { css } from 'styled-components';
-import { Title } from '../cells/Title';
+import Title  from '../cells/Title';
 import Spacer from '../cells/Spacer';
 import Image from '../cells/Image';
 import config from '../utils/config';
 import padding from '../utils/padding';
-import { Paragraph } from '../cells/Paragraph';
 import Card from '../organs/Card';
 
 const { display, breakpoints } = config;

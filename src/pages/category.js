@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import styled, { css } from 'styled-components';
 import GlobalStyle from '../utils/global';
-import { MiniPost } from '../organisms/MiniPost';
+import MiniPost from '../organisms/MiniPost';
 import Newsletter from '../organisms/Newsletter';
-import { Title } from '../cells/Title';
+import Title  from '../cells/Title';
 import config from '../utils/config';
 
 const { display, breakpoints } = config;

@@ -1,11 +1,13 @@
 import React from 'react';
 import padding from '../../utils/padding';
-import { Paragraph } from '../../cells/Paragraph';
+import Paragraph from '../../cells/Paragraph';
 import Spacer from '../../cells/Spacer';
+
 /**
  * Component that renders an author name with its job/position
- */
-
+ * @param {String} name Author name
+ * @param {String} job Author position
+*/
 const AuthorName = ({ name, job }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>

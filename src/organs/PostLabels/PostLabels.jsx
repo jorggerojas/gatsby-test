@@ -1,6 +1,6 @@
 import React from 'react';
 import { Notebook, Radio, Download, Play } from 'react-ikonate';
-import { Paragraph } from '../../cells/Paragraph';
+import Paragraph from '../../cells/Paragraph';
 import Spacer from '../../cells/Spacer';
 import StyledPostLabels from './StyledPostLabels';
 import { getSize } from '../../cells/Paragraph/StyledParagraph';
@@ -20,6 +20,14 @@ const icon = (type) => {
   }
 };
 
+/**
+ * PostLabels component set the description of the MiniPost component
+ * @param {Object} info data of the component
+ * @param {String} type type of the post
+ * @param {String} reading_time time for consume the post
+ * @param {String} category post category
+ * @param {Object} props HTML attributes
+ */
 const PostLabels = ({ info, type, reading_time, category, ...props }) => (
   <>
     <StyledPostLabels {...props}>
@@ -33,7 +41,7 @@ const PostLabels = ({ info, type, reading_time, category, ...props }) => (
         <Paragraph
           size="xs"
           hide="sm"
-          color="danger"
+          color="info"
         >{`${category}`}</Paragraph>
       </Hideable>
     </StyledPostLabels>
