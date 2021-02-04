@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import config from '../../utils/config';
-import { getSize } from '../../cells/Paragraph/StyledParagraph'
+import { getSize } from '../../cells/Paragraph/StyledParagraph';
 
 const { text, spacing, breakpoints } = config;
 const borderColor = '#001D48';
