@@ -1,29 +1,46 @@
 import React from 'react';
 import Meta from '../organisms/Meta';
-import  Anchor  from '../cells/Anchor';
+import Anchor from '../cells/Anchor';
 import { ArrowRight } from 'react-ikonate';
+import { Link } from 'gatsby';
 const index = () => {
   return (
     <Meta>
       <h1>Hello world!</h1>
       <ul>
         <li>
-          <Anchor href="/blog-roll" label="Blog" icon={<ArrowRight />} />
+          <Link to="/blog-roll">
+            <Anchor href="/blog-roll" label="Blog" icon={<ArrowRight />} />
+          </Link>
         </li>
         <li>
-          <Anchor href="/author" label="Author page" icon={<ArrowRight />} />
+          <Link to="/author">
+            <Anchor href="/author" label="Author page" icon={<ArrowRight />} />
+          </Link>
         </li>
         <li>
-          <Anchor href="/category" label="Category page" icon={<ArrowRight />} />
+          <Link to="/category">
+            <Anchor
+              href="/category"
+              label="Category page"
+              icon={<ArrowRight />}
+            />
+          </Link>
         </li>
         <li>
-          <Anchor href="/grid" label="Grid page" icon={<ArrowRight />} />
+          <Link to="/grid">
+            <Anchor href="/grid" label="Grid page" icon={<ArrowRight />} />
+          </Link>
         </li>
         <li>
-          <Anchor href="/juan-cells" label="Juan" icon={<ArrowRight />} />
+          <Link to="/juan-cells">
+            <Anchor href="/juan-cells" label="Juan" icon={<ArrowRight />} />
+          </Link>{' '}
         </li>
         <li>
-          <Anchor href="/jorge" label="Jorge" icon={<ArrowRight />} />
+          <Link to="/jorge">
+            <Anchor href="/jorge" label="Jorge" icon={<ArrowRight />} />
+          </Link>{' '}
         </li>
       </ul>
     </Meta>
