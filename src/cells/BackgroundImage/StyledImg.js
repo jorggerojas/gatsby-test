@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const StyledImg = styled.img`
   background-size: cover;
+  object-fit: cover;
   width: 100%;
   height: 144px;
   transition: height 0.25s cubic-bezier(0.12, 0, 0.39, 0);

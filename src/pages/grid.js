@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { /*useEffect*/ } from 'react';
+// import ls from 'locomotive-scroll';
 import Title from '../cells/Title';
 import Spacer from '../cells/Spacer';
 import Image from '../cells/Image';
 import padding from '../utils/padding';
 import Card from '../organs/Card';
+import Meta from '../organisms/Meta';
 import {
     Main,
     Content,
@@ -13,10 +15,17 @@ import {
 } from '../organisms/Grid';
 
 const Web = () => {
+    // useEffect(() => {
+    //     new ls({
+    //         el: document.querySelector('#___gatsby'),
+    //         smooth: true,
+    //         lerp: 0.0001,
+    //     });
+    // }, []);
     return (
-        <>
-            <Main >
-                <Content fluid>
+        <Meta>
+            <Main>
+                <Content fluid data-scroll>
                     <StyledRow>
                         <Column color="violet">
                             <div></div>
@@ -493,7 +502,7 @@ const Web = () => {
                     </StyledRow>
                 </Content>
             </Main>
-        </>
+        </Meta>
     );
 };
 

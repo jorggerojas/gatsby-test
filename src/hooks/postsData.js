@@ -10,9 +10,10 @@ const Data = () => {
             title
             authors {
               name
+              profile_image
             }
             feature_image
-            plaintext
+            excerpt
           }
         }
       }

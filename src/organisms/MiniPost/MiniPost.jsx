@@ -18,39 +18,40 @@ const SideImage = styled.img`
   width: 100%;
   height: 25.063rem;
   margin: 0;
+  object-fit:cover;
   align-self: center;
   transition: max-width 0.25s cubic-bezier(0.12, 0, 0.39, 0);
   transition: max-height 0.25s cubic-bezier(0.12, 0, 0.39, 0);
   @media (min-width: ${breakpoints.xs}) {
     ${(p) =>
-      p.type === 'podcast' &&
-      css`
+    p.type === 'podcast' &&
+    css`
         max-height: 145px;
       `}
     ${(p) =>
-      p.type === 'free-download' &&
-      css`
+    p.type === 'free-download' &&
+    css`
         max-height: 330px;
       `}
   }
   @media (min-width: ${breakpoints.sm}) {
     width: calc(calc(100% - 25.063rem) + 25.063rem);
     ${(p) =>
-      p.type === 'podcast' &&
-      css`
+    p.type === 'podcast' &&
+    css`
         max-height: 216px;
       `}
     ${(p) =>
-      p.type === 'free-download' &&
-      css`
+    p.type === 'free-download' &&
+    css`
         max-height: 440px;
       `}
   }
   @media (min-width: ${breakpoints.md}) {
     max-width: ${(p) => (p.type === 'free-download' ? '347px' : '100%')};
     ${(p) =>
-      p.type === 'podcast' &&
-      css`
+    p.type === 'podcast' &&
+    css`
         max-height: 305px;
       `}
   }
@@ -102,8 +103,9 @@ const PostCol = styled(Col)`
  * @param {String} title Title of the post
  * @param {String} src Path of the image
  * @param {String} alt Alt of the image (for accesibility)
+ * @param {Object} author Contains the name, job and profile image of the author
  */
-const MiniPost = ({ cover, type, info, title, text, src, alt }) => {
+const MiniPost = ({ cover, type, info, title, text, src, alt, author }) => {
   return (
     <>
       {cover ? <BackgroundImage src={src} alt={alt} /> : null}
@@ -149,9 +151,9 @@ const MiniPost = ({ cover, type, info, title, text, src, alt }) => {
 
             {type === 'free-download' ? null : (
               <Author
-                name="Clara González"
+                name={author.name}
                 job="CEO at Viaducto Company"
-                src="https://i.pinimg.com/originals/64/3e/fe/643efe51394d635cbf544a25088ee269.png"
+                src={author.profile_image || "https://i.pinimg.com/originals/64/3e/fe/643efe51394d635cbf544a25088ee269.png"}
               />
             )}
           </PostCol>

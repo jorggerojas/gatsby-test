@@ -3,6 +3,7 @@ import { SIZE } from './constants';
 
 const StyledAvatar = styled.img`
   border-radius: 100%;
+  object-fit: cover;
   display: inline-block;
   ${(props) =>
     props.size === SIZE.default &&
