@@ -4,7 +4,7 @@ import { css } from 'styled-components';
 import GlobalStyle from '../utils/global';
 import MiniPost from '../organisms/MiniPost';
 import Newsletter from '../organisms/Newsletter';
-
+import Data from '../hooks/postsData';
 
 const data = [
   {
@@ -1018,21 +1018,22 @@ const data = [
 ];
 
 const Blog = () => {
+  const dataPosts = Data();
   const [page, setPage] = useState(10);
   const [postData, setPostData] = useState([]);
   const [hasMoreContent, setHasMoreContent] = useState(true);
   const loadData = () => {
-    if ((postData.length >= data.length)) {
+    if ((postData.length >= dataPosts.length)) {
       setHasMoreContent(false);
       return;
     }
     setTimeout(() => {
-      setPostData(postData.concat(data.slice(page, (page + 10))));
+      setPostData(postData.concat(dataPosts.slice(page, (page + 10))));
       setPage((page + 10));
     }, 400);
   }
   useEffect(() => {
-    setPostData(postData.concat(data.slice(0, page)));
+    setPostData(postData.concat(dataPosts.slice(0, page)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -1053,7 +1054,7 @@ const Blog = () => {
           </p>
         }
       >
-        {postData.map((post, index) => {
+        {postData.map(({ node }, index) => {
           return (
             <div key={`n${index}`}>
               {index % 10 === 0 && index !== 0 ? <Newsletter /> : null}
@@ -1063,12 +1064,12 @@ const Blog = () => {
                 data-sal="fade"
                 data-sal-delay="100"
                 data-sal-easing="easeIn"
-                type={post.type}
-                info={post.description}
-                title={post.title}
-                text={post.summary}
-                src={post.img.src}
-                alt={post.img.alt}
+                type={'video'}
+                info={'jijiji'}
+                title={node.title}
+                text={node.plaintext}
+                src={node.feature_image}
+                alt={node.feature_image}
               />
             </div >
           )
