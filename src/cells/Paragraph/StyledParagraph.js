@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import config from '../../utils/config';
 
-const { text } = config;
+const { text, breakpoints } = config;
 const StyledParagraph = styled.p`
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Manrope&display=swap');
   text-align: ${({ align }) => align || 'left'};
@@ -15,27 +15,24 @@ const StyledParagraph = styled.p`
   text-align: ${({ align }) => align || 'left'};
   line-height: ${({ lineHeight }) => lineHeight ? `${lineHeight}rem` : '1.77rem'};
   color: ${({ color }) => (color ? text[color] : text['dark'])};
-  @media (min-width: 1440px) {
-    p {
-      font-size: ${({ size }) => getSize(size, true)};
-    }
+  @media (min-width: ${breakpoints.xl}) {
+    font-size: ${({ size }) => getSize(size, true)};
+    line-height: ${({ lineHeight }) => lineHeight ?
+    `calc(${lineHeight}rem * 1.125)` : 'calc(1.77rem * 1.125)'};
   }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: ${breakpoints.xs}) {
     display: ${({ hide }) => (hide === 'xs' ? 'none' : '')};
   }
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: ${breakpoints.sm}) {
     display: ${({ hide }) => (hide === 'sm' ? 'none' : '')};
   }
-  @media screen and (max-width: 791px) {
+  @media screen and (max-width: ${breakpoints.md}) {
     display: ${({ hide }) => (hide === 'md' ? 'none' : '')};
   }
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: ${breakpoints.lg}) {
     display: ${({ hide }) => (hide === 'lg' ? 'none' : '')};
   }
-  @media screen and (max-width: 1200px) {
-    display: ${({ hide }) => (hide === 'xl' ? 'none' : '')};
-  }
-  @media screen and (max-width: 1444px) {
+  @media screen and (max-width: ${breakpoints.xl}) {
     display: ${({ hide }) => (hide === 'xxl' ? 'none' : '')};
   }
 `;

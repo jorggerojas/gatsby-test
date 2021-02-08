@@ -97,6 +97,7 @@ export const Caption = styled.span`
     background: transparent;
     @media screen and (min-width: ${breakpoints.xl}) {
         bottom: calc(0.875rem * 1.125);
+        top: calc(0.8rem * 1.125);
         left: calc(${spacing.xs} * 1.125);
         font-size: ${() => getSize('md', true)};
     }

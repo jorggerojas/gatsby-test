@@ -7,7 +7,7 @@ import Newsletter from '../organisms/Newsletter';
 import Data from '../hooks/postsData';
 
 const Blog = () => {
-  const dataPosts = Data().sort();
+  const dataPosts = Data();
   const [page, setPage] = useState(10);
   const [postData, setPostData] = useState([]);
   const [hasMoreContent, setHasMoreContent] = useState(true);
