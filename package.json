@@ -32,7 +32,9 @@
     "gatsby-plugin-scroll-reveal": "^0.0.7",
     "react-infinite-scroll-component": "^5.1.0",
     "locomotive-scroll": "^4.0.6",
-    "gatsby-source-ghost": "4.2.3"
+    "gatsby-source-ghost": "4.2.3",
+    "@apollo/client": "3.3.8",
+    "react-horizontal-scrolling-menu": "0.7.9"
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.3",
