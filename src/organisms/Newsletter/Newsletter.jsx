@@ -7,7 +7,7 @@ import {
     StyledNewsletterButtonDiv
 }
     from './StyledNewsletter';
-import Title  from '../../cells/Title';
+import Title from '../../cells/Title';
 import Input from '../../cells/Input';
 import Paragraph from '../../cells/Paragraph';
 import Button from '../../cells/Button';
@@ -15,13 +15,17 @@ import padding from '../../utils/padding';
 
 /**
  * Newsletter component wrap an input, button and text for subscription
+ * @param {String} title Title of the newsletter
+ * @param {String} bottom Padding bottom of the title
  */
-const Newsletter = () => {
+const Newsletter = ({ title = "Get our Insights.", bottom = 'sm', download = false, hide = "md" }) => {
     return (
-        <StyledNewsletter>
+        <StyledNewsletter download={download.toString()}>
             <StyledNewsletterTitleContainer>
-                <Title level="D3" lineHeight="4.3rem" css={padding({ bottom: 'sm' })}>Get our Insights.</Title>
-                <Paragraph hide="md" size="lg">
+                <Title level="D3" lineHeight="4.3rem" css={padding({ bottom: bottom })}>
+                    {title}
+                </Title>
+                <Paragraph hide={hide} size="lg">
                     Subscribe to our biweekly newsletter with the best in product management, startups and digital transformation
                 </Paragraph>
             </StyledNewsletterTitleContainer>

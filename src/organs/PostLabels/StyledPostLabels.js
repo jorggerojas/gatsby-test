@@ -7,7 +7,7 @@ const StyledPostLabels = styled(Container)`
   display: flex;
   align-items: center;
   margin: 0;
-  width: 124%;
+  width: ${({ post }) => post ? '100%' : '124%'};
   flex-direction: ${({ direction }) => direction || 'row'};
   @media (max-width: 788px) {
     width: 100%;

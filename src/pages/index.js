@@ -2,48 +2,46 @@ import React from 'react';
 import Meta from '../organisms/Meta';
 import Anchor from '../cells/Anchor';
 import { ArrowRight } from 'react-ikonate';
-import { Link } from 'gatsby';
 const index = () => {
   return (
     <Meta>
       <h1>Hello world!</h1>
       <ul>
         <li>
-          <Link to="/blog-roll">
-            <Anchor href="/blog-roll" label="Blog" icon={<ArrowRight />} />
-          </Link>
+          <Anchor href="/blog-roll" label="Blog" icon={<ArrowRight />} />
         </li>
         <li>
-          <Link to="/author">
-            <Anchor href="/author" label="Author page" icon={<ArrowRight />} />
-          </Link>
+          <Anchor href="/author" label="Author page" icon={<ArrowRight />} />
         </li>
         <li>
-          <Link to="/category">
-            <Anchor
-              href="/category"
-              label="Category page"
-              icon={<ArrowRight />}
-            />
-          </Link>
+          <Anchor href="/category" label="Category page" icon={<ArrowRight />} />
         </li>
         <li>
-          <Link to="/grid">
-            <Anchor href="/grid" label="Grid page" icon={<ArrowRight />} />
-          </Link>
+          <Anchor href="/grid" label="Grid page" icon={<ArrowRight />} />
         </li>
         <li>
-          <Link to="/juan-cells">
-            <Anchor href="/juan-cells" label="Juan" icon={<ArrowRight />} />
-          </Link>{' '}
+          <Anchor href="/blog-post" label="Blog post" icon={<ArrowRight />} />
         </li>
         <li>
-          <Link to="/jorge">
-            <Anchor href="/jorge" label="Jorge" icon={<ArrowRight />} />
-          </Link>{' '}
+          <Anchor href="/video" label="Video" icon={<ArrowRight />} />
+        </li>
+        <li>
+          <Anchor href="/podcast" label="Podcast" icon={<ArrowRight />} />
+        </li>
+        <li>
+          <Anchor href="/download" label="Download" icon={<ArrowRight />} />
+        </li>
+        <li>
+          <Anchor href="/long-form" label="Long form article" icon={<ArrowRight />} />
+        </li>
+        <li>
+          <Anchor href="/juan-cells" label="Juan" icon={<ArrowRight />} />
+        </li>
+        <li>
+          <Anchor href="/jorge" label="Jorge" icon={<ArrowRight />} />
         </li>
       </ul>
-    </Meta>
+    </Meta >
   );
 };
 

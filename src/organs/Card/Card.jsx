@@ -1,57 +1,42 @@
 import React from 'react';
-import styled from 'styled-components';
-import Title  from '../../cells/Title';
-import Paragraph from '../../cells/Paragraph';
+import { ArrowRight } from 'react-ikonate';
+import { StyledCard } from './StyledCard';
+import Image from '../../cells/Image';
 import Spacer from '../../cells/Spacer';
+import PostLabels from '../PostLabels';
+import Title from '../../cells/Title';
+import Anchor from '../../cells/Anchor';
 
-const lineHeight = line => {
-    switch (line) {
-        case 'xs':
-            return "1.375rem";
-        case 'sm':
-            return "2.073rem";
-        case 'lg':
-            return "3.285rem";
-        case 'md':
-        default:
-            return "3.007rem";
-    }
-}
-const StyledCard = styled.div`
-    background-color: ${({ background }) => background || 'transparent'};
-`;
 /**
- * A simple (flat) card component with caption, title and description (or any text)
- * @param {String} caption Caption (tag or category) of the card
- * @param {String} space Space (Spacer component) between the caption and the title
- * @param {String} title Title of the card (goes under the caption) 
- * @param {String} titleLevel Level (1, 2, 3, D4) of the Title component
- * @param {String} titleLineHeight Line height of the Title component (xs to lg)
- * @param {String} color Color of the title
- * @param {String} paragraph Content of the card (summary)
- * @param {String} sizeParagraph Font size of the paragraph (xxs to lg)
+ * Card component to link another articles
+ * @param {String} src Path of the post image
+ * @param {String} title Title of the post
+ * @param {String} to Path of the post
+ * @param {String} type Type of the post
  */
-const Card = ({
-    caption,
-    space = "md",
-    title,
-    titleLevel,
-    titleLineHeight = "md",
-    color = "dark",
-    paragraph,
-    sizeParagraph = "md",
-}) => {
+const Card = () => {
     return (
         <StyledCard>
-            <Paragraph family="DM Sans" size="sm" lineHeight="1.375">{caption}</Paragraph>
-            <Spacer size={space} />
-            <Title level={titleLevel} color={color} lineHeight={lineHeight(titleLineHeight)}>
-                {title}
+            <Image
+                src="https://media3.s-nbcnews.com/j/newscms/2019_33/2203981/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-2000w.jpg"
+                alt="coffee"
+                height="2.074rem"
+            />
+            <Spacer size="lg" />
+            <PostLabels
+                reading_time={7}
+                type={'blog'}
+                category=""
+                align="start"
+                justify="start"
+                post={true}
+            />
+            <Title level="6">
+                Identifica cuál es el verdadero costo de una pobre identificación
             </Title>
-            <Spacer size="xxl" />
-            <Paragraph size={sizeParagraph} lineHeight={titleLevel === '3' ? '1.333' : "1.5"}>
-                {paragraph}
-            </Paragraph>
+            <Spacer size="md" />
+            <Anchor href="#" label="Enlace" icon={<ArrowRight />} />
+            <Spacer size="xl" />
         </StyledCard>
     );
 };

@@ -14,14 +14,7 @@ const StyledTitle = styled.h1`
   line-height: ${({ lineHeight }) => lineHeight ? `${lineHeight}` : '1.77rem'};
   color: ${({ color }) => (color ? text[color] : text['dark'])};
   @media (min-width: ${breakpoints.xl}) {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-size: ${({ level }) => getFontSize(level || '1', true)} !important;
-    }
+    font-size: ${({ level }) => getFontSize(level || '1', true)} !important;
     line-height: ${({ lineHeight }) =>
     `calc(${lineHeight}rem * 1.3)` || '1.99rem'} !important;
   }

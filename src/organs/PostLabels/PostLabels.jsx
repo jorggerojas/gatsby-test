@@ -26,16 +26,17 @@ const icon = (type) => {
  * @param {String} type type of the post
  * @param {String} reading_time time for consume the post
  * @param {String} category post category
+ * @param {boolean} post Flag to put width in the label for long post
  * @param {Object} props HTML attributes
  */
-const PostLabels = ({ info, type, reading_time, category, ...props }) => (
+const PostLabels = ({ info, type = 'blog', reading_time, category, post = true, ...props }) => (
   <>
     <StyledPostLabels {...props}>
       {icon(type)}
       <Spacer direction="horizontal" size="nano" />
-      <Paragraph size="xs">{type}</Paragraph>
-      <Spacer direction="horizontal" size="sm" />
-      <Paragraph size="xs">{`${reading_time} MINUTES READING`}</Paragraph>
+      <Paragraph size="xs">{type.toUpperCase()}</Paragraph>
+      <Spacer direction="horizontal" size="xs" />
+      <Paragraph size="xs">{`- ${reading_time} MINUTES READING`}</Paragraph>
       <Hideable visibleOn="md">
         <Spacer direction="horizontal" size="sm" />
         <Paragraph
