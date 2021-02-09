@@ -8,7 +8,7 @@ import PostLabels from '../../organs/PostLabels';
 import Author from '../../organs/Author';
 import Spacer from '../../cells/Spacer';
 import Hideable from '../../cells/Hideable';
-
+import { TYPES } from './constants';
 /**
  * MiniPost wrap image, title, Spacer and other components to display a preview of the large post
  * @param {boolean} cover Set the image of the post as cover or in the left side
@@ -26,7 +26,7 @@ const MiniPost = ({ cover, type, info, title, text, src, alt, author }) => {
 
       <StyledMiniPost fluid cover={cover.toString()}>
         <PostRow>
-          {type !== 'blog' && !cover ? (
+          {type !== TYPES.blog && !cover ? (
             <>
               <PostCol>
                 <SideImage src={src} alt={alt} type={type} />
@@ -38,7 +38,7 @@ const MiniPost = ({ cover, type, info, title, text, src, alt, author }) => {
           ) : null}
 
           <PostCol>
-            {!cover && type !== 'blog' ? (
+            {!cover && type !== TYPES.blog ? (
               <Hideable after={false} visibleOn="lg">
                 <Spacer size="md" />
               </Hideable>
@@ -63,11 +63,14 @@ const MiniPost = ({ cover, type, info, title, text, src, alt, author }) => {
             </Paragraph>
             <Spacer size="xl" />
 
-            {type === 'free-download' ? null : (
+            {type === TYPES.freeDownload ? null : (
               <Author
                 name={author.name}
                 job="CEO at Viaducto Company"
-                src={author.profile_image || "https://i.pinimg.com/originals/64/3e/fe/643efe51394d635cbf544a25088ee269.png"}
+                src={
+                  author.profile_image ||
+                  'https://i.pinimg.com/originals/64/3e/fe/643efe51394d635cbf544a25088ee269.png'
+                }
               />
             )}
           </PostCol>
