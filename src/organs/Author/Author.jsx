@@ -19,11 +19,12 @@ const AuthorNameContainer = styled.div`
 
 /**
  * Component that renders an atuhor name, job and profile picture
- * @param {String} name Name of the author
- * @param {String} job Position of the author
- * @param {String} src Path of the image
+ * @param {String} name Author's name
+ * @param {String} job Author's position/job
+ * @param {String} src Image's path
+ * @param {String} slug Author's 'friendly' id or nickname
  */
-const Author = ({ name, job, src }) => {
+const Author = ({ name, job, src, slug }) => {
   return (
     <StyledAuthor>
       <Spacer direction="horizontal" size="md" />
@@ -32,7 +33,7 @@ const Author = ({ name, job, src }) => {
         <Spacer direction="horizontal" size="md" />
       </Hideable>
       <AuthorNameContainer display="flex" direction="column">
-        <AuthorName name={name} job={job} />
+        <AuthorName name={name} job={job} slug={slug} />
       </AuthorNameContainer>
     </StyledAuthor>
   );

@@ -15,4 +15,7 @@ export const StyledCard = styled.div`
     & img{
         padding: 0;
     }
+    & h1{
+        white-space: break-spaces;
+    }
 `;

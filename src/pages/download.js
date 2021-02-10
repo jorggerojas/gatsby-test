@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import ScrollMenu from 'react-horizontal-scrolling-menu';
 import {
     TextContainer,
     TextRow,
@@ -24,7 +25,26 @@ import Image from '../cells/Image';
 import Card from '../organs/Card';
 import GlobalStyle from '../utils/global';
 
+const cards = [
+    <Card key="1" />,
+    <Card key="2" />,
+    <Card key="3" />,
+    <Card key="4" />,
+    <Card key="5" />,
+    <Card key="6" />,
+    <Card key="7" />,
+    <Card key="8" />,
+    <Card key="9" />,
+    <Card key="10" />,
+    <Card key="11" />,
+    <Card key="12" />,
+    <Card key="13" />,
+];
 const Download = () => {
+    const [selected, setSelected] = useState(0);
+    const onSelect = (item) => {
+        setSelected(item);
+    }
     return (
         <Meta>
             <GlobalStyle />
@@ -229,7 +249,12 @@ const Download = () => {
             </TextContainer>
             {/* ARTICLES/CARDS */}
             <CardsContainer>
-                <Card />
+                <ScrollMenu
+                    data={cards}
+                    selected={selected}
+                    onSelect={onSelect}
+                    wheel={false}
+                />
             </CardsContainer>
             <Newsletter />
         </Meta >

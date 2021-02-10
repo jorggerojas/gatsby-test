@@ -5,6 +5,7 @@ import Spacer from '../../cells/Spacer';
 import StyledPostLabels from './StyledPostLabels';
 import { getSize } from '../../cells/Paragraph/StyledParagraph';
 import Hideable from '../../cells/Hideable';
+import Anchor from '../../cells/Anchor';
 const icon = (type) => {
   let color = '#2329D6';
   switch (type) {
@@ -22,32 +23,38 @@ const icon = (type) => {
 
 /**
  * PostLabels component set the description of the MiniPost component
- * @param {Object} info data of the component
+ * @param {Object} to Category path
  * @param {String} type type of the post
  * @param {String} reading_time time for consume the post
  * @param {String} category post category
  * @param {boolean} post Flag to put width in the label for long post
  * @param {Object} props HTML attributes
  */
-const PostLabels = ({ info, type = 'blog', reading_time, category, post = true, ...props }) => (
-  <>
-    <StyledPostLabels {...props}>
-      {icon(type)}
-      <Spacer direction="horizontal" size="nano" />
-      <Paragraph size="xs">{type.toUpperCase()}</Paragraph>
-      <Spacer direction="horizontal" size="xs" />
-      <Paragraph size="xs">{`- ${reading_time} MINUTES READING`}</Paragraph>
-      <Hideable visibleOn="md">
-        <Spacer direction="horizontal" size="sm" />
-        <Paragraph
-          size="xs"
-          hide="sm"
-          color="info"
-        >{`${category}`}</Paragraph>
-      </Hideable>
-    </StyledPostLabels>
-    <Spacer size="md" />
-  </>
-);
+const PostLabels = ({ to, type = 'blog', reading_time, category, post = true, ...props }) => {
+  const time = () => `- ${reading_time} minute${reading_time === 1 ? '' : 's'} reading`;
+
+  return (
+    <>
+      <StyledPostLabels {...props}>
+        {icon(type)}
+        <Spacer direction="horizontal" size="nano" />
+        <Paragraph size="xs">{type.toUpperCase()}</Paragraph>
+        <Spacer direction="horizontal" size="xs" />
+        <Paragraph size="xs">{time().toUpperCase()}</Paragraph>
+        <Hideable visibleOn="md">
+          <Spacer direction="horizontal" size="sm" />
+          <Paragraph
+            size="xs"
+            hide="sm"
+            color="info"
+          >
+            <Anchor href={`/category/${to}`} color="info" label={category.toUpperCase()} />
+          </Paragraph>
+        </Hideable>
+      </StyledPostLabels>
+      <Spacer size="md" />
+    </>
+  );
+}
 
 export default PostLabels;

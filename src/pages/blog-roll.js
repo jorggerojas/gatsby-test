@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import { useQuery, gql } from '@apollo/client';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { css } from 'styled-components';
 import GlobalStyle from '../utils/global';
@@ -18,12 +17,19 @@ const GET_POSTS = gql`
         node {
           id
           title
+          reading_time
           feature_image
           excerpt
           slug
           authors {
             name
             profile_image
+            slug
+          }
+          tags{
+            name
+            slug
+            visibility
           }
         }
       }
@@ -51,6 +57,26 @@ const Blog = () => {
     }
   }, [data]);
 
+  const tagInfo = tags => {
+    if (tags.length > 0) {
+      const helperTagIndex = tags.reduce((_, actual, index) => {
+        return actual.visibility === 'internal' ? index : -1
+      });
+      console.log(helperTagIndex);
+      const tagName = helperTagIndex !== -1 ? tags[helperTagIndex].name.split("#")[1] : 'Sales and marketing';
+      const tagSlug = helperTagIndex !== -1 ? tags[helperTagIndex].slug : 'sales-and-marketing';
+      return {
+        slug: tagSlug,
+        name: tagName
+      };
+    } else {
+      return {
+        slug: '#',
+        name: 'Loading...'
+      };
+    }
+  }
+
   const [hasMore, setHasMore] = useState(true);
 
   const loadMorePosts = () => {
@@ -66,7 +92,6 @@ const Blog = () => {
       setHasMore(false);
     }
   };
-
   return (
     <>
       <GlobalStyle />
@@ -91,7 +116,7 @@ const Blog = () => {
           posts.map(({ node }, index) => {
             return (
               <div key={`post-${index}-${node.title}`}>
-                {(index % 10 === 0 && index !== 0) || index === totalCount ? (
+                {(index % 10 === 0 && index !== 0) ? (
                   <Newsletter />
                 ) : null}
                 <MiniPost
@@ -103,17 +128,21 @@ const Blog = () => {
                   data-sal-delay="100"
                   data-sal-easing="easeIn"
                   type={'video'}
-                  info={'jijiji'}
+                  info={{ name: "Sales and marketing", slug: 'sales-and-marketing', reading_time: 1 }}
+                  // info={tagInfo(node.tags)}
                   title={node.title}
                   text={node.excerpt}
                   src={node.feature_image}
                   alt={`Imagen de ${node.title}`}
                   author={node.authors[0]}
                 />
+                {(index === (totalCount - 1)) ? (
+                  <Newsletter />
+                ) : null}
               </div>
             );
           })}
-        {loading && posts.length == 0 ? 'Cargando...' : null}
+        {loading && posts.length === 0 ? 'Cargando...' : null}
         {error &&
           'Ocurrió un error con el servidor, y no hemos podido consultar ningún post'}
       </InfiniteScroll>

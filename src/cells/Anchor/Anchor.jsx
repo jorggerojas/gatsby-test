@@ -8,9 +8,9 @@ import StyledAnchor from './StyledAnchor';
  * @param {String} href The path of the page to visit
  * @param {Icon} icon The Icon component
  */
-const Anchor = ({ label, href, icon = null, ...rest }) => {
+const Anchor = ({ label, href, color = null, icon = null, ...rest }) => {
   return (
-    <StyledAnchor to={href} {...rest}>
+    <StyledAnchor to={href} color={color} {...rest}>
       {label}
       {icon !== null && icon}
     </StyledAnchor>

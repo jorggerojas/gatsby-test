@@ -8,18 +8,20 @@ import padding from '../../utils/padding';
 
 /**
  * AuthorContainer is a wrapper with Author's data for Authors Page
+ * @param {String} name Author's name
+ * @param {String} image Author's profile image
  */
-const AuthorContainer = () => {
+const AuthorContainer = ({ name = "Loading...", image = "..." }) => {
     return (
         <StyledAuthorContainer>
             <TopPage css={padding({ top: 'sm' })}>
                 <Avatar
-                    src="https://i.pinimg.com/originals/64/3e/fe/643efe51394d635cbf544a25088ee269.png"
-                    alt="Carla Gonzalez foto"
+                    src={image}
+                    alt={`Img ${image}`}
                     size="large"
                 />
                 <Spacer size="lg" />
-                <Title level="D3">Clara González</Title>
+                <Title level="D3">{name}</Title>
                 <Spacer size="md" />
                 <Paragraph size="sm" color="mutedGray">
                     CEO at Company name

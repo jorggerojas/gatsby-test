@@ -37,22 +37,10 @@ export const TextRow = styled(PostRow)`
 
 export const CardsContainer = styled.div`
     transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
-    display: inline-flex;
-    align-items: flex-start;
     margin: 0;
     margin: 0 1rem;
     margin-bottom: clamp(3.213rem, calc(3.213rem + ((1vw - 0.2rem) * 4.25)), 6.188rem);
-    @media screen and (max-width: ${breakpoints.sm}){
-        flex-direction: column;
-    }
-    @media screen and (min-width: ${breakpoints.sm}){
-       margin-left: 2rem;
-    }
-    @media screen and (min-width: ${breakpoints.md}){
-        margin-left: clamp(6.188rem, calc(6.188rem + ((1vw - 0.48rem) * 9.8214)), 10.313rem);
-    }
-    @media screen and (min-width: ${breakpoints.xl}){
-        margin-left: clamp(6.188rem, calc(6.188rem + ((calc(1vw * 1.25) - 0.48rem) * 9.8214)), 10.313rem);
-        margin-bottom: clamp(3.213rem, calc(3.213rem + ((calc(1vw * 1.125) - 0.2rem) * 4.25)), 6.188rem);
+    & .menu-item-wrapper, .active{
+        outline: none;
     }
 `;

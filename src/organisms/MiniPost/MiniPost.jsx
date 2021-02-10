@@ -46,9 +46,10 @@ const MiniPost = ({ cover, type, info, title, text, src, alt, author }) => {
             <Row>
               <Col style={{ padding: 0 }}>
                 <PostLabels
-                  reading_time={7}
+                  reading_time={info.reading_time}
                   type={type}
-                  category="SALES AND MARKETING, ENGINEERING"
+                  category={info.name}
+                  to={info.slug}
                   align="start"
                   justify="start"
                 />
@@ -67,6 +68,7 @@ const MiniPost = ({ cover, type, info, title, text, src, alt, author }) => {
               <Author
                 name={author.name}
                 job="CEO at Viaducto Company"
+                slug={author.slug}
                 src={
                   author.profile_image ||
                   'https://i.pinimg.com/originals/64/3e/fe/643efe51394d635cbf544a25088ee269.png'

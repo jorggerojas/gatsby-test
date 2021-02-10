@@ -11,7 +11,7 @@ const index = () => {
           <Anchor href="/blog-roll" label="Blog" icon={<ArrowRight />} />
         </li>
         <li>
-          <Anchor href="/author" label="Author page" icon={<ArrowRight />} />
+          <Anchor href="/author/jorge" label="Author page" icon={<ArrowRight />} />
         </li>
         <li>
           <Anchor href="/category" label="Category page" icon={<ArrowRight />} />
