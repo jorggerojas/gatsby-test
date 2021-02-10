@@ -1,116 +1,88 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React, { useState } from 'react';
+import { css } from 'styled-components';
 import { Container } from 'react-bootstrap';
 
-import Avatar from '../cells/Avatar';
-import BackgroundImage from '../cells/BackgroundImage';
 import Button from '../cells/Button';
-import Paragraph from '../cells/Paragraph';
-import Title  from '../cells/Title';
 import config from '../utils/config';
 import Anchor from '../cells/Anchor';
-import { Download } from 'react-ikonate';
-const colors = config.colors;
-const AuthorDesc = styled.div`
-  display: flex;
-  align-items: center;
-`;
+import { Download, ArrowRight } from 'react-ikonate';
+import { I18Provider, LOCALES } from '../i18n';
+import { FormattedMessage } from 'react-intl';
 
-// const icon = (
-//   <svg
-//     role="img"
-//     xmlns="http://www.w3.org/2000/svg"
-//     width="24px"
-//     height="24px"
-//     viewBox="0 0 24 24"
-//     aria-labelledby="arrowRightIconTitle"
-//     stroke="#2329D6"
-//     stroke-width="1"
-//     stroke-linecap="square"
-//     stroke-linejoin="miter"
-//     fill="none"
-//     color="#2329D6"
-//   >
-//     {' '}
-//     <title id="arrowRightIconTitle">Arrow Right</title>{' '}
-//     <path d="M15 18l6-6-6-6" /> <path d="M3 12h17" />{' '}
-//     <path stroke-linecap="round" d="M21 12h-1" />{' '}
-//   </svg>
-// );
+const colors = config.colors;
 
 const Juan = () => {
+  const [isSpanish, setIsSpanish] = useState(true);
+  const change = () => {
+    setIsSpanish((d) => !d);
+  };
   return (
-    <>
-      <BackgroundImage
-        src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-        alt=""
-      />
+    <I18Provider locale={isSpanish ? LOCALES.SPANISH : LOCALES.ENGLISH}>
       <section
         css={css`
           padding-left: 100px;
           padding-right: 100px;
         `}
       >
-        <p>BLOG - 7 MINUTE READ SALES AND MARKETING, ENGINEERING</p>
-        <Title level="1">
-          Identifica cuál es el verdadero costo de una pobre identificación
-        </Title>
-        <Paragraph>
-          This chapter will be about getting started with Git. We will begin by
-          explaining some background on version control tools, then move on to
-          how to get Git running on your system and finally how to get it set up
-          to start working jfj jfjf sjsd js jsd jd sjdsj djjsdj jsd jd jsdjjjjjj
-        </Paragraph>
-
-        <AuthorDesc>
-          <Avatar
-            src="https://www.ani.gov.co/sites/default/files/img-20190517-wa0003.jpg"
-            alt="avata"
-          />
-          <div
-            css={css`
-              display: flex;
-              flex-direction: column;
-            `}
-          >
-            <Title level="5" style={{ margin: 0 }}>
-              Clara Gonzalez
-            </Title>
-            <Title level="6" style={{ margin: 0 }}>
-              CEO at Company Name
-            </Title>
-          </div>
-        </AuthorDesc>
+        <button onClick={change}>
+          {isSpanish ? 'change to english' : 'cambiar a español'}
+        </button>
       </section>
       <Container>
-        <Anchor label="Next" href="#" icon={<Download />} />
+        <Anchor label="Next" href="#" icon={<ArrowRight />} />
         <Anchor label="Link" href="#" />
+      </Container>
+      <Container>
+        <div>
+          <FormattedMessage id="readingTime" values={{ minutes: 0 }} />
+        </div>
+        <div>
+          <FormattedMessage id="readingTime" values={{ minutes: 1 }} />
+        </div>
+        <div>
+          <FormattedMessage id="readingTime" values={{ minutes: 7 }} />
+        </div>
       </Container>
 
       <Button
         colors={colors.primary}
-        label="Small"
+        label={<FormattedMessage id="formAccept" />}
         icon={<Download />}
         size="small"
       />
-      <Button colors={colors.primary} label="Small" size="small" />
+      <Button
+        colors={colors.primary}
+        label={<FormattedMessage id="formReject" />}
+        size="small"
+      />
       <Button colors={colors.primary} icon={<Download />} size="small" />
 
       <Button
         colors={colors.primary}
-        label="Medium/normal"
+        label={<FormattedMessage id="formCancel" />}
         icon={<Download />}
       />
       <Button colors={colors.primary} icon={<Download />} />
-      <Button colors={colors.primary} label="Medium/normal" />
+      <Button
+        colors={colors.primary}
+        label={<FormattedMessage id="formSubmit" />}
+      />
+      <Button
+        colors={colors.primary}
+        label={<FormattedMessage id="formSubmit" />}
+      />
 
       <Button
         colors={colors.primary}
-        label="Large"
+        label={<FormattedMessage id="formContinue" />}
         icon={<Download />}
         size="large"
       />
-      <Button colors={colors.primary} label="Large" size="large" />
+      <Button
+        colors={colors.primary}
+        label={<FormattedMessage id="formAccept" />}
+        size="large"
+      />
 
       <Button colors={colors.primary} icon={<Download />} size="large" />
 
@@ -121,9 +93,18 @@ const Juan = () => {
         disabled
       />
 
-      <Button colors={colors.warning} label="Small" size="small" block />
-      <Button colors={colors.info} label="Medium/normal" block />
-    </>
+      <Button
+        colors={colors.warning}
+        label={<FormattedMessage id="loading" />}
+        size="small"
+        block
+      />
+      <Button
+        colors={colors.info}
+        label={<FormattedMessage id="loading" />}
+        block
+      />
+    </I18Provider>
   );
 };
 
