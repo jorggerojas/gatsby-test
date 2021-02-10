@@ -12,7 +12,7 @@ const StyledButton = styled.button`
   border-radius: 2px;
   box-sizing: border-box;
   background-color: ${(props) => props.colors.default};
-  transition: all 0.3s ease-out;
+  transition: background-color 0.15s ease-in-out;
   text-align: center;
   vertical-align: middle;
   height: 2.98em;
@@ -33,11 +33,10 @@ const StyledButton = styled.button`
   }
 
   &:focus {
-    box-shadow: 0 0 0 0.15rem ${(props) => props.colors.default};
-    outline: 0;
+    background-color: ${(props) => props.colors.hover};
   }
 
-  &:active {
+  &:not([hover]):active {
     background-color: ${(props) => props.colors.click};
   }
 
