@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { css } from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import AuthorContainer from '../organisms/AuthorContainer';
@@ -8,34 +8,9 @@ import Meta from '../organisms/Meta';
 import MiniPost from '../organisms/MiniPost';
 import Newsletter from '../organisms/Newsletter';
 import GlobalStyle from '../utils/global';
+import { tagInfo, postType } from '../organisms/BlogRoll';
+import { GET_AUTHOR_DATA } from '../queries/index';
 
-const GET_AUTHOR_DATA = gql`
-  query GetAuthorData($skip: Int!, $limit: Int!, $slug: StringQueryOperatorInput) {
-    allGhostPost(
-      sort: { fields: [created_at], order: DESC }
-      skip: $skip
-      limit: $limit
-      filter: {authors: {elemMatch: {slug: $slug}}}
-    ) {
-      edges {
-        node {
-          id
-          title
-          feature_image
-          excerpt
-          slug
-          authors {
-            name
-            profile_image
-            slug
-            id
-          }
-        }
-      }
-      totalCount
-    }
-  }
-`;
 const AuthorTemplate = () => {
     let limit = 2;
     const { slug } = useParams();
@@ -93,36 +68,33 @@ const AuthorTemplate = () => {
                 next={loadMorePosts}
                 loader={<h4>Cargando...</h4>}
                 hasMore={hasMore}
-                endMessage={
-                    <p style={{ textAlign: 'center' }}>
-                        <b>Yay! You have seen it all</b>
-                    </p>
-                }
             >
                 {posts.length > 0 &&
                     posts.map(({ node }, index) => {
                         return (
                             <div key={`post-${index}-${node.title}`}>
-                                {(index % 10 === 0 && index !== 0) || index === totalCount ? (
+                                {(index % 10 === 0 && index !== 0) ? (
                                     <Newsletter />
                                 ) : null}
                                 <MiniPost
                                     cover={
                                         index.toString().charAt(index.toString().length - 1) === '0'
-                                        && index !== 0
                                     }
                                     key={index}
                                     data-sal="fade"
                                     data-sal-delay="100"
                                     data-sal-easing="easeIn"
-                                    type={'video'}
-                                    info={{ name: 'Sales and marketing', slug: "sales-and-marketing" }}
+                                    type={postType(node.tags)}
+                                    info={tagInfo(node.tags, node.reading_time)}
                                     title={node.title}
                                     text={node.excerpt}
                                     src={node.feature_image}
                                     alt={`Imagen de ${node.title}`}
                                     author={node.authors[0]}
                                 />
+                                {(index === (totalCount - 1)) ? (
+                                    <Newsletter />
+                                ) : null}
                             </div>
                         );
                     })}

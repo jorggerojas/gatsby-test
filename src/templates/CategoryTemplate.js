@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import Meta from '../organisms/Meta';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import styled, { css } from 'styled-components';
@@ -9,6 +9,8 @@ import MiniPost from '../organisms/MiniPost';
 import Newsletter from '../organisms/Newsletter';
 import Title from '../cells/Title';
 import config from '../utils/config';
+import { tagInfo, postType } from '../organisms/BlogRoll';
+import { GET_TAG_DATA } from '../queries/index';
 
 const { display, breakpoints } = config;
 const StyledTitleContainer = styled.div`
@@ -43,38 +45,11 @@ const StyledTitleContainer = styled.div`
     }
 `;
 
-const GET_TAG_DATA = gql`
-query GetTagData($skip: Int!, $limit: Int!,$slug: StringQueryOperatorInput) {
-  allGhostPost(sort: {fields: [created_at], order: DESC}, skip: $skip, limit: $limit, filter: {tags: {elemMatch: {slug: $slug}}}) {
-    edges {
-      node {
-        id
-        title
-        feature_image
-        excerpt
-        slug
-        authors {
-          name
-          profile_image
-          slug
-          id
-        }
-        tags{
-		  name
-          slug
-          visibility
-        }
-      }
-    }
-  }
-}
-`;
 const CategoryTemplate = () => {
     let limit = 2;
     const { slug } = useParams();
     const [skip, setSkip] = useState(0);
     const [tagName, setTagName] = useState('Loading...');
-    const [tagSlug, setTagSlug] = useState('Loading...');
     const [posts, setPosts] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
     const { loading, error, data, refetch } = useQuery(GET_TAG_DATA, {
@@ -87,8 +62,6 @@ const CategoryTemplate = () => {
             });
             const tagName = tagIndex !== -1 ?
                 data.allGhostPost.edges[0].node.tags[tagIndex].name.split("#")[1] : 'Loading...';
-            const tagSlug = tagIndex !== -1 ?
-                data.allGhostPost.edges[0].node.tags[tagIndex].slug : 'Loading...';
             setTotalCount(data.allGhostPost.totalCount);
             setPosts((previousPosts) => [
                 ...previousPosts,
@@ -96,7 +69,6 @@ const CategoryTemplate = () => {
             ]);
             setSkip((s) => s + data.allGhostPost.edges.length);
             setTagName(tagName);
-            setTagSlug(tagSlug);
         }
     }, [data, slug]);
 
@@ -132,36 +104,35 @@ const CategoryTemplate = () => {
                 next={loadMorePosts}
                 loader={<h4>Cargando...</h4>}
                 hasMore={hasMore}
-                endMessage={
-                    <p style={{ textAlign: 'center' }}>
-                        <b>Yay! You have seen it all</b>
-                    </p>
-                }
             >
                 {posts.length > 0 &&
                     posts.map(({ node }, index) => {
                         return (
                             <div key={`post-${index}-${node.title}`}>
-                                {(index % 10 === 0 && index !== 0) || index === totalCount ? (
+                                {(index % 10 === 0 && index !== 0) ? (
                                     <Newsletter />
                                 ) : null}
                                 <MiniPost
                                     cover={
                                         index.toString().charAt(index.toString().length - 1) === '0'
-                                        && index !== 0
                                     }
                                     key={index}
                                     data-sal="fade"
                                     data-sal-delay="100"
                                     data-sal-easing="easeIn"
-                                    type={'video'}
-                                    info={{ name: tagName, slug: tagSlug }}
+                                    type={
+                                        postType(node.tags)
+                                    }
+                                    info={tagInfo(node.tags, node.reading_time)}
                                     title={node.title}
                                     text={node.excerpt}
                                     src={node.feature_image}
                                     alt={`Imagen de ${node.title}`}
                                     author={node.authors[0]}
                                 />
+                                {(index === (totalCount - 1)) ? (
+                                    <Newsletter />
+                                ) : null}
                             </div>
                         );
                     })}
