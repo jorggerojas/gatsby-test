@@ -1,11 +1,17 @@
 import React from 'react';
 import { Notebook, Radio, Download, Play } from 'react-ikonate';
-import Paragraph from '../../cells/Paragraph';
-import Spacer from '../../cells/Spacer';
-import StyledPostLabels from './StyledPostLabels';
+import { FormattedMessage } from 'react-intl';
+
 import { getSize } from '../../cells/Paragraph/StyledParagraph';
+import Paragraph from '../../cells/Paragraph';
 import Hideable from '../../cells/Hideable';
+import Spacer from '../../cells/Spacer';
 import Anchor from '../../cells/Anchor';
+
+import {I18Provider} from '../../i18n'
+
+import StyledPostLabels from './StyledPostLabels';
+
 const icon = (type) => {
   let color = '#2329D6';
   switch (type) {
@@ -31,16 +37,17 @@ const icon = (type) => {
  * @param {Object} props HTML attributes
  */
 const PostLabels = ({ to, type = 'blog', reading_time, category, post = true, ...props }) => {
-  const time = () => `- ${reading_time} minute${reading_time === 1 ? '' : 's'} reading`;
 
   return (
-    <>
+    <I18Provider>
       <StyledPostLabels {...props}>
         {icon(type)}
         <Spacer direction="horizontal" size="nano" />
         <Paragraph size="xs">{type.toUpperCase()}</Paragraph>
         <Spacer direction="horizontal" size="xs" />
-        <Paragraph size="xs">{time().toUpperCase()}</Paragraph>
+        <Paragraph size="xs" style={{textTransform:'uppercase'}}>
+        <FormattedMessage id="readingTime" values={{ minutes: reading_time }} />
+        </Paragraph>
         <Hideable visibleOn="md">
           <Spacer direction="horizontal" size="sm" />
           <Paragraph
@@ -53,7 +60,7 @@ const PostLabels = ({ to, type = 'blog', reading_time, category, post = true, ..
         </Hideable>
       </StyledPostLabels>
       <Spacer size="md" />
-    </>
+    </I18Provider>
   );
 }
 
