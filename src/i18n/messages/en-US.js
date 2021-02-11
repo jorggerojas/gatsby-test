@@ -10,5 +10,6 @@ export default {
     formRequired: 'This field is required',
     loading: 'Loading...',
     readingTime: '{minutes} minute reading',
+    authorAnonymous:'Anonymous'
   },
 };
