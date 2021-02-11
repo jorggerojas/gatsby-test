@@ -1,72 +1,64 @@
 import styled from 'styled-components';
-import config from '../../utils/config';
 import { getSize } from '../../cells/Paragraph/StyledParagraph';
-import { CreditCard, RadioButton } from 'react-ikonate';
+import { RadioButton } from 'react-ikonate';
+import config from '../../utils/config';
+import Icon from './Icon';
 
 const { text, spacing, breakpoints } = config;
 const borderColor = '#001D48';
 const iconColor = '#2329D6';
-export const Helper = styled(CreditCard)`
-    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-    font-family: 'DM Sans', sans-serif;
-    position: absolute;
-    bottom: 0;
-    color: ${iconColor};
-    top: 1rem;
-    left: ${spacing.xs};
-    display: inline-flex;
-    font-size: ${() => getSize('lg')};
-    font-weight: 400;
-    transform-origin: 0 0;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    background: transparent;
-    cursor: default;
-    @media screen and (min-width: ${breakpoints.xl}) {
-        top: calc(1rem * 1.125);
-        left: calc(${spacing.xs} * 1.125);
-        font-size: ${() => getSize('lg', true)};
-    }
-`;
 
-export const Info = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-    font-family: 'DM Sans', sans-serif;
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    right: 0;
-    opacity: 0;
-    display: inline-flex;
-    padding: ${spacing.xs};
-    font-size: ${() => getSize('md')};
-    color: ${text.mutedGray};
-    font-weight: 400;
-    transform-origin: 0 0;
-    transition: all .3s ease;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    background: transparent;
-    cursor: default;
-    z-index: 9999;
-    @media screen and (min-width: ${breakpoints.xl}) {
-        /* left: calc(${spacing.xs} * 1.125); */
-        font-size: ${() => getSize('md', true)};
-    }
-    & span{
-        z-index: 9999;
-        float: right;
-        &:hover{
-            font-size:28rem;
-            color: red;
+export const Helper = styled.span`
+    & ${Icon}{
+        transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+        font-family: 'DM Sans', sans-serif;
+        position: absolute;
+        bottom: 0;
+        color: ${iconColor};
+        top: ${spacing.micro};
+        left: ${spacing.xs};
+        display: inline-flex;
+        font-size: ${() => getSize('lg')};
+        font-weight: 400;
+        transform-origin: 0 0;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+        background: transparent;
+        cursor: default;
+        @media screen and (min-width: ${breakpoints.xl}) {
+            left: calc(${spacing.xs} * 1.125);
+            font-size: ${() => getSize('lg', true)};
         }
     }
 `;
 
-export const Wrapper = styled.label`
+export const Info = styled.span`
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+    display: inline-flex;
+    float: right;
+    margin-top: -2.5rem;
+    padding: ${spacing.xs};
+    font-size: ${() => getSize('md')};
+    color: ${iconColor};
+    font-weight: 400;
+    transition: all .3s ease;
+    justify-content: center;
+    opacity: 0;
+    align-items: center;
+    background: transparent;
+    user-select: none;
+    z-index: 2;
+    @media screen and (min-width: ${breakpoints.xl}) {
+        font-size: ${() => getSize('md', true)};
+        margin-top: -2.35rem;
+    }
+`;
+
+export const Wrapper = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
     font-family: 'DM Sans', sans-serif;
     position: relative;
@@ -86,24 +78,25 @@ export const Caption = styled.span`
     position: absolute;
     bottom: 0.875rem;
     top: 0.8rem;
-    left: ${spacing.xs};
+    left: ${({ iconHelper }) => iconHelper ? '2rem' : spacing.xs};
     font-size: ${() => getSize('md')};
     color: ${text.mutedGray};
     font-weight: 400;
     transform-origin: 0 0;
     transition: all .2s ease;
     pointer-events: none;
-    width: calc(100% - ${spacing.xs});
+    user-select: none;
+    width: 90%;
     background: transparent;
     @media screen and (min-width: ${breakpoints.xl}) {
         bottom: calc(0.875rem * 1.125);
         top: calc(0.8rem * 1.125);
-        left: calc(${spacing.xs} * 1.125);
+        left: ${({ iconHelper }) => iconHelper ? 'calc(2rem * 1.125)' : `calc(${spacing.xs} * 1.125)`};
         font-size: ${() => getSize('md', true)};
     }
 `;
 
-export const Icon = styled(RadioButton)`
+export const IconFill = styled(RadioButton)`
     font-size: ${() => getSize('lg')};
     color: ${iconColor};
     display: inline-flex;
@@ -126,7 +119,7 @@ export const StyledInput = styled.input`
     height: 3rem;
     font-family: inherit;
     padding:
-        ${spacing.xs} 2.1rem ${spacing.xs} ${(iconHelper) => iconHelper === null ?
+        ${spacing.xs} 2.1rem ${spacing.xs} ${(iconHelper) => iconHelper !== null ?
         spacing.xs : '1.8rem'};
     font-weight: 400;
     background: white;
@@ -135,7 +128,10 @@ export const StyledInput = styled.input`
         `border: 1px solid ${borderColor}`};
     color: ${text.dark};
     &::placeholder{
+        transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
         color: ${({ label }) => label ? 'transparent' : text.mutedGray};
+        user-select: none;
+        padding-left: ${({ iconHelper }) => iconHelper === null ? spacing.nano : '1.7rem'};
     }
     &:not(:placeholder-shown){
       & ${Caption}{
@@ -148,25 +144,30 @@ export const StyledInput = styled.input`
         }
     }
     &:focus, &:valid {
+        &::placeholder{
+            color: ${({ label }) => label ? 'transparent' : text.mutedGray};
+            user-select: none;
+            padding-left: ${({ iconHelper }) => iconHelper === null ? spacing.nano : '0rem'};
+        }
         transition: all .1s  cubic-bezier(0.12, 0, 0.39, 0);
         transition: border .1s  cubic-bezier(0.12, 0, 0.39, 0);
         background: white;
         outline: none;
+        letter-spacing: ${({ open }) => open ? 'normal' : '0.25rem'};
         ${({ border }) => border === 'bottom' ?
         `border: 0; border-bottom: 2px solid ${borderColor}` : `border: 2px solid ${borderColor}`};
-        padding-bottom: ${(props) => props.label !== null ? (props.border === 'overlap' ? spacing.xs : 0) : spacing.xs} !important;
-        padding-left: ${({ iconHelper }) => iconHelper === null ? spacing.xs : '1.8rem'};
+        padding-bottom: ${(props) => props.label !== null ?
+        (props.border === 'overlap' ? spacing.xs : 0) : spacing.xs} !important;
+        padding-left: ${({ iconHelper }) => iconHelper === null ? spacing.nano : '1.9rem'};
         padding-top: ${spacing.sm};
         & ~${Info}{
             opacity: 1;
-            z-index: 9999999;
-            &:hover{
-                font-size:20rem;
-                color: red;
-            }
+            cursor: pointer;
+            user-select: all;
         }
         & ~${Helper}{
             opacity: 1;
+            top: ${({ border }) => border === 'full' ? ' 0.88rem' : spacing.micro};
         }
         & ~${Caption}{
             width: auto;
@@ -181,12 +182,13 @@ export const StyledInput = styled.input`
                 padding-right: calc(${spacing.xs} * 1.125);
                 transform: translate3d(0,calc(${({ border }) => border === 'overlap' ? '-1.4rem' : '-0.8rem'} * 1.125),0) scale(calc(.6875 * 1.125));
             }
-            & ${Icon}{
+            & ${IconFill}{
                 display: inline-flex;
-                margin: 0 ${spacing.xs};
+                margin: 0 ${spacing.nano};
             }
         }
         @media screen and (min-width: ${breakpoints.xl}) {
+            font-size: ${getSize('md', true)};
             ${({ border }) =>
         (border === 'bottom') ?
             `border: 0; border-bottom: calc(2px * 1.125) solid ${borderColor};` :
@@ -204,7 +206,7 @@ export const StyledInput = styled.input`
         font-size: ${getSize('md', true)};
         height: calc(3rem * 1.125);
         padding:
-            calc(${spacing.xs} * 1.125) calc(2.1rem * 1.125) calc(${spacing.xs} * 1.125) ${(iconHelper) => iconHelper === null ? `calc(${spacing.xs} * 1.125)` : 'calc(1.8rem * 1.125)'};
+            calc(${spacing.xs} * 1.125) calc(2.1rem * 1.125) calc(${spacing.xs} * 1.125) ${(iconHelper) => iconHelper ? `calc(${spacing.xs} * 1.125)` : 'calc(1.8rem * 1.125)'};
          ${({ border }) =>
         (border === 'bottom') ?
             `border: 0; border-bottom: calc(1px * 1.25) solid ${borderColor};` :
@@ -220,9 +222,9 @@ export const StyledInput = styled.input`
                 color: ${text.mutedGray};
                 padding-top: ${spacing.nano};
                 padding-right:${spacing.xs};
-                & ${Icon}{
+                & ${IconFill}{
                     display: inline-flex;
-                    padding: 0 0 0 ${spacing.xs};
+                    padding: 0 0 0 ${spacing.nano};
                 }
                 ${({ border }) =>
             (border === 'bottom') ?
