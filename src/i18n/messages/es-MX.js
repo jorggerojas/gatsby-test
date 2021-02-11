@@ -11,5 +11,7 @@ export default {
     loading: 'Cargando...',
     readingTime:
       '{minutes, plural, =0 {0 minutos de lectura} one {1 minuto de lectura} other {{minutes} minutos de lectura}}',
+    authorAnonymous:'Anónimo'
+
   },
 };
