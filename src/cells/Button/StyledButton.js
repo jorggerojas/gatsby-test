@@ -36,7 +36,7 @@ const StyledButton = styled.button`
     background-color: ${(props) => props.colors.hover};
   }
 
-  &:not([hover]):active {
+  &:not([hover]):not([disabled]):active {
     background-color: ${(props) => props.colors.click};
   }
 
