@@ -19,7 +19,7 @@ import Icon from './Icon';
  */
 const Input = ({
     iconRequired = false,
-    label,
+    label = null,
     border = "default",
     disabled = false,
     size,
@@ -33,7 +33,7 @@ const Input = ({
         setPass(actual => actual === 'password' ? "text" : "password");
     }
     return (
-        <Wrapper htmlFor={props.id} size={size} disabled={disabled} border={border} label={label || null}>
+        <Wrapper htmlFor={props.id} size={size} disabled={disabled} border={border} label={label}>
             <StyledInput
                 open={type === 'password' ? open : true}
                 iconHelper={iconHelper}
@@ -43,7 +43,7 @@ const Input = ({
                 type={type === 'password' ? pass : type}
                 id={props.id}
                 value={props.value || undefined}
-                required label={label || null}
+                required label={label}
                 placeholder={(label || props.placeholder) || 'Placeholder'}
             />
             {iconHelper !== null ?
@@ -61,8 +61,8 @@ const Input = ({
             }
             <Caption
                 iconHelper={iconHelper !== null}
-                border={border} disabled={disabled} label={label || null}>
-                {label !== undefined ? <span>{label}</span> : null}
+                border={border} disabled={disabled} label={label}>
+                {label !== null ? <span>{label}</span> : null}
                 {iconRequired ? <IconFill /> : null}
             </Caption>
         </Wrapper>

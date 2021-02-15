@@ -3,7 +3,10 @@ import styled, { css } from 'styled-components';
 import config from '../../utils/config';
 
 const { display, breakpoints } = config;
-
+/**
+ * Main component wraps the whole structure of the grid
+ * @param {Boolean} fit Fit height size to the content or set the height;
+ */
 export const Main = styled.div`
     transition: all .2s ease;
     width: 100%;
@@ -24,11 +27,19 @@ export const Main = styled.div`
     }
 `;
 
+/**
+ * Content overrides bootstrap Container component
+ */
 export const Content = styled(Container)`
     padding: 0;
     height: 100%;
 `;
 
+/**
+ * Column overrides bootstrap Col component
+ * @param {Boolean} paddingsmall Set the padding of the Column to 'small size' or normal
+ * @param {Boolean} remove Remove the padding of the component
+ */
 export const Column = styled(Col)`
     margin: 0;
     ${({ paddingsmall }) => paddingsmall ? 'padding: 0.15rem 0.5rem;' : "padding: 1rem 1rem"};
@@ -40,18 +51,12 @@ export const Column = styled(Col)`
     }
 `;
 
-export const verticalAlign = align => {
-    switch (align) {
-        case 'top':
-            return css`align-items: flex-start;`;
-        case 'bottom':
-            return css`align-items: flex-end;`;
-        case 'center':
-        default:
-            return css`align-items: center;`;
-    }
-}
-
+/**
+ * StyledRow overrides bootstrap Row component
+ * @param {Boolean} flex Creates a Row with flex property
+ * @param {Boolean} nested Set the Row component like a column (flex-direction)
+ * @param {String} noflex Choose the breakpoint to reverts the Column behavior
+ */
 export const StyledRow = styled(Row)`
     width: 100%;
     height: 100%;
@@ -73,3 +78,19 @@ export const StyledRow = styled(Row)`
     }
       
 `;
+
+/**
+ * @function verticalAlign 
+ * @param {String} align Set the vertical align of the component
+ */
+export const verticalAlign = align => {
+    switch (align) {
+        case 'top':
+            return css`align-items: flex-start;`;
+        case 'bottom':
+            return css`align-items: flex-end;`;
+        case 'center':
+        default:
+            return css`align-items: center;`;
+    }
+}

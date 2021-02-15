@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { getSize } from '../../cells/Paragraph/StyledParagraph';
 import { RadioButton } from 'react-ikonate';
 import config from '../../utils/config';
@@ -62,8 +62,7 @@ export const Wrapper = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
     font-family: 'DM Sans', sans-serif;
     position: relative;
-    /* margin: 0; ESTE SÍ */
-    margin: 1rem 0; /*ESTE NO*/
+    margin: 1rem 0;
     width: ${() => getInputSize('full')};
     overflow:  ${(props) => (props.label && props.border === 'overlap' && !props.disabled) ? 'visible' : 'hidden'};
     transition: all .1s ease;
@@ -206,45 +205,48 @@ export const StyledInput = styled.input`
         font-size: ${getSize('md', true)};
         height: calc(3rem * 1.125);
         padding:
-            calc(${spacing.xs} * 1.125) calc(2.1rem * 1.125) calc(${spacing.xs} * 1.125) ${(iconHelper) => iconHelper ? `calc(${spacing.xs} * 1.125)` : 'calc(1.8rem * 1.125)'};
+            calc(${spacing.xs} * 1.125) calc(2.1rem * 1.125) calc(${spacing.xs} * 1.125) ${({ iconHelper }) => iconHelper ? `calc(${spacing.xs} * 1.125)` : 'calc(1.8rem * 1.125)'};
          ${({ border }) =>
         (border === 'bottom') ?
-            `border: 0; border-bottom: calc(1px * 1.25) solid ${borderColor};` :
+            `border: none; border-bottom: calc(1px * 1.25) solid ${borderColor};` :
             `border: calc(1px * 1.25) solid ${borderColor};`};
     }
     &:disabled{
         background: ${text.lightGray};
         color: ${text.mutedGray};
         padding-bottom:0;
-        ${({ value }) => value !== undefined ? (`
-            & ~${Caption}{
-                width: auto;
-                color: ${text.mutedGray};
-                padding-top: ${spacing.nano};
-                padding-right:${spacing.xs};
-                & ${IconFill}{
-                    display: inline-flex;
-                    padding: 0 0 0 ${spacing.nano};
-                }
-                ${({ border }) =>
-            (border === 'bottom') ?
-                `border: 0; border-bottom: calc(1px * 1.25) solid ${borderColor};` :
-                `border: calc(1px * 1.25) solid ${borderColor};`};
-                transform: translate3d(0,-0.8rem,0) scale(.6875);
-                @media screen and (min-width: ${breakpoints.xl}) {
-                    padding-top: calc(${spacing.nano} * 1.125);
-                    padding-right: calc(${spacing.xs} * 1.125);
-                    transform: translate3d(0,calc(-0.8rem * 1.125),0) scale(calc(.6875 * 1.125));
-                }
-            }`)
-        : `${({ border }) =>
-            (border === 'bottom') ?
-                `border: 0; border-bottom: calc(1px * 1.25) solid ${borderColor};` :
-                `border: calc(1px * 1.25) solid ${borderColor};`};`}
+        ${({ value, border }) => value !== null ? disabled
+        : (border === 'bottom') ?
+            `border: none;
+                border-bottom: calc(1px * 1.25) solid ${borderColor};` :
+            `border: none;`};
     }
 `;
 
-const getInputSize = (size, max = false) => {
+export const disabled = css`
+    & ~${Caption}{
+        width: auto;
+        color: ${text.mutedGray};
+        padding-top: ${spacing.nano};
+        padding-right:${spacing.xs};
+        & ${IconFill}{
+            display: inline-flex;
+            padding: 0 0 0 ${spacing.nano};
+        }
+        ${({ border }) =>
+        (border === 'bottom') ?
+            `border: none; border-bottom: calc(1px * 1.25) solid ${borderColor};` :
+            `border: none;`};
+        transform: translate3d(0,-0.8rem,0) scale(.6875);
+        @media screen and (min-width: ${breakpoints.xl}) {
+            padding-top: calc(${spacing.nano} * 1.125);
+            padding-right: calc(${spacing.xs} * 1.125);
+            transform: translate3d(0,calc(-0.8rem * 1.125),0) scale(calc(.6875 * 1.125));
+        }
+    }
+`;
+
+export const getInputSize = (size, max = false) => {
     switch (size) {
         case 'sm':
             return `${max ? 'calc(16.6875rem * 1.125)' : '16.6875rem'} `;

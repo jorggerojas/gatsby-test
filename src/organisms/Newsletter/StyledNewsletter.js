@@ -55,6 +55,6 @@ export const StyledNewsletter = styled.div`
 export const StyledNewsletterButtonDiv = styled.div`
   padding-top: 0;
   @media (min-width: ${breakpoints.xl}) {
-   padding-top: 0.9rem;
+   padding-top: 1rem;
   }
 `;
