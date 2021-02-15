@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import config from '../../utils/config';
 
 const { text, breakpoints } = config;
-const StyledParagraph = styled.p`
+export const StyledSpan = styled.span`
   transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Manrope&display=swap');
   text-align: ${({ align }) => align || 'left'};
@@ -12,19 +12,19 @@ const StyledParagraph = styled.p`
   margin: ${({ margin }) => margin || '0'};
   font-weight: ${({ bold }) => bold || '400'};
   letter-spacing: ${({ spacing }) => spacing || '0'}rem;
-  font-size: ${({ size }) => getSize(size)};
+  font-size: inherit;
   text-align: ${({ align }) => align || 'left'};
   line-height: ${({ lineHeight }) => lineHeight ? `${lineHeight}rem` : '1.77rem'};
   color: ${({ color }) => (color ? text[color] : text['dark'])};
   columns: 0 1;
   @media screen and (min-width: ${breakpoints.md}) {
-    columns: ${({ columns }) => `1rem ${columns}` || "0 1"};
+    columns: ${({ columns }) => columns ? `1rem ${columns}` : "0 1"};
   }
   @media screen and (min-width: ${breakpoints.xl}) {
-    font-size: ${({ size }) => getSize(size, true)};
+    font-size: inherit;
     line-height: ${({ lineHeight }) => lineHeight ?
     `calc(${lineHeight}rem * 1.125)` : 'calc(1.77rem * 1.125)'};
-    columns: ${({ columns }) => `calc(1rem * 1.125) ${columns}` || "0 1"};
+    columns: ${({ columns }) => columns ? `calc(1rem * 1.125) ${columns}` : "0 1"};
   }
   @media screen and (max-width: ${breakpoints.xs}) {
     display: ${({ hide }) => (hide === 'xs' ? 'none' : '')};
@@ -42,21 +42,3 @@ const StyledParagraph = styled.p`
     display: ${({ hide }) => (hide === 'xxl' ? 'none' : '')};
   }
 `;
-
-const getSize = (size = 'md', max = false) => {
-  switch (size) {
-    case 'xxs':
-      return max ? 'calc(0.5rem * 1.125)' : '0.5rem';
-    case 'xs':
-      return max ? 'calc(0.694rem * 1.125)' : '0.694rem';
-    case 'sm':
-      return max ? 'calc(0.83rem * 1.125)' : '0.83rem';
-    case 'lg':
-      return max ? 'calc(1.2rem * 1.125)' : '1.2rem';
-    case 'md':
-    default:
-      return max ? 'calc(1rem * 1.125)' : '1rem';
-  }
-}
-export default StyledParagraph;
-export { getSize };

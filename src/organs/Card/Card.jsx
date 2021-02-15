@@ -1,11 +1,10 @@
 import React from 'react';
 import { ArrowRight } from 'react-ikonate';
-import { StyledCard } from './StyledCard';
+import { StyledCard, StyledCardTitle, StyledCardAnchor } from './StyledCard';
 import Image from '../../cells/Image';
 import Spacer from '../../cells/Spacer';
 import PostLabels from '../PostLabels';
-import Title from '../../cells/Title';
-import Anchor from '../../cells/Anchor';
+
 
 /**
  * Card component to link another articles
@@ -14,28 +13,28 @@ import Anchor from '../../cells/Anchor';
  * @param {String} to Path of the post
  * @param {String} type Type of the post
  */
-const Card = () => {
+const Card = ({ src, title, to, type, time }) => {
     return (
-        <StyledCard>
-            <Image
-                src="https://media3.s-nbcnews.com/j/newscms/2019_33/2203981/171026-better-coffee-boost-se-329p_67dfb6820f7d3898b5486975903c2e51.fit-2000w.jpg"
-                alt="coffee"
+        <StyledCard data-scroll-speed="5">
+            <Image data-scroll
+                src={src}
+                alt={`Image ${title}`}
                 height="2.074rem"
             />
             <Spacer size="lg" />
-            <PostLabels
-                reading_time={7}
-                type={'blog'}
+            <PostLabels data-scroll
+                reading_time={time}
+                type={type}
                 category=""
                 align="start"
                 justify="start"
                 post={true}
             />
-            <Title level="6">
-                Identifica cuál es el verdadero costo de una pobre identificación
-            </Title>
+            <StyledCardTitle level="6" data-scroll>
+                {title.length > 50 ? title.substring(0, 22) + "..." : title}
+            </StyledCardTitle>
             <Spacer size="md" />
-            <Anchor href="#" label="Enlace" icon={<ArrowRight />} />
+            <StyledCardAnchor href={to} label="Enlace" icon={<ArrowRight />} />
             <Spacer size="xl" />
         </StyledCard>
     );

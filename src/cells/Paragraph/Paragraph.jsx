@@ -6,8 +6,8 @@ import StyledParagraph from './StyledParagraph';
  * @param {String} children The content of the Paragraph
  * @param {Object} props HTML attributes for P tag
  */
-const Paragraph = ({ children, ...props }) => {
-  return <StyledParagraph {...props}>{children}</StyledParagraph>;
+const Paragraph = ({ children, columns, ...props }) => {
+  return <StyledParagraph columns={columns} {...props}>{children}</StyledParagraph>;
 };
 
 export default Paragraph;

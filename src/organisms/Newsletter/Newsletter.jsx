@@ -20,24 +20,24 @@ import padding from '../../utils/padding';
  */
 const Newsletter = ({ title = "Get our Insights.", bottom = 'sm', download = false, hide = "md" }) => {
     return (
-        <StyledNewsletter download={download.toString()}>
-            <StyledNewsletterTitleContainer>
-                <Title level="D3" lineHeight="4.3rem" css={padding({ bottom: bottom })}>
+        <StyledNewsletter download={download.toString()} data-scroll>
+            <StyledNewsletterTitleContainer data-scroll>
+                <Title level="D3" lineHeight="4.3rem" css={padding({ bottom: bottom })} data-scroll>
                     {title}
                 </Title>
-                <Paragraph hide={hide} size="lg">
+                <Paragraph hide={hide} size="lg" data-scroll>
                     Subscribe to our biweekly newsletter with the best in product management, startups and digital transformation
                 </Paragraph>
             </StyledNewsletterTitleContainer>
-            <StyledNewsletterInputButtonContainer>
-                <StyledNewsletterInputContainer>
-                    <Input label="Your email" type="mail" />
-                    <Paragraph size="sm" lineHeight="1.25" color="mutedGray">
+            <StyledNewsletterInputButtonContainer data-scroll>
+                <StyledNewsletterInputContainer data-scroll>
+                    <Input label="Your email" type="mail" data-scroll />
+                    <Paragraph size="sm" lineHeight="1.25" color="mutedGray" data-scroll>
                         By signing up, you accept the terms of Muir Privacy Policy
                     </Paragraph>
                 </StyledNewsletterInputContainer>
-                <StyledNewsletterButtonDiv>
-                    <Button colors={"primary"} label="Subscribe" size="large" />
+                <StyledNewsletterButtonDiv data-scroll>
+                    <Button colors={"primary"} label="Subscribe" size="large" data-scroll />
                 </StyledNewsletterButtonDiv>
             </StyledNewsletterInputButtonContainer>
         </StyledNewsletter>

@@ -1,7 +1,17 @@
 import styled from 'styled-components';
 import config from '../../utils/config';
+import Title from '../../cells/Title';
+import { AnchorExternal } from '../../cells/Anchor/Anchor';
 
 const { text, spacing } = config;
+
+export const StyledCardTitle = styled(Title)`
+
+`;
+
+export const StyledCardAnchor = styled(AnchorExternal)`
+
+`;
 
 export const StyledCard = styled.div`
     width: 15.875rem;
@@ -9,13 +19,18 @@ export const StyledCard = styled.div`
     margin-right: 2rem;
     box-shadow: 0 0rem 0.3rem rgba(0,0,0,0.19), 0rem 0.188rem 0.375rem rgb(0,0,0,.23);
     background: ${text.white};
-    & h1, a{
-        padding: 0 ${spacing.md};
+     cursor: default;
+    & ${StyledCardTitle}{
+        padding:  0 ${spacing.md};
+    }
+    & ${StyledCardAnchor}{
+        padding:  0 ${spacing.md};
+        cursor: pointer;
     }
     & img{
         padding: 0;
     }
-    & h1{
-        white-space: break-spaces;
+    & .menu-item-wrapper {
+        cursor: default;
     }
 `;

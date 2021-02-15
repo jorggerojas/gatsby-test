@@ -9,6 +9,7 @@ import Author from '../../organs/Author';
 import Spacer from '../../cells/Spacer';
 import Hideable from '../../cells/Hideable';
 import { TYPES } from './constants';
+import Anchor from '../../cells/Anchor';
 /**
  * MiniPost wrap image, title, Spacer and other components to display a preview of the large post
  * @param {boolean} cover Set the image of the post as cover or in the left side
@@ -18,8 +19,9 @@ import { TYPES } from './constants';
  * @param {String} src Path of the image
  * @param {String} alt Alt of the image (for accesibility)
  * @param {Object} author Contains the name, job and profile image of the author
+ * @param {String} slug Short name (easy URI read) for the post
  */
-const MiniPost = ({ cover, type, info, title, text, src, alt, author }) => {
+const MiniPost = ({ cover, type, info, title, text, src, alt, author, slug }) => {
   return (
     <>
       {cover ? <BackgroundImage src={src} alt={alt} /> : null}
@@ -56,7 +58,7 @@ const MiniPost = ({ cover, type, info, title, text, src, alt, author }) => {
               </Col>
             </Row>
             <Title level="4" weight="400" lineHeight="2.243rem">
-              {title}
+              <Anchor label={title} color='dark' href={`/post/${slug}`} />
             </Title>
             <Spacer size="md" />
             <Paragraph lineHeight="1.5" weight="300">
@@ -67,7 +69,7 @@ const MiniPost = ({ cover, type, info, title, text, src, alt, author }) => {
             {type === TYPES.freeDownload ? null : (
               <Author
                 name={author.name}
-                job="CEO at Viaducto Company"
+                job={author.bio}
                 slug={author.slug}
                 src={
                   author.profile_image ||

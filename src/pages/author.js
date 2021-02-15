@@ -8,7 +8,7 @@ import AuthorTemplate from '../templates/AuthorTemplate';
 const AuthorRouter = () => {
   return (
     <Router>
-      <Route path="/author/:slug">
+      <Route path="/author/:slug" exact>
         <AuthorTemplate />
       </Route>
     </Router>

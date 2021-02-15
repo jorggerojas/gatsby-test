@@ -10,7 +10,7 @@ import Anchor from '../../cells/Anchor';
  * @param {String} job Author position
  * @param {String} slug Author's 'friendly' id or nickname
 */
-const AuthorName = ({ name, job, slug }) => {
+const AuthorName = ({ name, job = "Author", slug }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Paragraph
@@ -23,7 +23,7 @@ const AuthorName = ({ name, job, slug }) => {
       </Paragraph>
       <Spacer size="micro" />
       <Paragraph lineHeight="0.694" family="DM Sans" size="xs" color="darkGray">
-        {job}
+        {job || 'Author'}
       </Paragraph>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledAnchor from './StyledAnchor';
+import StyledAnchor, { StyledAnchorExternal } from './StyledAnchor';
 
 /**
  * Anchor component with icon (or no). This component uses 'Link' component
@@ -14,6 +14,15 @@ const Anchor = ({ label, href, color = null, icon = null, ...rest }) => {
       {label}
       {icon !== null && icon}
     </StyledAnchor>
+  );
+};
+
+export const AnchorExternal = ({ label, href, color = null, icon = null, ...rest }) => {
+  return (
+    <StyledAnchorExternal href={href} color={color} {...rest}>
+      {label}
+      {icon !== null && icon}
+    </StyledAnchorExternal>
   );
 };
 

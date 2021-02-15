@@ -10,10 +10,11 @@ import padding from '../../utils/padding';
  * AuthorContainer is a wrapper with Author's data for Authors Page
  * @param {String} name Author's name
  * @param {String} image Author's profile image
+ * @param {String} image Author's position
  */
-const AuthorContainer = ({ name = "Loading...", image = "..." }) => {
+const AuthorContainer = ({ name = "Loading...", image = "...", job = null }) => {
     return (
-        <StyledAuthorContainer>
+        <StyledAuthorContainer css={padding({ bottom: 'sm' })}>
             <TopPage css={padding({ top: 'sm' })}>
                 <Avatar
                     src={image}
@@ -21,10 +22,10 @@ const AuthorContainer = ({ name = "Loading...", image = "..." }) => {
                     size="large"
                 />
                 <Spacer size="lg" />
-                <Title level="D3">{name}</Title>
+                <Title level="d3" lineHeight="2.243rem">{name}</Title>
                 <Spacer size="md" />
                 <Paragraph size="sm" color="mutedGray">
-                    CEO at Company name
+                    {job}
                 </Paragraph>
             </TopPage>
         </StyledAuthorContainer>

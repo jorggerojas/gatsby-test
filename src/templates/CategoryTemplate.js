@@ -11,6 +11,7 @@ import Title from '../cells/Title';
 import config from '../utils/config';
 import { tagInfo, postType } from '../organisms/BlogRoll';
 import { GET_TAG_DATA } from '../queries/index';
+import Scroll from '../utils/locomotiveScroll';
 
 const { display, breakpoints } = config;
 const StyledTitleContainer = styled.div`
@@ -45,7 +46,7 @@ const StyledTitleContainer = styled.div`
     }
 `;
 
-const CategoryTemplate = () => {
+const CategoryTemplate = (callbacks) => {
     let limit = 2;
     const { slug } = useParams();
     const [skip, setSkip] = useState(0);
@@ -90,56 +91,59 @@ const CategoryTemplate = () => {
     return (
         <Meta>
             <GlobalStyle />
-            <StyledTitleContainer>
-                <Title size="d3">{tagName}</Title>
-            </StyledTitleContainer>
-            <InfiniteScroll
-                css={css`
+            <Scroll callbacks={callbacks} />
+            <div data-scroll-container>
+                <StyledTitleContainer>
+                    <Title size="d3">{tagName}</Title>
+                </StyledTitleContainer>
+                <InfiniteScroll
+                    css={css`
                     overflow: hidden !important;
                     `}
-                data-sal="slide-up"
-                data-sal-delay="1"
-                data-sal-easing="ease"
-                dataLength={totalCount}
-                next={loadMorePosts}
-                loader={<h4>Cargando...</h4>}
-                hasMore={hasMore}
-            >
-                {posts.length > 0 &&
-                    posts.map(({ node }, index) => {
-                        return (
-                            <div key={`post-${index}-${node.title}`}>
-                                {(index % 10 === 0 && index !== 0) ? (
-                                    <Newsletter />
-                                ) : null}
-                                <MiniPost
-                                    cover={
-                                        index.toString().charAt(index.toString().length - 1) === '0'
-                                    }
-                                    key={index}
-                                    data-sal="fade"
-                                    data-sal-delay="100"
-                                    data-sal-easing="easeIn"
-                                    type={
-                                        postType(node.tags)
-                                    }
-                                    info={tagInfo(node.tags, node.reading_time)}
-                                    title={node.title}
-                                    text={node.excerpt}
-                                    src={node.feature_image}
-                                    alt={`Imagen de ${node.title}`}
-                                    author={node.authors[0]}
-                                />
-                                {(index === (totalCount - 1)) ? (
-                                    <Newsletter />
-                                ) : null}
-                            </div>
-                        );
-                    })}
-                {loading && posts.length === 0 ? 'Cargando...' : null}
-                {error &&
-                    'Ocurrió un error con el servidor, y no hemos podido consultar ningún post'}
-            </InfiniteScroll>
+                    data-sal="slide-up"
+                    data-sal-delay="1"
+                    data-sal-easing="ease"
+                    dataLength={totalCount}
+                    next={loadMorePosts}
+                    loader={<h4>Cargando...</h4>}
+                    hasMore={hasMore}
+                >
+                    {posts.length > 0 &&
+                        posts.map(({ node }, index) => {
+                            console.log(totalCount);
+                            return (
+                                <div key={`post-${index}-${node.title}`}>
+                                    {((index % 10 === 0 && index !== 0)) ? (
+                                        <Newsletter />
+                                    ) : null}
+                                    <MiniPost
+                                        cover={
+                                            index.toString().charAt(index.toString().length - 1) === '0'
+                                        }
+                                        key={index}
+                                        data-sal="fade"
+                                        data-sal-delay="100"
+                                        data-sal-easing="easeIn"
+                                        type={postType(node.tags)}
+                                        slug={node.slug}
+                                        info={tagInfo(node.tags, node.reading_time)}
+                                        title={node.title}
+                                        text={node.excerpt}
+                                        src={node.feature_image}
+                                        alt={`Imagen de ${node.title}`}
+                                        author={node.authors[0]}
+                                    />
+                                    {(index === (totalCount - 1)) ? (
+                                        <Newsletter />
+                                    ) : null}
+                                </div>
+                            );
+                        })}
+                    {loading && posts.length === 0 ? 'Cargando...' : null}
+                    {error &&
+                        'Ocurrió un error con el servidor, y no hemos podido consultar ningún post'}
+                </InfiniteScroll>
+            </div>
         </Meta>
     );
 };

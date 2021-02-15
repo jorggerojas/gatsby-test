@@ -16,4 +16,11 @@ exports.onCreatePage = async ({ page, actions }) => {
       component: path.resolve("src/pages/category.js")
     })
   }
+  if (page.path.match(/^\/post/)) {
+    createPage({
+      path: "/post",
+      matchPath: "/post/:slug",
+      component: path.resolve("src/pages/post.js")
+    })
+  }
 }

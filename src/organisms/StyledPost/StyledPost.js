@@ -39,8 +39,23 @@ export const CardsContainer = styled.div`
     transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
     margin: 0;
     margin: 0 1rem;
+    & .horizontal-menu{
+        margin: 0 0;
+    }
     margin-bottom: clamp(3.213rem, calc(3.213rem + ((1vw - 0.2rem) * 4.25)), 6.188rem);
     & .menu-item-wrapper, .active{
         outline: none;
+    }
+    @media screen and (min-width: ${breakpoints.sm}){
+        margin: 0 2rem;
+        margin-bottom: clamp(3.213rem, calc(3.213rem + ((1vw - 0.2rem) * 4.25)), 6.188rem);
+    }
+    @media screen and (min-width: ${breakpoints.md}){
+        max-width: 70vw;
+        margin-bottom: clamp(3.213rem, calc(3.213rem + ((1vw - 0.2rem) * 4.25)), 6.188rem);
+    }
+    @media screen and (min-width: ${breakpoints.xl}){
+        margin-left: calc(15rem * 1.125);
+        margin-bottom: clamp(3.213rem, calc(3.213rem + ((calc(1vw * 1.125) - 0.2rem) * 4.25)), 6.188rem);
     }
 `;

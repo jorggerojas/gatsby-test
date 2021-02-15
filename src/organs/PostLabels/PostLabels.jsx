@@ -8,7 +8,7 @@ import Hideable from '../../cells/Hideable';
 import Spacer from '../../cells/Spacer';
 import Anchor from '../../cells/Anchor';
 
-import {I18Provider} from '../../i18n'
+import { I18Provider } from '../../i18n'
 
 import StyledPostLabels from './StyledPostLabels';
 
@@ -43,10 +43,10 @@ const PostLabels = ({ to, type = 'blog', reading_time, category, post = true, ..
       <StyledPostLabels {...props}>
         {icon(type)}
         <Spacer direction="horizontal" size="nano" />
-        <Paragraph size="xs">{type.toUpperCase()}</Paragraph>
+        <Paragraph size="xs">{`${type.toUpperCase()} -`}</Paragraph>
         <Spacer direction="horizontal" size="xs" />
-        <Paragraph size="xs" style={{textTransform:'uppercase'}}>
-        <FormattedMessage id="readingTime" values={{ minutes: reading_time }} />
+        <Paragraph size="xs" style={{ textTransform: 'uppercase' }}>
+          <FormattedMessage id="readingTime" values={{ minutes: reading_time }} />
         </Paragraph>
         <Hideable visibleOn="md">
           <Spacer direction="horizontal" size="sm" />
