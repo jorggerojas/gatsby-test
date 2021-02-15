@@ -16,15 +16,10 @@ const StyledParagraph = styled.p`
   text-align: ${({ align }) => align || 'left'};
   line-height: ${({ lineHeight }) => lineHeight ? `${lineHeight}rem` : '1.77rem'};
   color: ${({ color }) => (color ? text[color] : text['dark'])};
-  columns: 0 1;
-  @media screen and (min-width: ${breakpoints.md}) {
-    columns: ${({ columns }) => `1rem ${columns}` || "0 1"};
-  }
   @media screen and (min-width: ${breakpoints.xl}) {
     font-size: ${({ size }) => getSize(size, true)};
     line-height: ${({ lineHeight }) => lineHeight ?
     `calc(${lineHeight}rem * 1.125)` : 'calc(1.77rem * 1.125)'};
-    columns: ${({ columns }) => `calc(1rem * 1.125) ${columns}` || "0 1"};
   }
   @media screen and (max-width: ${breakpoints.xs}) {
     display: ${({ hide }) => (hide === 'xs' ? 'none' : '')};

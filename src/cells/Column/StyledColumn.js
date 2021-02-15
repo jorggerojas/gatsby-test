@@ -4,11 +4,13 @@ import config from '../../utils/config';
 const { breakpoints } = config;
 
 export const StyledColumn = styled.div`
-    columns: 0 1;
+    column-count: 1;
     @media screen and (min-width: ${({ size }) => breakpoints[size]}) {
-        columns: ${({ columns }) => columns ? `1rem ${columns}` : "0 1"};
+        column-count: ${({ columns }) => columns ? `${columns}` : "1"};       
+        column-gap: 2rem;
     }
     @media screen and (min-width: ${breakpoints.xl}) {
-        columns: ${({ columns }) => columns ? `calc(1rem * 1.125) ${columns}` : "0 1"};
+        column-count: ${({ columns }) => columns ? `${columns}` : "1"};       
+        column-gap: calc(2rem * 1.125);
     }
 `;

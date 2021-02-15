@@ -5,19 +5,19 @@ const { text, breakpoints } = config;
 
 const StyledTitle = styled.h1`
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Manrope&display=swap');
-  font-family: ${(props) => props.family !== null ? `'${props.family}', sans-serif` : "'DM Sans', sans-serif;"};
-  font-weight: ${(props) => props.weight || 'normal'};
-  font-style: ${(props) => props.fontStyle || 'normal'};
-  margin: ${(props) => props.margin || '0'};
-  font-size: ${(props) => getFontSize(props.level || '1')};
-  text-align: ${(props) => props.align || 'left'};
-  letter-spacing: ${(props) => props.spacing || '0'}rem;
-  line-height: ${(props) => props.lineHeight !== null ? `${props.lineHeight}` : '1.77rem'};
-  color: ${(props) => (props.color !== null ? text[props.color] : text['dark'])};
+  font-family: ${({ family }) => family !== undefined ? `'${family}', sans-serif` : "'DM Sans', sans-serif;"};
+  font-weight: ${({ weight }) => weight || 'normal'};
+  font-style: ${({ fontStyle }) => fontStyle || 'normal'};
+  margin: ${({ margin }) => margin || '0'};
+  font-size: ${({ level }) => getFontSize(level || '1')};
+  text-align: ${({ align }) => align || 'left'};
+  letter-spacing: ${({ spacing }) => spacing || '0'}rem;
+  line-height: ${({ lineHeight }) => lineHeight !== null ? `${lineHeight}` : '1.77rem'};
+  color: ${({ color }) => (color !== undefined ? text[color] : text['dark'])};
   @media (min-width: ${breakpoints.xl}) {
-    font-size: ${(props) => getFontSize(props.level || '1', true)} !important;
-    line-height: ${(props) =>
-    `calc(${props.lineHeight}rem * 1.3)` || '1.99rem'} !important;
+    font-size: ${({ level }) => getFontSize(level || '1', true)};
+    line-height: ${({ lineHeight }) =>
+    `calc(${lineHeight}rem * 1.3)` || '1.99rem'} !important;
   }
 `;
 

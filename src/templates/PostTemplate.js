@@ -67,7 +67,6 @@ const PostTemplate = (callbacks) => {
                 var allCards = [];
                 data.allGhostPost.edges.forEach(({ node }) => {
                     if (node.title !== title) {
-                        console.log(node.slug);
                         allCards.push(
                             <Card
                                 time={node.reading_time}

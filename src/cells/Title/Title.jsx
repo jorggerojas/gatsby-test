@@ -19,15 +19,7 @@ import StyledTitle from './StyledTitle';
  * @param {Object} props HTML attributes for HTML Heading tag
  */
 const Title = ({
-  family,
-  weight,
-  margin,
   children,
-  level,
-  align,
-  spacing,
-  lineHeight,
-  color,
   ...props
 }) => {
   return <StyledTitle {...props}>{children}</StyledTitle>;
