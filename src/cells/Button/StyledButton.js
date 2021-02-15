@@ -19,6 +19,10 @@ const StyledButton = styled.button`
 
   ${(props) => getPadding(props)}
   ${(props) => getFontStyle(props)}
+  
+  @media screen and (min-width: 90rem) {
+    font-size: calc(1rem * 1.125);
+  }
 
   &:disabled {
     background-color: lightgrey;
