@@ -45,48 +45,66 @@ const Juan = () => {
       </Container>
 
       <Button
+        onClick={change}
         colors={colors.primary}
         label={<FormattedMessage id="formAccept" />}
         icon={<Download />}
         size="small"
       />
       <Button
+        onClick={change}
         colors={colors.primary}
         label={<FormattedMessage id="formReject" />}
         size="small"
       />
-      <Button colors={colors.primary} icon={<Download />} size="small" />
+      <Button
+        onClick={change}
+        colors={colors.primary}
+        icon={<Download />}
+        size="small"
+      />
 
       <Button
+        onClick={change}
         colors={colors.primary}
         label={<FormattedMessage id="formCancel" />}
         icon={<Download />}
       />
-      <Button colors={colors.primary} icon={<Download />} />
+      <Button onClick={change} colors={colors.primary} icon={<Download />} />
       <Button
+        onClick={change}
         colors={colors.primary}
         label={<FormattedMessage id="formSubmit" />}
       />
       <Button
+        onClick={change}
         colors={colors.primary}
         label={<FormattedMessage id="formSubmit" />}
       />
 
       <Button
+        onClick={change}
         colors={colors.primary}
         label={<FormattedMessage id="formContinue" />}
         icon={<Download />}
         size="large"
       />
       <Button
+        onClick={change}
         colors={colors.primary}
         label={<FormattedMessage id="formAccept" />}
         size="large"
       />
 
-      <Button colors={colors.primary} icon={<Download />} size="large" />
+      <Button
+        onClick={change}
+        colors={colors.primary}
+        icon={<Download />}
+        size="large"
+      />
 
       <Button
+        onClick={change}
         colors={colors.primary}
         label="Large disabled"
         size="large"
@@ -94,12 +112,14 @@ const Juan = () => {
       />
 
       <Button
+        onClick={change}
         colors={colors.warning}
         label={<FormattedMessage id="loading" />}
         size="small"
         block
       />
       <Button
+        onClick={change}
         colors={colors.info}
         label={<FormattedMessage id="loading" />}
         block
