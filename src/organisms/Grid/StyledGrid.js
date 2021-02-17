@@ -4,8 +4,10 @@ import { setConfiguration } from 'react-grid-system';
 import padding from '../../utils/padding';
 
 setConfiguration({
-  gutterWidth: 100,
+  gutterWidth: 28,
   containerWidths: [320, 576, 768, 992, 1440],
+  breakpoints: [320, 576, 768, 992, 1440],
+  maxScreenClass: 'xxl',
 });
 
 /**
