@@ -4,7 +4,7 @@ import config from '../../utils/config';
 const { text, breakpoints } = config;
 
 const StyledTitle = styled.h1`
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Manrope&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=IBM+Plex+Sans&family=Manrope&display=swap');
   font-family: ${({ family }) => family !== undefined ? `'${family}', sans-serif` : "'DM Sans', sans-serif;"};
   font-weight: ${({ weight }) => weight || 'normal'};
   font-style: ${({ fontStyle }) => fontStyle || 'normal'};

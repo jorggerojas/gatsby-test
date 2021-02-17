@@ -13,31 +13,35 @@ import PostLabels from '../PostLabels';
  * @param {String} to Path of the post
  * @param {String} type Type of the post
  */
-const Card = ({ src, title, to, type, time }) => {
-    return (
-        <StyledCard data-scroll-speed="5">
-            <Image data-scroll
-                src={src}
-                alt={`Image ${title}`}
-                height="2.074rem"
-            />
-            <Spacer size="lg" />
-            <PostLabels data-scroll
-                reading_time={time}
-                type={type}
-                category=""
-                align="start"
-                justify="start"
-                post={true}
-            />
-            <StyledCardTitle level="6" data-scroll>
-                {title.length > 50 ? title.substring(0, 22) + "..." : title}
-            </StyledCardTitle>
-            <Spacer size="md" />
-            <StyledCardAnchor href={to} label="Enlace" icon={<ArrowRight />} />
-            <Spacer size="xl" />
-        </StyledCard>
-    );
+const Card = ({ src = null, title, to, type, time }) => {
+  return (
+    <StyledCard data-scroll-speed="5">
+      {
+        src !== null ?
+          <Image data-scroll
+            src={src}
+            alt={`Image ${title}`}
+            height="2.074rem"
+          />
+          : null
+      }
+      <Spacer size="lg" />
+      <PostLabels data-scroll
+        reading_time={time}
+        type={type}
+        category=""
+        align="start"
+        justify="start"
+        post={true}
+      />
+      <StyledCardTitle level="6" data-scroll>
+        {title.length > 50 ? title.substring(0, 22) + "..." : title}
+      </StyledCardTitle>
+      <Spacer size="md" />
+      <StyledCardAnchor href={to} label="Enlace" icon={<ArrowRight />} />
+      <Spacer size="xl" />
+    </StyledCard>
+  );
 };
 
 export default Card;
