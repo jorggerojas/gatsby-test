@@ -4,10 +4,31 @@ import { Container, Row, Col } from '../organisms/Grid';
 import Title from '../cells/Title';
 import Paragraph from '../cells/Paragraph';
 import Spacer from '../cells/Spacer';
+import Hideable from '../cells/Hideable';
 import padding from '../utils/padding';
 import GlobalStyle from '../utils/global';
+import Card from '../organs/Card';
+
 // import Scroll from '../utils/locomotiveScroll';
 import styled from 'styled-components';
+const OverlapContainer = styled.div`
+  width: 100%;
+  position: relative;
+  height: 11.6395rem;
+  @media (min-width: 768px) {
+    height: calc(
+      41.517rem -
+        clamp(
+          6.2775rem,
+          calc(6.2775rem + (19.2585 - 6.2775) * ((100vw - 20rem) / (90 - 20))),
+          19.2585rem
+        )
+    );
+  }
+  @media (min-width: 992px) {
+    height: 10.7415rem;
+  }
+`;
 
 const OverlapImageContainer = styled.div`
   position: absolute;
@@ -15,14 +36,15 @@ const OverlapImageContainer = styled.div`
   background-image: url(${(p) => p.src});
   bottom: 0;
   left: 0;
-  height: 30rem;
   width: 100%;
-  @media (max-width: 768px) {
-    height: 15rem;
-  }
-  @media (max-width: 576px) {
-    display: none;
-  }
+  height: calc(
+    100% +
+      clamp(
+        6.2775rem,
+        calc(6.2775rem + (19.2585 - 6.2775) * ((100vw - 20rem) / (90 - 20))),
+        19.2585rem
+      )
+  );
 `;
 const HomePage = (callbacks) => {
   return (
@@ -35,6 +57,7 @@ const HomePage = (callbacks) => {
           style={{
             backgroundColor: '#e6dff1',
           }}
+          css={padding({ top: 'xxl', bottom: 'xl' })}
         >
           <Container>
             <Row>
@@ -67,13 +90,16 @@ const HomePage = (callbacks) => {
           css={padding({ vertical: 'xl' })}
         >
           <Container>
-            <Row justify="between" align="end" css={padding({ bottom: 'sm' })}>
-              <Col sm={12} lg={6}>
-                <Container>
+            <Row justify="end" align="end" css={padding({ bottom: 'sm' })}>
+              <Col sm={12} lg={10} xl={6}>
+                <OverlapContainer>
                   <OverlapImageContainer src="https://web.uponor.hk/wp-content/uploads/2018/05/hong_kong_skyline_green_building_in_asia.jpg"></OverlapImageContainer>
-                </Container>
+                </OverlapContainer>
               </Col>
-              <Col>
+              <Col style={{ alignItems: 'flex-end' }} lg={10} xl={6}>
+                <Hideable visibleOn="lg" after={false}>
+                  <Spacer size="xxl" />
+                </Hideable>
                 <Paragraph lineHeight={1.41}>WHAT WE DO</Paragraph>
                 <Spacer size="lg" />
                 <Title level="2">
@@ -91,7 +117,7 @@ const HomePage = (callbacks) => {
                   development.
                 </Paragraph>
               </Col>
-              <Col sm={12} md={6} css={padding({ bottom: 'sm' })}>
+              <Col sm={12} md={6}>
                 <Title level="4">Build your digital products.</Title>
                 <Paragraph>
                   We build web-based software and applications. We plan for the
@@ -104,13 +130,7 @@ const HomePage = (callbacks) => {
         </Main>
         <Main>
           <Container id="large-text">
-            <Title
-              level="D1"
-              data-scroll
-              data-scroll-speed="2"
-              data-scroll-sticky
-              data-scroll-target="#large-text"
-            >
+            <Title level="D1" data-scroll data-scroll-speed="2">
               A Turnkey approach that goes beyond Pixels, Code, and
               Metadescriptions.
             </Title>
@@ -118,29 +138,46 @@ const HomePage = (callbacks) => {
         </Main>
         <Main>
           <Container id="stick">
-            <Title
-              level="D1"
-              data-scroll
-              data-scroll-speed="1"
-              data-scroll-sticky
-              data-scroll-target="#stick"
-            >
+            <Title level="D1" data-scroll data-scroll-speed="1">
               A Turnkey approach that
             </Title>
-            <Title level="D1" data-scroll data-scroll-speed="1">
+            <Title level="D1" data-scroll data-scroll-speed="3">
               goes beyond Pixels, Code,
             </Title>
-            <Title level="D1" data-scroll data-scroll-speed="2">
+            <Title level="D1" data-scroll data-scroll-speed="4">
               Metadescriptions.
             </Title>
           </Container>
         </Main>
         <Main>
           <Container>
-            <Title level="D1" data-scroll data-scroll-speed="2">
-              A Turnkey approach that goes beyond Pixels, Code, and
-              Metadescriptions.
-            </Title>
+            <Row>
+              <Col sm={12} xl={6} css={padding({ bottom: 'md' })}>
+                <Paragraph size="lg" lineHeight="1.688">
+                  CONTINUE READING
+                </Paragraph>
+                <Spacer size="lg" />
+                <Title level="D2">Similar Articles</Title>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                  <Card
+                    title="Identifica cuál es el verdadero costo de una pobre Identificación"
+                    to=""
+                    type="blog"
+                    time={7}
+                  />
+              </Col>
+              <Col>
+                  <Card
+                    title="Identifica cuál es el verdadero costo de una pobre Identificación"
+                    to=""
+                    type="blog"
+                    time={7}
+                  />
+              </Col>
+            </Row>
           </Container>
         </Main>
       </div>
