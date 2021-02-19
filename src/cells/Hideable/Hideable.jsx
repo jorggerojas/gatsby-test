@@ -1,8 +1,8 @@
 import React from 'react';
 import StyledHideable from './StyledHideable';
-import config from '../../utils/config';
+// import config from '../../utils/config';
 
-const { breakpoints } = config;
+// const { breakpoints } = config;
 /**
  * Component hidden by default that receives a breakpoint from which
  * it's gonna be visible and a boolean that indicates if it's gonna be visible
