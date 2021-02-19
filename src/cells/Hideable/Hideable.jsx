@@ -13,9 +13,6 @@ const { breakpoints } = config;
  * @param {boolean} after Indicates if visible after the breakpoint, defaults to true
  */
 const Hideable = ({ visibleOn = null, after = true, children }) => {
-  if (visibleOn !== null && !breakpoints.hasOwnProperty(visibleOn)) {
-    return null;
-  }
   return (
     <StyledHideable visibleOn={visibleOn} after={after}>
       {children}
