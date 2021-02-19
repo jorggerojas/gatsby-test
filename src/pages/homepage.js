@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ScrollMenu from 'react-horizontal-scrolling-menu';
+
 import { Main } from '../organisms/Grid';
 import { Container, Row, Col } from '../organisms/Grid';
 import Title from '../cells/Title';
@@ -29,7 +31,31 @@ const OverlapContainer = styled.div`
     height: 10.7415rem;
   }
 `;
+const ColScroll = styled(Col)`
+  .menu-item-wrapper {
+    display: inline-flex !important;
+    width: 35.625rem;
+    padding-right: 2%;
+  }
+  @media (min-width: 992px) {
+    .menu-item-wrapper {
+      width: 48%;
+    }
+  }
+  .menu-item-wrapper.active {
+  }
+  .menu-item.active {
+  }
 
+  .scroll-menu-arrow {
+  }
+
+  .scroll-menu-arrow--disabled {
+    visibility: hidden;
+  }
+  .menu-wrapper {
+  }
+`;
 const OverlapImageContainer = styled.div`
   position: absolute;
   background-size: cover;
@@ -47,6 +73,80 @@ const OverlapImageContainer = styled.div`
   );
 `;
 const HomePage = (callbacks) => {
+  const onSelect = (item) => {
+    setSelected(item);
+  };
+  const [selected, setSelected] = useState(0);
+  const list = [
+    {
+      title:
+        'Identifica cuál es el verdadero costo de una pobre Identificación',
+      to: '',
+      type: 'blog',
+      time: 7,
+      excerpt:
+        "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev",
+    },
+    {
+      title:
+        'Identifica cuál es el verdadero costo de una pobre Identificación',
+      to: '',
+      type: 'blog',
+      time: 7,
+      excerpt:
+        "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev",
+    },
+    {
+      title:
+        'Identifica cuál es el verdadero costo de una pobre Identificación',
+      to: '',
+      type: 'blog',
+      time: 7,
+      excerpt:
+        "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev",
+    },
+    {
+      title:
+        'Identifica cuál es el verdadero costo de una pobre Identificación',
+      to: '',
+      type: 'blog',
+      time: 7,
+      excerpt:
+        "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev",
+    },
+    {
+      title:
+        'Identifica cuál es el verdadero costo de una pobre Identificación',
+      to: '',
+      type: 'blog',
+      time: 7,
+      excerpt:
+        "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev",
+    },
+    {
+      title:
+        'Identifica cuál es el verdadero costo de una pobre Identificación',
+      to: '',
+      type: 'blog',
+      time: 7,
+      excerpt:
+        "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ev",
+    },
+  ];
+
+  const menu = list.map((el, i) => {
+    return (
+      <Card
+        key={`${i}-${el.title}`}
+        title={el.title}
+        to={el.to}
+        type={el.type}
+        time={el.time}
+        excerpt={el.excerpt}
+        selected={selected}
+      />
+    );
+  });
   return (
     <>
       <GlobalStyle />
@@ -161,22 +261,16 @@ const HomePage = (callbacks) => {
               </Col>
             </Row>
             <Row>
-              <Col>
-                  <Card
-                    title="Identifica cuál es el verdadero costo de una pobre Identificación"
-                    to=""
-                    type="blog"
-                    time={7}
-                  />
-              </Col>
-              <Col>
-                  <Card
-                    title="Identifica cuál es el verdadero costo de una pobre Identificación"
-                    to=""
-                    type="blog"
-                    time={7}
-                  />
-              </Col>
+              <ColScroll>
+                <ScrollMenu
+                  data={menu}
+                  selected={selected}
+                  onSelect={onSelect}
+                  translate={0}
+                  itemsCount={menu.length}
+                  wheel={false}
+                />
+              </ColScroll>
             </Row>
           </Container>
         </Main>

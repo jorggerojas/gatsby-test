@@ -1,10 +1,11 @@
 import React from 'react';
 import { ArrowRight } from 'react-ikonate';
 import { StyledCard, StyledCardTitle, StyledCardAnchor } from './StyledCard';
-import Image from '../../cells/Image';
+// import Image from '../../cells/Image';
 import Spacer from '../../cells/Spacer';
+import Paragraph from '../../cells/Paragraph';
 import PostLabels from '../PostLabels';
-
+// import { Col, Container, Row } from '../../organisms/Grid';
 
 /**
  * Card component to link another articles
@@ -13,20 +14,12 @@ import PostLabels from '../PostLabels';
  * @param {String} to Path of the post
  * @param {String} type Type of the post
  */
-const Card = ({ src = null, title, to, type, time }) => {
+const Card = ({ src = null, title, to, type, time, excerpt }) => {
   return (
     <StyledCard data-scroll-speed="5">
-      {
-        src !== null ?
-          <Image data-scroll
-            src={src}
-            alt={`Image ${title}`}
-            height="2.074rem"
-          />
-          : null
-      }
       <Spacer size="lg" />
-      <PostLabels data-scroll
+      <PostLabels
+        data-scroll
         reading_time={time}
         type={type}
         category=""
@@ -35,8 +28,10 @@ const Card = ({ src = null, title, to, type, time }) => {
         post={true}
       />
       <StyledCardTitle level="6" data-scroll>
-        {title.length > 50 ? title.substring(0, 22) + "..." : title}
+        {title}
       </StyledCardTitle>
+      <Spacer size="md" />
+      <Paragraph>{excerpt}</Paragraph>
       <Spacer size="md" />
       <StyledCardAnchor href={to} label="Enlace" icon={<ArrowRight />} />
       <Spacer size="xl" />
