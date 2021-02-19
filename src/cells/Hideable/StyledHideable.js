@@ -11,16 +11,9 @@ const StyledHideable = styled.div`
 const getVisibility = (visibleOn, after) => {
   let breakpoint = breakpoints[visibleOn];
 
-  if (after) {
-    return css`
-      @media (min-width: ${breakpoint}) {
-        display: contents;
-      }
-    `;
-  }
   return css`
-    @media (max-width: ${breakpoint}) {
-      display: contents;
+    @media (min-width: ${breakpoint}) {
+      display: ${after ? 'contents' : 'none'};
     }
   `;
 };

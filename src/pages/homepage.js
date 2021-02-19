@@ -1,129 +1,187 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { Main } from '../organisms/Grid';
-import { Container, Row, Col, setConfiguration } from 'react-grid-system';
+import { Container, Row, Col } from '../organisms/Grid';
 import Title from '../cells/Title';
 import Paragraph from '../cells/Paragraph';
 import Spacer from '../cells/Spacer';
+import Hideable from '../cells/Hideable';
 import padding from '../utils/padding';
 import GlobalStyle from '../utils/global';
-import LocomotiveScroll from 'locomotive-scroll';
-setConfiguration({
-  maxScreenClass: 'xl',
-  breakpoints: [320, 576, 768, 992, 1440],
-  containersWidth: [320, 576, 768, 992, 1440],
-});
+import Card from '../organs/Card';
 
-const HomePage = () => {
-  const scrollRef = useRef();
+// import Scroll from '../utils/locomotiveScroll';
+import styled from 'styled-components';
+const OverlapContainer = styled.div`
+  width: 100%;
+  position: relative;
+  height: 11.6395rem;
+  @media (min-width: 768px) {
+    height: calc(
+      41.517rem -
+        clamp(
+          6.2775rem,
+          calc(6.2775rem + (19.2585 - 6.2775) * ((100vw - 20rem) / (90 - 20))),
+          19.2585rem
+        )
+    );
+  }
+  @media (min-width: 992px) {
+    height: 10.7415rem;
+  }
+`;
 
-  useEffect(() => {
-    const locomotiveScroll = new LocomotiveScroll({
-      el: scrollRef.current,
-      smooth: true,
-      lerp: 1,
-    });
-    return () => {
-      if (locomotiveScroll) locomotiveScroll.destroy();
-    };
-  });
+const OverlapImageContainer = styled.div`
+  position: absolute;
+  background-size: cover;
+  background-image: url(${(p) => p.src});
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(
+    100% +
+      clamp(
+        6.2775rem,
+        calc(6.2775rem + (19.2585 - 6.2775) * ((100vw - 20rem) / (90 - 20))),
+        19.2585rem
+      )
+  );
+`;
+const HomePage = (callbacks) => {
   return (
-    <div ref={scrollRef}>
+    <>
       <GlobalStyle />
-      <Main
-        style={{
-          backgroundColor: '#e6dff1',
-        }}
-      >
-        <Container>
-          <Row nogutter>
-            <Col sm={3}></Col>
-            <Col lg={9}>
-              <Row nogutter css={padding({ bottom: 'sm' })}>
-                <Title
-                  level="D2"
-                  data-scroll
-                  data-scroll-speed="1"
-                  data-scroll-position="top"
-                >
+      {/* <Scroll callbacks={callbacks} /> */}
+
+      <div data-scroll-container>
+        <Main
+          style={{
+            backgroundColor: '#e6dff1',
+          }}
+          css={padding({ top: 'xxl', bottom: 'xl' })}
+        >
+          <Container>
+            <Row>
+              <Col sm={3}></Col>
+              <Col lg={9} css={padding({ bottom: 'sm' })}>
+                <Title level="D2">
                   A viaduct is the fastest way to cross a valley
                 </Title>
-                <Title
-                  level="1"
-                  data-scroll
-                  data-scroll-speed="2"
-                  data-scroll-position="top"
-                >
+                <Title level="1">
                   (Viaducto is a new digital product studio)
                 </Title>
-              </Row>
-            </Col>
-          </Row>
-          <Row nogutter>
-            <Col sm={3}></Col>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={3}></Col>
 
-            <Col lg={6}>
-              <Paragraph>
-                We help startups and established organizations transform their
-                businesses through innovation and technology. We partner with
-                your company or start up in the creation of new products, and
-                the definition of your digital strategy.
-              </Paragraph>
-            </Col>
-          </Row>
-        </Container>
-      </Main>
-      <Main style={{ backgroundColor: '#fff1f7' }}>
-        <Container>
-          <Row
-            justify="between"
-            align="end"
-            css={padding({ bottom: 'sm' })}
-            nogutter
-          >
-            <Col>
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  height: '30rem',
-                  width: '100%',
-                  backgroundSize: 'cover',
-                  backgroundImage:
-                    'url(https://web.uponor.hk/wp-content/uploads/2018/05/hong_kong_skyline_green_building_in_asia.jpg)',
-                }}
-              ></div>
-            </Col>
-            <Col>
-              <Paragraph lineHeight={1.41}>WHAT WE DO</Paragraph>
-              <Spacer size="lg" />
-              <Title level="2">
-                We help your digital initiatives go from Point A to Point B in
-                the Fastest way possible.
-              </Title>
-            </Col>
-          </Row>
-          <Row nogutter>
-            <Col>
-              <Title level="4">Define your digital strategy.</Title>
-              <Paragraph>
-                We come together and uncover your challenges. We identify
-                potential improvements with process automation or new product
-                development.
-              </Paragraph>
-            </Col>
-            <Col>
-              <Title level="4">Build your digital products.</Title>
-              <Paragraph>
-                We build web-based software and applications. We plan for the
-                future, build for your current stage and scheme to reduce time
-                to value.
-              </Paragraph>
-            </Col>
-          </Row>
-        </Container>
-      </Main>
-    </div>
+              <Col lg={6}>
+                <Paragraph>
+                  We help startups and established organizations transform their
+                  businesses through innovation and technology. We partner with
+                  your company or start up in the creation of new products, and
+                  the definition of your digital strategy.
+                </Paragraph>
+              </Col>
+            </Row>
+          </Container>
+        </Main>
+        <Main
+          style={{ backgroundColor: '#fff1f7' }}
+          css={padding({ vertical: 'xl' })}
+        >
+          <Container>
+            <Row justify="end" align="end" css={padding({ bottom: 'sm' })}>
+              <Col sm={12} lg={10} xl={6}>
+                <OverlapContainer>
+                  <OverlapImageContainer src="https://web.uponor.hk/wp-content/uploads/2018/05/hong_kong_skyline_green_building_in_asia.jpg"></OverlapImageContainer>
+                </OverlapContainer>
+              </Col>
+              <Col style={{ alignItems: 'flex-end' }} lg={10} xl={6}>
+                <Hideable visibleOn="lg" after={false}>
+                  <Spacer size="xxl" />
+                </Hideable>
+                <Paragraph lineHeight={1.41}>WHAT WE DO</Paragraph>
+                <Spacer size="lg" />
+                <Title level="2">
+                  We help your digital initiatives go from Point A to Point B in
+                  the Fastest way possible.
+                </Title>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={12} md={6} css={padding({ bottom: 'sm' })}>
+                <Title level="4">Define your digital strategy.</Title>
+                <Paragraph>
+                  We come together and uncover your challenges. We identify
+                  potential improvements with process automation or new product
+                  development.
+                </Paragraph>
+              </Col>
+              <Col sm={12} md={6}>
+                <Title level="4">Build your digital products.</Title>
+                <Paragraph>
+                  We build web-based software and applications. We plan for the
+                  future, build for your current stage and scheme to reduce time
+                  to value.
+                </Paragraph>
+              </Col>
+            </Row>
+          </Container>
+        </Main>
+        <Main>
+          <Container id="large-text">
+            <Title level="D1" data-scroll data-scroll-speed="2">
+              A Turnkey approach that goes beyond Pixels, Code, and
+              Metadescriptions.
+            </Title>
+          </Container>
+        </Main>
+        <Main>
+          <Container id="stick">
+            <Title level="D1" data-scroll data-scroll-speed="1">
+              A Turnkey approach that
+            </Title>
+            <Title level="D1" data-scroll data-scroll-speed="3">
+              goes beyond Pixels, Code,
+            </Title>
+            <Title level="D1" data-scroll data-scroll-speed="4">
+              Metadescriptions.
+            </Title>
+          </Container>
+        </Main>
+        <Main>
+          <Container>
+            <Row>
+              <Col sm={12} xl={6} css={padding({ bottom: 'md' })}>
+                <Paragraph size="lg" lineHeight="1.688">
+                  CONTINUE READING
+                </Paragraph>
+                <Spacer size="lg" />
+                <Title level="D2">Similar Articles</Title>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                  <Card
+                    title="Identifica cuál es el verdadero costo de una pobre Identificación"
+                    to=""
+                    type="blog"
+                    time={7}
+                  />
+              </Col>
+              <Col>
+                  <Card
+                    title="Identifica cuál es el verdadero costo de una pobre Identificación"
+                    to=""
+                    type="blog"
+                    time={7}
+                  />
+              </Col>
+            </Row>
+          </Container>
+        </Main>
+      </div>
+    </>
   );
 };
 
