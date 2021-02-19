@@ -1,5 +1,4 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
 import { StyledMiniPost, PostCol, PostRow, SideImage } from './StyledMiniPost';
 import Title from '../../cells/Title';
 import Paragraph from '../../cells/Paragraph';
@@ -45,18 +44,14 @@ const MiniPost = ({ cover, type, info, title, text, src, alt, author, slug }) =>
                 <Spacer size="md" />
               </Hideable>
             ) : null}
-            <Row>
-              <Col style={{ padding: 0 }}>
-                <PostLabels
-                  reading_time={info.reading_time}
-                  type={type}
-                  category={info.name}
-                  to={info.slug}
-                  align="start"
-                  justify="start"
-                />
-              </Col>
-            </Row>
+            <PostLabels
+              reading_time={info.reading_time}
+              type={type}
+              category={info.name}
+              to={info.slug}
+              align="start"
+              justify="start"
+            />
             <Title level="4" weight="400" lineHeight="2.243rem">
               <Anchor label={title} color='dark' href={`/post/${slug}`} />
             </Title>
