@@ -16,6 +16,8 @@ setConfiguration({
  */
 export const Main = styled.div`
   width: 100%;
+  padding-left: 14px !important;
+  padding-right: 14px !important;
   ${padding({ vertical: 'xxl' })}
 `;
 
