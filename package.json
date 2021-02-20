@@ -41,7 +41,8 @@
     "react-router-dom": "^5.2.0",
     "react-intl": "5.12.2",
     "react-html-parser": "^2.0.2",
-    "react-grid-system": "^7.1.1"
+    "react-grid-system": "^7.1.1",
+    "react-locomotive-scroll": "^0.1.7"
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.3",
