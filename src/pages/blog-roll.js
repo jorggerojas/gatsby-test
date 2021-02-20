@@ -61,7 +61,6 @@ const Blog = (callbacks) => {
           loader={<h4>Cargando...</h4>}
           hasMore={hasMore}
         >
-          <Scroll callbacks={callbacks} />
           {posts.length > 0 &&
             posts.map(({ node }, index) => {
               return (
