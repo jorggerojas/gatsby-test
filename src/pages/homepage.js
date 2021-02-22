@@ -10,26 +10,44 @@ import Hideable from '../cells/Hideable';
 import padding from '../utils/padding';
 import GlobalStyle from '../utils/global';
 import Card from '../organs/Card';
+import Scroll from '../utils/locomotiveScroll';
 
-// import Scroll from '../utils/locomotiveScroll';
 import styled from 'styled-components';
 const OverlapContainer = styled.div`
   width: 100%;
   position: relative;
-  height: 11.6395rem;
+  height: clamp(
+    11.6395rem,
+    calc(11.6395rem + (26.595 - 11.6395) * ((100vw - 20rem) / (48 - 20))),
+    26.595rem
+  );
   @media (min-width: 768px) {
-    height: calc(
-      41.517rem -
-        clamp(
-          6.2775rem,
-          calc(6.2775rem + (19.2585 - 6.2775) * ((100vw - 20rem) / (90 - 20))),
-          19.2585rem
-        )
+    height: clamp(
+      10.7515rem,
+      calc(26.595rem + (10.7415 - 26.595) * ((100vw - 48rem) / (90 - 48))),
+      26.595rem
     );
   }
   @media (min-width: 992px) {
-    height: 10.7415rem;
+    max-height: 10.7515rem;
   }
+`;
+const OverlapImageContainer = styled.div`
+  position: absolute;
+  background-size: cover;
+  background-image: url(${(p) => p.src});
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(
+    100% +
+      clamp(
+        6.2475rem,
+        calc(6.2475rem + (19.2585 - 6.2475) * ((100vw - 20rem) / (62 - 20))),
+        19.2585rem
+      )
+      
+  );
 `;
 const ColScroll = styled(Col)`
   .menu-item-wrapper {
@@ -55,22 +73,6 @@ const ColScroll = styled(Col)`
   }
   .menu-wrapper {
   }
-`;
-const OverlapImageContainer = styled.div`
-  position: absolute;
-  background-size: cover;
-  background-image: url(${(p) => p.src});
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: calc(
-    100% +
-      clamp(
-        6.2775rem,
-        calc(6.2775rem + (19.2585 - 6.2775) * ((100vw - 20rem) / (90 - 20))),
-        19.2585rem
-      )
-  );
 `;
 const HomePage = (callbacks) => {
   const onSelect = (item) => {
@@ -147,12 +149,13 @@ const HomePage = (callbacks) => {
       />
     );
   });
+
   return (
     <>
       <GlobalStyle />
-      {/* <Scroll callbacks={callbacks} /> */}
+      <Scroll callbacks={callbacks} />
 
-      <div data-scroll-container>
+      <div data-scroll data-scroll-container>
         <Main
           style={{
             backgroundColor: '#e6dff1',
@@ -192,7 +195,7 @@ const HomePage = (callbacks) => {
           <Container>
             <Row justify="end" align="end" css={padding({ bottom: 'sm' })}>
               <Col sm={12} lg={10} xl={6}>
-                <OverlapContainer>
+                <OverlapContainer data-scroll data-scroll-speed="0.9">
                   <OverlapImageContainer src="https://web.uponor.hk/wp-content/uploads/2018/05/hong_kong_skyline_green_building_in_asia.jpg"></OverlapImageContainer>
                 </OverlapContainer>
               </Col>
@@ -200,9 +203,15 @@ const HomePage = (callbacks) => {
                 <Hideable visibleOn="lg" after={false}>
                   <Spacer size="xxl" />
                 </Hideable>
-                <Paragraph lineHeight={1.41}>WHAT WE DO</Paragraph>
+                <Paragraph
+                  lineHeight={1.41}
+                  data-scroll
+                  data-scroll-speed="1.1"
+                >
+                  WHAT WE DO
+                </Paragraph>
                 <Spacer size="lg" />
-                <Title level="2">
+                <Title level="2" data-scroll data-scroll-speed="1">
                   We help your digital initiatives go from Point A to Point B in
                   the Fastest way possible.
                 </Title>
@@ -210,16 +219,20 @@ const HomePage = (callbacks) => {
             </Row>
             <Row>
               <Col sm={12} md={6} css={padding({ bottom: 'sm' })}>
-                <Title level="4">Define your digital strategy.</Title>
-                <Paragraph>
+                <Title level="4" data-scroll data-scroll-speed="1">
+                  Define your digital strategy.
+                </Title>
+                <Paragraph data-scroll data-scroll-speed="1.1">
                   We come together and uncover your challenges. We identify
                   potential improvements with process automation or new product
                   development.
                 </Paragraph>
               </Col>
               <Col sm={12} md={6}>
-                <Title level="4">Build your digital products.</Title>
-                <Paragraph>
+                <Title level="4" data-scroll data-scroll-speed="1">
+                  Build your digital products.
+                </Title>
+                <Paragraph data-scroll data-scroll-speed="1.1">
                   We build web-based software and applications. We plan for the
                   future, build for your current stage and scheme to reduce time
                   to value.
@@ -230,7 +243,7 @@ const HomePage = (callbacks) => {
         </Main>
         <Main>
           <Container id="large-text">
-            <Title level="D1" data-scroll data-scroll-speed="2">
+            <Title level="D1" data-scroll data-scroll-speed="5">
               A Turnkey approach that goes beyond Pixels, Code, and
               Metadescriptions.
             </Title>
@@ -238,14 +251,11 @@ const HomePage = (callbacks) => {
         </Main>
         <Main>
           <Container id="stick">
-            <Title level="D1" data-scroll data-scroll-speed="1">
+            <Title level="D1" data-scroll data-scroll-speed="0.5">
               A Turnkey approach that
             </Title>
             <Title level="D1" data-scroll data-scroll-speed="3">
-              goes beyond Pixels, Code,
-            </Title>
-            <Title level="D1" data-scroll data-scroll-speed="4">
-              Metadescriptions.
+              goes beyond Pixels, Code, Metadescriptions.
             </Title>
           </Container>
         </Main>
