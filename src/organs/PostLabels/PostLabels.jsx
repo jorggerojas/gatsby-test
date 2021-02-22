@@ -43,19 +43,25 @@ const PostLabels = ({ to, type = 'blog', reading_time, category, post = true, ..
       <StyledPostLabels {...props}>
         {icon(type)}
         <Spacer direction="horizontal" size="nano" />
-        <Paragraph size="xs">{`${type.toUpperCase()} -`}</Paragraph>
+        <Paragraph
+          size="xs"
+          style={{ textTransform: 'uppercase' }}
+        >{`${type} -`}</Paragraph>
         <Spacer direction="horizontal" size="xs" />
         <Paragraph size="xs" style={{ textTransform: 'uppercase' }}>
-          <FormattedMessage id="readingTime" values={{ minutes: reading_time }} />
+          <FormattedMessage
+            id="readingTime"
+            values={{ minutes: reading_time }}
+          />
         </Paragraph>
         <Hideable visibleOn="md">
           <Spacer direction="horizontal" size="sm" />
-          <Paragraph
-            size="xs"
-            hide="sm"
-            color="info"
-          >
-            <Anchor href={`/category/${to}`} color="info" label={category.toUpperCase()} />
+          <Paragraph size="xs" hide="sm" color="info">
+            <Anchor
+              href={`/category/${to}`}
+              color="info"
+              label={category.toUpperCase()}
+            />
           </Paragraph>
         </Hideable>
       </StyledPostLabels>
