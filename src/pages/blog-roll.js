@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { css } from 'styled-components';
@@ -8,10 +8,10 @@ import Newsletter from '../organisms/Newsletter';
 import { tagInfo, postType } from '../organisms/BlogRoll';
 import { GET_POSTS } from '../queries/index';
 import Meta from '../organisms/Meta';
-// import Scroll from '../utils/locomotiveScroll';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
+import Scroll from '../utils/locomotiveScroll';
+// import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 
-const Blog = ({ location, navigate }) => {
+const Blog = (callbacks) => {
   // callbacks object has = {location, navigate, pageContext, pageResources, params, path, pathContext, uri}
   let limit = 2;
   const [skip, setSkip] = useState(0);
@@ -25,12 +25,10 @@ const Blog = ({ location, navigate }) => {
   const loadMorePosts = () => {
     if (posts.length < totalCount) {
       setHasMore(true);
-      setTimeout(() => {
-        refetch({
-          limit,
-          skip: posts.length,
-        });
-      }, 5000);
+      refetch({
+        limit,
+        skip: posts.length,
+      });
     } else {
       setHasMore(false);
     }
@@ -46,23 +44,12 @@ const Blog = ({ location, navigate }) => {
       setSkip((s) => s + data.allGhostPost.edges.length);
     }
   }, [data]);
-  const containerRef = useRef(null);
   return (
-    <LocomotiveScrollProvider
-      options={{
-        smooth: true,
-        smoothMobile: false,
-        getDirection: true,
-        touchMultiplier: 2.5,
-        lerp: 0.06,
-      }}
-      watch={[location, navigate]}
-      containerRef={containerRef}
-    >
+    
       <Meta>
         <GlobalStyle />
-        {/* <Scroll callbacks={callbacks} /> */}
-        <div data-scroll-container ref={containerRef}>
+        <Scroll callbacks={callbacks} />
+        <div data-scroll-container>
           <InfiniteScroll
             css={css`
               overflow: hidden !important;
@@ -109,7 +96,6 @@ const Blog = ({ location, navigate }) => {
           </InfiniteScroll>
         </div>
       </Meta>
-    </LocomotiveScrollProvider>
   );
 };
 
